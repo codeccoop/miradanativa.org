@@ -1,0 +1,76 @@
+/*
+ Theme Name:   Mirada Nativa
+ Theme URI:    https://www.miradanativa.org
+ Description:  Child theme del Twenty Twenty per a Mirada Nativa
+ Author:       Còdec
+ Author URI:   https://www.codeccoop.org
+ Template:     twentytwenty
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  miradanativa
+*/
+
+.archive-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 10vw;
+}
+
+@media (min-width: 782px) {
+  .archive-content {
+    flex-direction: row;
+  }
+}
+
+.archive article.type-pelicula {
+  position: relative;
+  flex: 0 0 100%;
+  padding: 1rem 0;
+}
+
+@media (min-width: 782px) {
+  .archive article.type-pelicula {
+    flex: 0 0 50%;
+  }
+}
+
+@media (min-width: 1220px) {
+  .archive article.type-pelicula {
+    flex: 0 0 30%;
+  }
+}
+
+.archive .pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.archive .pagination .nav-links {
+  width: auto;
+  flex-wrap: nowrap;
+}
+
+.archive .archive-header .archive-header-inner {
+  width: 100%;
+  max-width: unset;
+  padding: 0 calc(10vw + 4rem);
+}
+
+.archive .archive-title {
+  text-align: left;
+  font-size: 4rem;
+}
+
+@media (min-width: 782px) {
+  .archive .archive-title {
+    font-size: 5rem;
+  }
+}
+
+.archive .archive-title span.color-accent {
+  display: none;
+}
+
