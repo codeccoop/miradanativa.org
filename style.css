@@ -1,5 +1,5 @@
 /*
- Theme Name:   Mirada Nativa
+ Theme Name:   MiradaNativa
  Theme URI:    https://www.miradanativa.org
  Description:  Child theme del Twenty Twenty per a Mirada Nativa
  Author:       Còdec
@@ -25,52 +25,60 @@
   }
 }
 
-.archive article.type-pelicula {
+.archive-edition article.type-pelicula,
+.archive-pelicula article.type-pelicula {
   position: relative;
   flex: 0 0 100%;
   padding: 1rem 0;
 }
 
 @media (min-width: 782px) {
-  .archive article.type-pelicula {
+  .archive-edition article.type-pelicula,
+  .archive-pelicula article.type-pelicula {
     flex: 0 0 50%;
   }
 }
 
 @media (min-width: 1220px) {
-  .archive article.type-pelicula {
+  .archive-edition article.type-pelicula,
+  .archive-pelicula article.type-pelicula {
     flex: 0 0 30%;
   }
 }
 
-.archive .pagination {
-  display: flex;
-  justify-content: center;
-}
-
-.archive .pagination .nav-links {
-  width: auto;
-  flex-wrap: nowrap;
-}
-
-.archive .archive-header .archive-header-inner {
+.archive-edition .archive-header .archive-header-inner,
+.archive-pelicula .archive-header .archive-header-inner {
   width: 100%;
   max-width: unset;
   padding: 0 calc(10vw + 4rem);
 }
 
-.archive .archive-title {
+.archive-edition .archive-title,
+.archive-pelicula .archive-title {
   text-align: left;
   font-size: 4rem;
 }
 
 @media (min-width: 782px) {
-  .archive .archive-title {
+  .archive-edition .archive-title,
+  .archive-pelicula .archive-title {
     font-size: 5rem;
   }
 }
 
-.archive .archive-title span.color-accent {
+.archive-edition .archive-title span.color-accent,
+.archive-pelicula .archive-title span.color-accent {
   display: none;
 }
 
+.archive-edition .pagination,
+.archive-pelicula .pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.archive-edition .pagination .nav-links,
+.archive-pelicula .pagination .nav-links {
+  width: auto;
+  flex-wrap: nowrap;
+}

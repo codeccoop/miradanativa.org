@@ -15,21 +15,13 @@
 
 get_header();
 ?>
-<main id="site-content archive" role="main">
+<main id="site-content" class="archive-pelicula" role="main">
     <?php
     $archive_title = get_the_archive_title();
     ?>
     <header class="archive-header has-text-align-center header-footer-group">
         <div class="archive-header-inner section-inner medium">
-            <?php if (is_tag()) : ?>
-                <h1 class="archive-title">Es tag</h1>
-            <?php elseif (is_tax('post_format')) : ?>
-                <h1 class="archive-title">Is Tax</h1>
-            <?php elseif (is_post_type_archive()) : ?>
-                <h1 class="archive-title">Is Post type</h1>
-            <?php elseif ($archive_title) : ?>
-                <h1 class="archive-title"><?php echo wp_kses_post($archive_title); ?></h1>
-            <?php endif; ?>
+            <h1 class="archive-title"><?php echo wp_kses_post($archive_title); ?></h1>
         </div><!-- .archive-header-inner -->
     </header><!-- .archive-header -->
 
