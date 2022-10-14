@@ -115,31 +115,22 @@ function add_theme_caps()
     $festival->add_cap('delete_published_peliculas');
 }
 
-add_action('save_post', 'miradanativa_on_festival_insert');
-function miradanativa_on_festival_insert($post_ID, $post = false, $update = false)
+add_filter('wp_insert_post_data', 'miradanativa_on_festival_insert', 99, 2);
+function miradanativa_on_festival_insert($data, $postarr)
 {
-    # Si descomento això, em dona error al editar festivals, pero no aconsegueixo 
-    # que em faci echos des d'aquí i no se si està passant l'if
-    # throw new Exception();
-
-    if ($update || !$post) return;
-
-    if (get_post_type($post_ID) === 'festival') {
-        wp_insert_term($post->title, 'cataleg', array(
-            'slug' => $post->slug,
-            'description' => 'Catàleg del festival ' . $post->title
+    if ($postarr['post_type'] === 'festival') {
+        $slug = wp_unique_post_slug($postarr['post_title'], $postarr['ID'], $postarr['post_status'], $postarr['post_type'], null);
+        $terms = get_terms(array(
+            'taxonomy' => 'cataleg',
+            'hide_empty' => false
+        ));
+        $exists = false;
+        foreach ($terms as $term) {
+            $exists = $exists || $term->slug === $slug;
+        }
+        if ($exists) return;
+        wp_insert_term($postarr['post_title'], 'cataleg', array(
+            'description' => 'Catàleg del festival ' . $postarr['post_title']
         ));
     }
 }
-
-/* add_action('pods_api_post_save_pod_item', 'miradanativa_on_festival_save', 10, 3); */
-/* function miradanativa_on_festival_save($pieces, $is_new_item, $id) */
-/* { */
-/*     if ($is_new_item) { */
-/*         echo print_r($pieces); */
-/*         wp_insert_term($pieces['title'], 'cataleg', array( */
-/*             'slug' => $pieces['slug'], */
-/*             'description' => 'Catàleg del festival ' . $pieces['title'] */
-/*         )); */
-/*     } */
-/* } */
