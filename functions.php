@@ -118,7 +118,7 @@ function add_theme_caps()
 add_filter('wp_insert_post_data', 'miradanativa_on_festival_insert', 99, 2);
 function miradanativa_on_festival_insert($data, $postarr)
 {
-    if ($postarr['post_type'] === 'festival') {
+    if ($postarr['post_type'] === 'festival' && $postarr['ID'] != 0) {
         $slug = wp_unique_post_slug($postarr['post_title'], $postarr['ID'], $postarr['post_status'], $postarr['post_type'], null);
         $terms = get_terms(array(
             'taxonomy' => 'cataleg',
