@@ -133,4 +133,6 @@ function miradanativa_on_festival_insert($data, $postarr)
             'description' => 'Catàleg del festival ' . $postarr['post_title']
         ));
     }
+
+    return $data;
 }
