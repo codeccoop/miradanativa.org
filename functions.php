@@ -116,23 +116,57 @@ function add_theme_caps()
 }
 
 add_filter('wp_insert_post_data', 'miradanativa_on_festival_insert', 99, 2);
-function miradanativa_on_festival_insert($data, $postarr)
+function miradanativa_on_festival_insert($data, $postarr)  // , $unsanitized_postarr = null, $update = false)
 {
-    if ($postarr['post_type'] === 'festival' && $postarr['ID'] != 0) {
+    if ($postarr['post_type'] === 'festival' && $postarr['ID'] != 0 && $data['post_status'] != 'trash') {
         $slug = wp_unique_post_slug($postarr['post_title'], $postarr['ID'], $postarr['post_status'], $postarr['post_type'], null);
-        $terms = get_terms(array(
-            'taxonomy' => 'cataleg',
-            'hide_empty' => false
-        ));
-        $exists = false;
-        foreach ($terms as $term) {
-            $exists = $exists || $term->slug === $slug;
-        }
-        if ($exists) return;
+        $term = miradanativa_find_cataleg_by_slug($slug);
+        if ($term != false) return;
         wp_insert_term($postarr['post_title'], 'cataleg', array(
             'description' => 'Catàleg del festival ' . $postarr['post_title']
         ));
     }
 
     return $data;
+}
+
+add_action('wp_trash_post', 'miradanativa_on_delete_festival', 10);
+function miradanativa_on_delete_festival($ID)
+{
+    if (get_post_type($ID) === 'festival') {
+        $slug = get_post_field('post_name', $ID);
+        $term = miradanativa_find_cataleg_by_slug($slug);
+        if ($term == false) return;
+        wp_delete_term((int) $term->term_id, 'cataleg');
+    }
+}
+
+add_action('untrash_post', 'miradanativa_on_untrash_festival', 10);
+function miradanativa_on_untrash_festival($ID)
+{
+    if (get_post_type($ID) == 'festival') {
+        $festival = get_post($ID);
+        $term = miradanativa_find_cataleg_by_slug(str_replace('__trashed', '', $festival->post_name));
+        if ($term != false) return;
+        wp_insert_term($festival->post_title, 'cataleg', array(
+            'description' => 'Catàleg del festival ' . $festival->post_title
+        ));
+    }
+}
+
+function miradanativa_find_cataleg_by_slug($slug)
+{
+    $target = false;
+    $terms = get_terms(array(
+        'taxonomy' => 'cataleg',
+        'hide_empty' => false
+    ));
+    foreach ($terms as $term) {
+        if ($target != false) continue;
+        if ($term->slug === $slug) {
+            $target = $term;
+        }
+    }
+
+    return $target;
 }
