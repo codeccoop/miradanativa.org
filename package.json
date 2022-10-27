@@ -1,0 +1,26 @@
+{
+  "name": "miradanativa",
+  "version": "1.0.0",
+  "description": "Tema fill del TwentyTwenty per la plataforma Mirada Nativa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeccoop/miradanativa.org.git"
+  },
+  "author": "Còdec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeccoop/miradanativa.org/issues"
+  },
+  "homepage": "https://github.com/codeccoop/miradanativa.org#readme",
+  "devDependencies": {
+    "sass": "^1.55.0"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/sass --watch sass/index.scss style.css",
+    "compile:css": "node_modules/.bin/sass sass/_main.scss style.css"
+  }
+}
