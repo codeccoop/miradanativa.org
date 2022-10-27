@@ -40,17 +40,7 @@ function miradanativa_festival_role()
     add_role(
         'festival',
         __('Festival'),
-        array(
-            // 'read' => false,
-            // 'edit_files' => true,
-            // 'upload_files' => true,
-            // 'edit_post' => true,
-            // 'edit_posts' => true,
-            // 'delete_posts' => true
-            // 'read' => true,
-            // 'edit_posts' => true,
-            // 'edit_published_posts' => true
-        )
+        array()
     );
 }
 
@@ -64,55 +54,87 @@ function add_theme_caps()
     $admins = get_role('administrator');
 
     $admins->add_cap('edit_festival');
-    $admins->add_cap('edit_festivals');
-    $admins->add_cap('edit_published_festivals');
-    $admins->add_cap('edit_others_festivals');
-    $admins->add_cap('publish_festivals');
     $admins->add_cap('read_festival');
-    $admins->add_cap('read_private_festivals');
     $admins->add_cap('delete_festival');
     $admins->add_cap('delete_festivals');
+    $admins->add_cap('delete_private_festivals');
     $admins->add_cap('delete_published_festivals');
     $admins->add_cap('delete_others_festivals');
+    $admins->add_cap('edit_private_festivals');
+    $admins->add_cap('edit_published_festivals');
 
     $admins->add_cap('edit_pelicula');
-    $admins->add_cap('edit_peliculas');
-    $admins->add_cap('edit_published_peliculas');
-    $admins->add_cap('edit_others_peliculas');
-    $admins->add_cap('publish_peliculas');
     $admins->add_cap('read_pelicula');
-    $admins->add_cap('read_private_peliculas');
     $admins->add_cap('delete_pelicula');
     $admins->add_cap('delete_peliculas');
+    $admins->add_cap('delete_private_peliculas');
     $admins->add_cap('delete_published_peliculas');
     $admins->add_cap('delete_others_peliculas');
+    $admins->add_cap('edit_private_peliculas');
+    $admins->add_cap('edit_published_peliculas');
+
+    $admins->add_cap('edit_cataleg');
+    $admins->add_cap('read_cataleg');
+    $admins->add_cap('delete_cataleg');
+    $admins->add_cap('delete_catalegs');
+    $admins->add_cap('delete_private_catalegs');
+    $admins->add_cap('delete_published_catalegs');
+    $admins->add_cap('delete_others_catalegs');
+    $admins->add_cap('edit_private_catalegs');
+    $admins->add_cap('edit_published_catalegs');
+    $admins->add_cap('assign_cataleg');
 
     $festival = get_role('festival');
 
-    $festival->add_cap('read');
-    $festival->add_cap('edit_post');
+    $festival->add_cap('edit_posts');
     $festival->add_cap('read_files');
     $festival->add_cap('upload_files');
 
-    $festival->add_cap('edit_festival');
-    $festival->add_cap('edit_festivals');
-    $festival->add_cap('edit_published_festivals');
-    $festival->add_cap('publish_festivals');
-    // $festival->add_cap('read_festival');
-    $festival->add_cap('read_private_festivals');
-    $festival->add_cap('delete_festival');
-    $festival->add_cap('delete_festivals');
-    $festival->add_cap('delete_published_festivals');
-
     $festival->add_cap('edit_pelicula');
-    $festival->add_cap('edit_peliculas');
-    $festival->add_cap('edit_published_peliculas');
-    $festival->add_cap('publish_peliculas');
-    // $festival->add_cap('read_pelicula');
-    $festival->add_cap('read_private_peliculas');
     $festival->add_cap('delete_pelicula');
-    $festival->add_cap('delete_peliculas');
+    $festival->add_cap('delete_private_peliculas');
     $festival->add_cap('delete_published_peliculas');
+    $festival->add_cap('edit_private_peliculas');
+    $festival->add_cap('edit_published_peliculas');
+
+    $festival->add_cap('edit_festival');
+    $festival->add_cap('delete_festival');
+    $festival->add_cap('delete_private_festivals');
+    $festival->add_cap('delete_published_festivals');
+    $festival->add_cap('edit_private_festivals');
+    $festival->add_cap('edit_published_festivals');
+
+    $festival->add_cap('assign_cataleg');
+}
+
+add_action('init', 'miradanativa_register_cataleg_post_type', 99);
+function miradanativa_register_cataleg_post_type()
+{
+    $labels = array(
+        'name'              => __('Catàlegs', 'textdomain'),
+        'singular_name'     => __('Catàleg', 'textdomain'),
+        'search_items'      => __('Buscar catàlegs', 'textdomain'),
+        'all_items'         => __('Tots els catàlegs', 'textdomain'),
+        'edit_item'         => __('Edita el catàleg', 'textdomain'),
+        'update_item'       => __('Actualitza el catàleg', 'textdomain'),
+        'add_new_item'      => __('Afegeix un catàleg', 'textdomain'),
+        'new_item_name'     => __('Catàleg nou', 'textdomain'),
+        'menu_name'         => __('Catàlegs', 'textdomain'),
+    );
+    $args = array(
+        'labels'            => $labels,
+        'public'            => true,
+        'show_admin_column' => true,
+        'show_ui'           => true,
+        'hierarchical'      => false,
+        'capabilities'      => array(
+            'manage_terms'  => 'edit_cataleg',
+            'edit_terms'    => 'edit_cataleg',
+            'delete_terms'  => 'edit_cataleg',
+            'assign_terms'  => 'assign_cataleg'
+        )
+    );
+    register_taxonomy('cataleg', 'pelicula', $args);
 }
 
 add_filter('wp_insert_post_data', 'miradanativa_on_festival_insert', 99, 2);
