@@ -1523,7 +1523,8 @@ ul > li {
 }
 
 .archive-edition article.type-pelicula,
-.archive-pelicula article.type-pelicula {
+.archive-pelicula article.type-pelicula, 
+.type-festival article.type-pelicula {
   position: relative;
   flex: 0 0 100%;
   padding: 1rem 0;
@@ -1531,14 +1532,16 @@ ul > li {
 
 @media (min-width: 782px) {
   .archive-edition article.type-pelicula,
-  .archive-pelicula article.type-pelicula {
+  .archive-pelicula article.type-pelicula,
+  .type-festival article.type-pelicula {
     flex: 0 0 50%;
   }
 }
 
 @media (min-width: 1220px) {
   .archive-edition article.type-pelicula,
-  .archive-pelicula article.type-pelicula {
+  .archive-pelicula article.type-pelicula,
+  .type-festival article.type-pelicula {
     flex: 0 0 30%;
   }
 }

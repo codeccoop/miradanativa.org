@@ -1467,7 +1467,8 @@ ul > li {
   }
 }
 .archive-edition article.type-pelicula,
-.archive-pelicula article.type-pelicula {
+.archive-pelicula article.type-pelicula,
+.type-festival article.type-pelicula {
   position: relative;
   flex: 0 0 100%;
   padding: 1rem 0;
@@ -1475,13 +1476,15 @@ ul > li {
 
 @media (min-width: 782px) {
   .archive-edition article.type-pelicula,
-.archive-pelicula article.type-pelicula {
+.archive-pelicula article.type-pelicula,
+.type-festival article.type-pelicula {
     flex: 0 0 50%;
   }
 }
 @media (min-width: 1220px) {
   .archive-edition article.type-pelicula,
-.archive-pelicula article.type-pelicula {
+.archive-pelicula article.type-pelicula,
+.type-festival article.type-pelicula {
     flex: 0 0 30%;
   }
 }
@@ -1521,9 +1524,51 @@ ul > li {
   flex-wrap: nowrap;
 }
 
-.festival {
+.festival__hero-section {
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  justify-content: left;
+  padding: 3rem 7rem 3rem 7rem;
+  margin-bottom: 0rem;
+  margin-top: 0rem;
   display: flex;
+  max-width: 100vw;
+  width: 100vw;
+}
+.festival__hero-section .festival__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: auto;
+}
+
+.tabs {
   position: relative;
+  min-height: 100px; /* This part sucks */
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  clear: both;
+  margin: 0 0;
+}
+
+.content {
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100vw;
+}
+
+#peliculas-content {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  flex-wrap: wrap;
+  min-width: 100vw;
 }
 
 /*# sourceMappingURL=style.css.map */
