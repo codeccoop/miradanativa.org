@@ -1524,6 +1524,11 @@ ul > li {
   flex-wrap: nowrap;
 }
 
+.entry-content {
+  background-color: #111311;
+  font-size: 16px;
+}
+
 .festival__hero-section {
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -1537,11 +1542,12 @@ ul > li {
 }
 .festival__hero-section .festival__logo {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 10%;
+  left: 10%;
   position: absolute;
   bottom: 0;
   width: auto;
+  max-width: 20%;
 }
 
 .tabs {
@@ -1553,14 +1559,40 @@ ul > li {
   clear: both;
   margin: 0 0;
 }
+.tabs button:first-child,
+.tabs button:nth-child(2),
+.tabs button:nth-child(3) {
+  background: none;
+  height: 5rem;
+  width: auto;
+  margin-top: 2rem;
+}
+.tabs #peliculas-button {
+  margin-left: 30%;
+}
+.tabs #descarga-button {
+  margin-left: auto;
+  margin-right: 2rem;
+  font-size: 1.4rem;
+  height: 5rem;
+  width: auto;
+  margin-top: 2rem;
+  border-radius: 2%;
+}
 
-.content {
+.festival__content {
   top: 100px;
   left: 0;
   right: 0;
   bottom: 0;
   overflow: hidden;
   width: 100vw;
+  margin-top: 4rem;
+  margin-bottom: 10rem;
+}
+
+#nosotras-content {
+  margin-bottom: 0;
 }
 
 #peliculas-content {
@@ -1569,6 +1601,55 @@ ul > li {
   padding: 0;
   flex-wrap: wrap;
   min-width: 100vw;
+}
+
+#contacto-content {
+  display: flex;
+  justify-content: space-between;
+}
+#contacto-content .content__contacto {
+  flex: 1;
+}
+#contacto-content .content__contacto:first-child {
+  margin-right: 6rem;
+}
+
+.content > * {
+  min-width: 50vh;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.festival__footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 6rem;
+  padding-bottom: 6rem;
+}
+.festival__footer .footer__collaborators {
+  margin-right: 6rem;
+  flex: 1;
+}
+.festival__footer .footer__social {
+  flex: 1;
+}
+.festival__footer .footer__logos {
+  display: flex;
+  justify-content: flex-start;
+}
+.festival__footer .footer__logos img {
+  width: auto;
+  max-width: 130px;
+}
+.festival__footer .footer__logos img:not(:first-child) {
+  margin-left: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

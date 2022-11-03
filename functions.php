@@ -18,7 +18,15 @@ function miradanativa_enqueue_styles()
         array($parenthandle),
         $theme->get('Version')
     );
+    wp_enqueue_script(
+        'miradanativa-festival', 
+        get_stylesheet_directory_uri() . '/js/festival.js', 
+        array(),
+        $theme->get('Version'),
+        true
+    );
 }
+
 
 /* Add pages tags supports */
 add_action('init', 'miradanativa_tags_support_all');
@@ -192,3 +200,8 @@ function miradanativa_find_cataleg_by_slug($slug)
 
     return $target;
 }
+
+  
+	
+
+
