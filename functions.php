@@ -19,8 +19,8 @@ function miradanativa_enqueue_styles()
         $theme->get('Version')
     );
     wp_enqueue_script(
-        'miradanativa-festival', 
-        get_stylesheet_directory_uri() . '/js/festival.js', 
+        'miradanativa-festival',
+        get_stylesheet_directory_uri() . '/js/festival.js',
         array(),
         $theme->get('Version'),
         true
@@ -29,22 +29,23 @@ function miradanativa_enqueue_styles()
 
 
 /* Add pages tags supports */
-add_action('init', 'miradanativa_tags_support_all');
+add_action('init', 'miradanativa_tags_support_all', 40);
 function miradanativa_tags_support_all()
 {
     register_taxonomy_for_object_type('post_tag', 'page');
 }
 
-add_action('pre_get_posts', 'tags_support_query');
+add_action('pre_get_posts', 'tags_support_query', 41);
 function tags_support_query($wp_query)
 {
     if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
 }
 
 /* Custom roles for festivals */
-add_action('init', 'miradanativa_festival_role');
+add_action('init', 'miradanativa_festival_role', 90);
 function miradanativa_festival_role()
 {
+    // remove_role('festival');
     add_role(
         'festival',
         __('Festival'),
@@ -52,7 +53,7 @@ function miradanativa_festival_role()
     );
 }
 
-add_action('admin_init', 'add_theme_caps');
+add_action('init', 'add_theme_caps', 91);
 function add_theme_caps()
 {
     /* $user = wp_get_current_user(); */
@@ -94,27 +95,54 @@ function add_theme_caps()
 
     $festival = get_role('festival');
 
-    $festival->add_cap('edit_posts');
-    $festival->add_cap('read_files');
-    $festival->add_cap('upload_files');
+    $festival->add_cap('read', true);
+    $festival->add_cap('edit_posts', false);
+    $festival->add_cap('publish_posts', false);
+    $festival->add_cap('edit_pages', false);
+    $festival->add_cap('publish_pages', false);
+    $festival->add_cap('read_files', true);
+    $festival->add_cap('upload_files', true);
 
-    $festival->add_cap('edit_pelicula');
-    $festival->add_cap('delete_pelicula');
-    $festival->add_cap('delete_private_peliculas');
-    $festival->add_cap('delete_published_peliculas');
-    $festival->add_cap('edit_private_peliculas');
-    $festival->add_cap('edit_published_peliculas');
+    $festival->add_cap('edit_pelicula', true);
+    $festival->add_cap('delete_pelicula', true);
+    $festival->add_cap('publish_pelicula', true);
+    $festival->add_cap('delete_private_peliculas', true);
+    $festival->add_cap('delete_published_peliculas', true);
+    $festival->add_cap('edit_private_peliculas', true);
+    $festival->add_cap('edit_published_peliculas', true);
 
-    $festival->add_cap('edit_festival');
-    $festival->add_cap('delete_festival');
-    $festival->add_cap('delete_private_festivals');
-    $festival->add_cap('delete_published_festivals');
-    $festival->add_cap('edit_private_festivals');
-    $festival->add_cap('edit_published_festivals');
+    $festival->add_cap('edit_festival', true);
+    $festival->add_cap('delete_festival', true);
+    $festival->add_cap('publish_festival', true);
+    $festival->add_cap('delete_private_festivals', true);
+    $festival->add_cap('delete_published_festivals', true);
+    $festival->add_cap('edit_private_festivals', true);
+    $festival->add_cap('edit_published_festivals', true);
 
-    $festival->add_cap('assign_cataleg');
+    $festival->add_cap('manage_categories', false);
+    $festival->add_cap('assign_cataleg', true);
+    $festival->add_cap('assign_genero', true);
+    $festival->add_cap('assign_categories', false);
+    $festival->add_cap('edit_categories', false);
+    $festival->add_cap('delete_terms', false);
+    $festival->add_cap('manage_terms', false);
+    $festival->add_cap('manage_terms', false);
+    $festival->add_cap('assign_terms', false);
+    $festival->add_cap('assign_categories', false);
 }
 
+add_action('admin_init', 'miradanativa_remove_menu_pages');
+function miradanativa_remove_menu_pages()
+{
+    global $user_ID;
+    //if the user is NOT an administrator remove the menu for downloads
+    if (current_user_can('festival')) { //change role or capability here
+        remove_menu_page('index.php'); //change menu item here
+        # remove_menu_page('edit.php?post_type=festival'); //change menu item here
+    }
+}
+
+/* CATALEG CUSTOM TAXONOMY */
 add_action('init', 'miradanativa_register_cataleg_post_type', 99);
 function miradanativa_register_cataleg_post_type()
 {
@@ -145,6 +173,7 @@ function miradanativa_register_cataleg_post_type()
     register_taxonomy('cataleg', 'pelicula', $args);
 }
 
+/* FESTIVAL POST TYPE LIFE CYCLE */
 add_filter('wp_insert_post_data', 'miradanativa_on_festival_insert', 99, 2);
 function miradanativa_on_festival_insert($data, $postarr)  // , $unsanitized_postarr = null, $update = false)
 {
@@ -200,8 +229,3 @@ function miradanativa_find_cataleg_by_slug($slug)
 
     return $target;
 }
-
-  
-	
-
-
