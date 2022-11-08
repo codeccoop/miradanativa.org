@@ -93,10 +93,15 @@ function add_theme_caps()
     $admins->add_cap('edit_published_catalegs');
     $admins->add_cap('assign_cataleg');
 
+    $admins->add_cap('manage_tematica', true);
+    $admins->add_cap('edit_tematica', true);
+    $admins->add_cap('delete_tematica', true);
+    $admins->add_cap('read_tematica', true);
+
     $festival = get_role('festival');
 
     $festival->add_cap('read', true);
-    $festival->add_cap('edit_posts', false);
+    $festival->add_cap('edit_posts', true);
     $festival->add_cap('publish_posts', false);
     $festival->add_cap('edit_pages', false);
     $festival->add_cap('publish_pages', false);
@@ -110,7 +115,18 @@ function add_theme_caps()
     $festival->add_cap('delete_published_peliculas', true);
     $festival->add_cap('edit_private_peliculas', true);
     $festival->add_cap('edit_published_peliculas', true);
-
+    //test
+    $festival->add_cap('edit_pelicula', true);
+    $festival->add_cap('read_pelicula', true);
+    $festival->add_cap('delete_pelicula', true);
+    $festival->add_cap('delete_peliculas', true);
+    $festival->add_cap('delete_private_peliculas', true);
+    $festival->add_cap('delete_published_peliculas', true);
+    $festival->add_cap('delete_others_peliculas', false);
+    $festival->add_cap('edit_private_peliculas', true);
+    $festival->add_cap('edit_published_peliculas', false);
+    $festival->add_cap('edit_others_peliculas', false);
+    //
     $festival->add_cap('edit_festival', true);
     $festival->add_cap('delete_festival', true);
     $festival->add_cap('publish_festival', true);
@@ -120,15 +136,6 @@ function add_theme_caps()
     $festival->add_cap('edit_published_festivals', true);
 
     $festival->add_cap('manage_categories', false);
-    $festival->add_cap('assign_cataleg', true);
-    $festival->add_cap('assign_genero', true);
-    $festival->add_cap('assign_categories', false);
-    $festival->add_cap('edit_categories', false);
-    $festival->add_cap('delete_terms', false);
-    $festival->add_cap('manage_terms', false);
-    $festival->add_cap('manage_terms', false);
-    $festival->add_cap('assign_terms', false);
-    $festival->add_cap('assign_categories', false);
 }
 
 add_action('admin_init', 'miradanativa_remove_menu_pages');
@@ -137,8 +144,22 @@ function miradanativa_remove_menu_pages()
     global $user_ID;
     //if the user is NOT an administrator remove the menu for downloads
     if (current_user_can('festival')) { //change role or capability here
-        remove_menu_page('index.php'); //change menu item here
+        remove_menu_page('index.php');
+        remove_menu_page('edit.php');
+        remove_menu_page('edit-comments.php');
+        remove_menu_page('tools.php');  //change menu item here
+        remove_menu_page( 'admin.php?page=megamenu' );
         # remove_menu_page('edit.php?post_type=festival'); //change menu item here
+    }
+}
+//Remove metaboxes from YASR and YOAST pluggins in festival user
+add_action('add_meta_boxes', 'miradanativa_filter_yasr_metabox', 99);
+function miradanativa_filter_yasr_metabox()
+{
+    if (current_user_can('festival')){
+        remove_meta_box('yasr_metabox_overall_rating', array('festival', 'pelicula'), 'normal');
+        remove_meta_box('wpseo_meta', array('festival', 'pelicula'), 'normal');
+        remove_meta_box('yasr_metabox_below_editor_metabox', array('festival', 'pelicula'), 'normal');
     }
 }
 
