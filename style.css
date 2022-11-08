@@ -1524,11 +1524,6 @@ ul > li {
   flex-wrap: nowrap;
 }
 
-.entry-content {
-  background-color: #111311;
-  font-size: 16px;
-}
-
 .festival__hero-section {
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -1650,6 +1645,14 @@ ul > li {
 }
 .festival__footer .footer__logos img:not(:first-child) {
   margin-left: 2rem;
+}
+.festival__footer .footer__logos svg {
+  fill: aqua;
+}
+
+.festival article.pelicula .indi_film_details {
+  margin: 0px 0px 9px -1px;
+  width: 90%;
 }
 
 /*# sourceMappingURL=style.css.map */

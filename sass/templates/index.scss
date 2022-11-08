@@ -1,7 +1,4 @@
-.entry-content{
-  background-color: #111311;
-  font-size: 16px;
-}
+
 .festival__hero-section {
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -119,6 +116,13 @@
         margin-left: 2rem;
       }
     }
+    svg{
+      fill: aqua;
+    }
   }
 
+}
+.festival article.pelicula .indi_film_details{
+  margin: 0px 0px 9px -1px;
+  width: 90%;
 }
