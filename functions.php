@@ -25,6 +25,13 @@ function miradanativa_enqueue_styles()
         $theme->get('Version'),
         true
     );
+    wp_enqueue_script(
+        'miradanativa-festival-colors',
+        get_stylesheet_directory_uri() . '/js/color.js',
+        array(),
+        $theme->get('Version'),
+        false
+    );
 }
 
 

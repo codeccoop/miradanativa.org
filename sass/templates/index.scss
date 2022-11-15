@@ -38,10 +38,11 @@
   }
   #peliculas-button{
     margin-left:30%;
+    font-size: 16px;
   }
   #descarga-button{
     margin-left: auto;
-    margin-right: 2rem;
+    margin-right: 4rem;
     font-size: 1.4rem;
     height: 5rem;
     width: auto;
@@ -62,6 +63,22 @@
 }
 #nosotras-content{
   margin-bottom: 0;
+  .nosotras__footer{
+    padding-top: 7rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6rem;
+    padding-bottom: 6rem;
+    .left__web, .right__social{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer__collaborators{
+      margin-right: 6rem;
+      flex: 1;
+    }
+  }
   
 }
 #peliculas-content{ 
@@ -72,14 +89,19 @@
   min-width: 100vw;
 }
 #contacto-content{
+  font-size: 18px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .content__contacto{
-    flex: 1;
-    &:first-child{
-      margin-right: 6rem;
+    margin: 3.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &.social{
+      margin-bottom: 15rem;
     }
-    
   }
 
 }
@@ -94,35 +116,49 @@
   padding: 0;
   margin: 0;
 }
-.festival__footer{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 6rem;
-  padding-bottom: 6rem;
-  .footer__collaborators{
-    margin-right: 6rem;
-    flex: 1;
-  }
-  .footer__social{
-    flex:1;
-  }
-  .footer__logos{
-    display: flex;
-    justify-content: flex-start;
-    img{
-      width: auto;
-      max-width: 130px;
-      &:not(:first-child){
-        margin-left: 2rem;
-      }
-    }
-    svg{
-      fill: aqua;
-    }
-  }
 
-}
 .festival article.pelicula .indi_film_details{
   margin: 0px 0px 9px -1px;
   width: 90%;
 }
+
+.footer__logos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  .logos__images{
+    display: flex;
+    img{
+      margin-left: 2rem;
+      width: auto;
+      max-width: 100px;
+      height: 45px;
+      object-fit: cover;
+    }
+  }
+  
+}
+.social__logos{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  a{
+    margin: 0 1rem;
+    :last-child{
+      padding-top: 2px;
+    }
+    svg{
+      height: 34px;
+      width: 34px;
+      &:last-child{
+        transform: translateY(10px);
+      }
+
+    }
+  }
+}
+p.contacto__titulo{
+  font-weight: 600;
+
+} 
