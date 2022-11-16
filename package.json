@@ -21,6 +21,6 @@
   },
   "scripts": {
     "start": "node_modules/.bin/sass --watch sass/index.scss style.css",
-    "compile:css": "node_modules/.bin/sass sass/_main.scss style.css"
+    "compile:css": "node_modules/.bin/sass sass/index.scss style.css"
   }
 }
