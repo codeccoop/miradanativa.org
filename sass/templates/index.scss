@@ -38,9 +38,11 @@
     background: none;
     height: 5rem;
     width: auto;
-    margin-top: 2rem;
     font-size: 16px;
-    text-transform: none;
+    text-transform: none;   
+    @media only screen and (min-width: 800px) {
+      margin-top: 2rem;
+      }
   }
   #peliculas-button{
     font-size: 16px;
@@ -62,7 +64,9 @@
       margin-left: auto;
       margin-right: 4rem;
     }
-    
+    a {
+      color: white;
+    }
   }
 }
 .festival__content {
@@ -140,9 +144,16 @@
         }
     }
     &.mail{
+      .contacto__titulo > p{
+        color: #7bcc91;
+      }
+      .contacto__mail{
+        color: #7bcc91;
+      }
       .contacto__direccion{
         width: 50%;
         text-align: center;
+        color: #7bcc91;
       }
     } 
   }
@@ -179,7 +190,7 @@
     img{
       margin-top: 2rem;
       width: auto;
-      max-width: 200px;
+      max-width: 150px;
       height: 45px;
       object-fit: contain;
       @media only screen and (min-width: 800px) {
@@ -196,18 +207,25 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  
   a{
-    margin: 0 1rem;
-    :last-child{
+    &:last-child{
       padding-top: 2px;
     }
+    &:first-child svg, &:last-child svg{
+      fill: #7bcc91;
+    }
+    &:nth-child(2) svg,&:nth-child(3) svg {
+      stroke: #7bcc91;
+    }
+    margin: 0 1rem;
     svg{
       height: 34px;
       width: 34px;
       &:last-child{
         transform: translateY(10px);
       }
-
+        
     }
   }
 }
