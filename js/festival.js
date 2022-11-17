@@ -29,4 +29,12 @@ window.addEventListener("DOMContentLoaded", () => {
         .querySelector(`#${target.getAttribute("aria-controls")}`)
         .classList.remove( 'hidden' );;
     }
+
+    const childrenLinks= document.getElementsByClassName("child-link");
+    if(childrenLinks.length == 0){
+        for (let container of document.getElementsByClassName("social__logos")) {
+            container.parentElement.style.display = "none";
+        }
+
+    }
 });

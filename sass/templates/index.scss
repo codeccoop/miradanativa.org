@@ -47,9 +47,6 @@
   #peliculas-button{
     font-size: 16px;
     text-transform: none;
-    @media only screen and (min-width: 800px) {
-    margin-left:30%;
-    }
   }
   #descarga-button{
     font-size: 16px;
@@ -63,9 +60,13 @@
     @media only screen and (min-width: 800px) {
       margin-left: auto;
       margin-right: 4rem;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
     a {
       color: white;
+      text-decoration: none;
     }
   }
 }
@@ -105,6 +106,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      @media only screen and (min-width: 800px) {
+        margin-bottom:4rem;
+        }
     }
     .right__social{
       margin-top: 4rem;
@@ -181,6 +185,9 @@
   flex-direction: column;
   align-items: center;
   margin-top: 4rem;
+  @media only screen and (min-width: 800px) {
+    margin-top: 0;
+    }
   .logos__images{
     display: flex;
     flex-direction: column;
@@ -207,16 +214,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  
+  #twitter-link svg, #youtube-link svg{
+    fill: #7bcc91;
+  }
+  #instagram-link svg, #facebook-link svg{
+    stroke: #7bcc91;
+  }
   a{
     &:last-child{
       padding-top: 2px;
-    }
-    &:first-child svg, &:last-child svg{
-      fill: #7bcc91;
-    }
-    &:nth-child(2) svg,&:nth-child(3) svg {
-      stroke: #7bcc91;
     }
     margin: 0 1rem;
     svg{

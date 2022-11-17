@@ -1582,11 +1582,6 @@ ul > li {
   font-size: 16px;
   text-transform: none;
 }
-@media only screen and (min-width: 800px) {
-  .tabs #peliculas-button {
-    margin-left: 30%;
-  }
-}
 .tabs #descarga-button {
   font-size: 16px;
   margin-left: 4rem;
@@ -1601,10 +1596,14 @@ ul > li {
   .tabs #descarga-button {
     margin-left: auto;
     margin-right: 4rem;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 .tabs #descarga-button a {
   color: white;
+  text-decoration: none;
 }
 
 .festival__content {
@@ -1647,6 +1646,11 @@ ul > li {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media only screen and (min-width: 800px) {
+  #nosotras-content .nosotras__footer .left__web, #nosotras-content .nosotras__footer .right__social {
+    margin-bottom: 4rem;
+  }
 }
 #nosotras-content .nosotras__footer .right__social {
   margin-top: 4rem;
@@ -1726,6 +1730,11 @@ ul > li {
   align-items: center;
   margin-top: 4rem;
 }
+@media only screen and (min-width: 800px) {
+  .footer__logos {
+    margin-top: 0;
+  }
+}
 .footer__logos .logos__images {
   display: flex;
   flex-direction: column;
@@ -1756,17 +1765,17 @@ ul > li {
   justify-content: flex-start;
   align-items: center;
 }
+.social__logos #twitter-link svg, .social__logos #youtube-link svg {
+  fill: #7bcc91;
+}
+.social__logos #instagram-link svg, .social__logos #facebook-link svg {
+  stroke: #7bcc91;
+}
 .social__logos a {
   margin: 0 1rem;
 }
 .social__logos a:last-child {
   padding-top: 2px;
-}
-.social__logos a:first-child svg, .social__logos a:last-child svg {
-  fill: #7bcc91;
-}
-.social__logos a:nth-child(2) svg, .social__logos a:nth-child(3) svg {
-  stroke: #7bcc91;
 }
 .social__logos a svg {
   height: 34px;
