@@ -6,8 +6,14 @@
   right: 50%;
   height: 30vh;
   position: relative;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position:center; 
+  max-width:unset !important; 
+  width: 100vw !important;
   @media only screen and (min-width: 800px) {
     height: 70vh;
+    
   }
   .festival__logo{
     position: absolute; 
@@ -125,10 +131,27 @@
 }
 #peliculas-content{ 
   display: flex;
-  justify-content: center;
-  padding: 0;
+  justify-content: left;
   flex-wrap: wrap;
   min-width: 100vw;
+  padding: 0 5%;
+  .type-pelicula .entry-content{
+    padding: 0 2rem;
+    article{
+      width: 100%;
+      a{
+        display: block;
+        position: relative;
+        .indi_film_details{
+          width: 100%;
+          border-radius: 0;
+          left: 0;
+          bottom: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
 }
 #contacto-content{
   font-size: 18px;

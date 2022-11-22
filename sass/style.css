@@ -1512,7 +1512,7 @@ ul > li {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: left;
   padding: 0 10vw;
 }
 
@@ -1542,7 +1542,7 @@ ul > li {
   .archive-edition article.type-pelicula,
   .archive-pelicula article.type-pelicula,
   .type-festival article.type-pelicula {
-    flex: 0 0 30%;
+    flex: 0 0 33.33%;
   }
 }
 

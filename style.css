@@ -1457,7 +1457,7 @@ ul > li {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: left;
   padding: 0 10vw;
 }
 
@@ -1485,7 +1485,7 @@ ul > li {
   .archive-edition article.type-pelicula,
 .archive-pelicula article.type-pelicula,
 .type-festival article.type-pelicula {
-    flex: 0 0 30%;
+    flex: 0 0 33.33%;
   }
 }
 .archive-edition .archive-header .archive-header-inner,
@@ -1531,6 +1531,11 @@ ul > li {
   right: 50%;
   height: 30vh;
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  max-width: unset !important;
+  width: 100vw !important;
 }
 @media only screen and (min-width: 800px) {
   .festival__hero-section {
@@ -1667,10 +1672,27 @@ ul > li {
 
 #peliculas-content {
   display: flex;
-  justify-content: center;
-  padding: 0;
+  justify-content: left;
   flex-wrap: wrap;
   min-width: 100vw;
+  padding: 0 5%;
+}
+#peliculas-content .type-pelicula .entry-content {
+  padding: 0 2rem;
+}
+#peliculas-content .type-pelicula .entry-content article {
+  width: 100%;
+}
+#peliculas-content .type-pelicula .entry-content article a {
+  display: block;
+  position: relative;
+}
+#peliculas-content .type-pelicula .entry-content article a .indi_film_details {
+  width: 100%;
+  border-radius: 0;
+  left: 0;
+  bottom: 0;
+  margin: 0;
 }
 
 #contacto-content {
