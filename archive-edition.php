@@ -32,7 +32,7 @@ get_header();
                 }
                 if (!$is_tagged) continue;
                 extract($post);
-                get_template_part('template-parts/content', 'pelicula');
+                get_template_part('template-parts/content', 'pelicula-list');
             } ?>
         </div><!-- .archive-content -->
     <?php else : ?>
