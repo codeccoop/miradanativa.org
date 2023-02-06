@@ -1582,3 +1582,27 @@ ul > li {
   width: auto;
   flex-wrap: nowrap;
 }
+
+
+
+
+/* -------------------------------------------------------------------------------------------- */
+/*CUSTOM SHORTCODES.PHP*/
+.frontpage_news_section_title{
+  text-transform: lowercase;
+  font-size: 2.5rem;
+}
+.frontpage_news{
+  display: flex;
+  justify-content: space-between;
+}
+.frontpage_news div{
+  padding: 2rem;
+}
+.frontpage_news div img{
+  width: auto;
+  max-height: 290px;
+}
+.frontpage_news div img:hover{
+  opacity: 0.8;
+}

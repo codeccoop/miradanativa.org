@@ -1,4 +1,10 @@
 <?php
+/* Include custom shortcodes */
+require_once get_theme_file_path('/custom-shortcodes.php');
+
+
+require get_theme_file_path('/ajax/async-grid.php');
+
 /* Child theme style loader */
 add_action('wp_enqueue_scripts', 'miradanativa_enqueue_styles');
 function miradanativa_enqueue_styles()
@@ -31,6 +37,21 @@ function miradanativa_enqueue_styles()
         array(),
         $theme->get('Version'),
         false
+    );
+    wp_enqueue_script(
+        'async-grid',
+        get_stylesheet_directory_uri() . '/js/async-grid.js',
+        array(),
+        $theme->get('Version'),
+        false
+    );
+    wp_localize_script(
+        'async-grid',
+        'ajax_data',
+        array(
+            'nonce' => wp_create_nonce('async_grid'),
+            'ajax_url' => admin_url('admin-ajax.php'),
+        )
     );
 }
 
@@ -257,4 +278,17 @@ function miradanativa_find_cataleg_by_slug($slug)
     }
 
     return $target;
+}
+
+
+/**MIRADANATIVA BLOG */
+
+/*get_the_date filter to modify date format for a post*/
+
+add_action( 'get_the_date', 'mn_filter_publish_dates', 10, 3 );
+
+function mn_filter_publish_dates( $the_date, $d, $post ) {
+	$post_id = $post->ID;
+    return $the_date;
+	return date( 'Y-d-m - h:j:s', strtotime( $the_date ) );
 }
