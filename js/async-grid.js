@@ -89,6 +89,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	}
 
 	function renderEvent( datum ) {
+		console.log(datum);
 		const el = document.createElement( 'figure' );
 		el.classList.add( 'grid-item' );
 		const anchor = document.createElement( 'a' );
@@ -99,12 +100,16 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		const caption = document.createElement( 'figcaption' );
 		caption.classList.add( 'small' );
 		caption.innerHTML =
-      '<b class="title is.3">' +
+
+      '<b class="archive-posts__figcaption title">' +
       datum.title +
       '</b>' +
-      ( datum.date ? '<br/>Data: ' + datum.date : '' ) +
-      ( datum.hour ? '<br/>Horari: ' + datum.hour : '' ) +
-	  (datum.author ? '<br/>Autor: ' + datum.author : ''  );
+      ( datum.date ? '<br/><span class="archive-posts__figcaption meta">' + datum.date : '' ) +  (datum.tag ? ' | ' + datum.tag.map(el => el.name).join(", ") : '') + '</span>' +
+	  (datum.excerpt ? '<br/><span class="archive-posts__figcaption excerpt">' + datum.excerpt : '') + '</span>';
+
+	  console.log(datum.tag);
+    //   ( datum.hour ? '<br/>Horari: ' + datum.hour : '' )  
+	//   (datum.author ? '<br/>Autor: ' + datum.author : ''  );
 
 		anchor.appendChild( caption );
 		el.appendChild( anchor );

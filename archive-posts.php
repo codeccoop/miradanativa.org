@@ -16,19 +16,14 @@ get_header();
         </div><!-- .archive-header-inner -->
     </header><!-- .archive-header -->
     <nav class="archive-posts__filters">
-        <span>Filtra per categoria:</span>
-        <a data-term="all" class="archive-posts__filter async-filter">Todo</a>
-        <a data-term="reseña" class="archive-posts__filter async-filter">Reseñas</a>
-        <a data-term="noticia" class="archive-posts__filter async-filter">Noticias</a>
+        <a data-term="all" class="archive-posts__filter async-filter">TODO</a>
+        <a data-term="reseña" class="archive-posts__filter async-filter">RECOMENDACIONES</a>
+        <a data-term="noticia" class="archive-posts__filter async-filter">NOTICIAS</a>
     </nav>
     <div class="archive-posts__grid async-grid">
     </div>
-    <?php
-    // $tag = wp_get_post_tags(get_the_ID())[0];
-   
-    get_template_part('template-parts/pagination'); ?>
-    <nav class="workshop-archive__pagination">
-        <ul class="workshop-archive__pages async-pager"></ul>
+    <nav class="archive-posts__pagination">
+        <ul class="archive-posts__pages async-pager"></ul>
     </nav>
 </main><!-- #site-content -->
 

@@ -1606,3 +1606,12 @@ ul > li {
 .frontpage_news div img:hover{
   opacity: 0.8;
 }
+
+
+/*ASYNC GRID ARCHIVE POSTS*/
+
+.archive-posts__grid.async-grid{
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}

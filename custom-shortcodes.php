@@ -4,7 +4,7 @@
     function get_noticies_posts( $args = null ) {
         $posts = get_posts( array(
             'post_type'    => 'post',
-            'numberposts'  => -1,
+            'numberposts'  => 3,
             'post_status'  => 'publish'
         ) );
 
@@ -26,6 +26,10 @@
             $html .= get_the_post_thumbnail( $key->$post->ID);
 
         }
+        $category = get_the_category($key->$post->ID);
+        $category=$category[0];
+        $date = get_the_date('j \d\e F \d\e Y', $key->$post->ID);
+        $html .= '<p class="news_meta">' . $date . ' | ' . $category->name . '</p>';
         $html .= '<p class="news_excerpt">' . $key->$post->post_excerpt . '</p>';
         $html .= '<a href="' . get_permalink( $key->$post->ID) . '" target="_blank"> <p>Continua leyendo</p>  </a>';
         $html .= '</div>';

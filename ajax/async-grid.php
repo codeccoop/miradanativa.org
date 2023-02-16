@@ -14,8 +14,8 @@ if (!function_exists('mn_get_grid_posts')) {
         $args = array(
             'post_type' => $type,
             'post_status' => 'publish',
-            'posts_per_page' => 9,
-            'offset' => ($page - 1) * 9,
+            'posts_per_page' => 3,
+            'offset' => ($page - 1) * 3,
             // 'meta_key' => 'date',
             // 'orderby' => 'meta_value',
             'order' => 'DESC',
@@ -37,6 +37,8 @@ if (!function_exists('mn_get_grid_posts')) {
             $thumbnail = get_the_post_thumbnail_url($ID, 'medium');
             $author = get_the_author();
             $date = get_the_date();
+            $tag = get_the_tags();
+
             // try {
             //     $date = DateTime::createFromFormat('d/m/Y', get_field('date', $ID));
             //     $date = $date->getTimestamp();
@@ -57,7 +59,8 @@ if (!function_exists('mn_get_grid_posts')) {
                 'url' => get_post_permalink($ID),
                 'thumbnail' => $thumbnail,
                 'author' => get_the_author($ID),
-                'date' => get_the_date('m/d/Y', $ID)
+                'date' => get_the_date('j \d\e F \d\e Y', $ID),
+                'tag' => get_the_tags($ID)
             ));
         }
         if ($term != 'all') {
@@ -72,7 +75,7 @@ if (!function_exists('mn_get_grid_posts')) {
             }
         }
 
-        $pages = ceil($count / 9);
+        $pages = ceil($count / 3);
         $data['pages'] = $pages;
 
         wp_send_json($data, 200);
