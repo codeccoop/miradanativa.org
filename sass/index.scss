@@ -1,5 +1,12 @@
+// Import variables and mixins.
+@import "abstracts/abstracts";
+
+
+
 @import "style";
 
 @import "templates/index";
 
-@import "archive-posts/archive-posts"
+@import "template-parts/content-post";
+
+@import "archive-posts/archive-posts";

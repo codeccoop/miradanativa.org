@@ -1,0 +1,34 @@
+article.single-post{
+    background: #E5E5E5;
+    color: black;
+    
+    .post-heading{
+        text-align: center;
+        padding: 4rem 0;
+        .post-heading__category p{
+            text-transform: uppercase;
+            color: #7CCD90;
+            font-size: $font__size-tag;
+        }
+        .post-heading__post-title h1{
+            font-size: $font__size-title;
+            margin: 3rem 0;
+        }
+        .post-heading__post-details p {
+            display: inline;
+            font-size: $font__size-small;
+            &.bold{
+                font-weight: 700;
+            }
+            
+        }
+        .post-heading__feat-img{
+            margin-top: 4rem;
+            padding: 0 14.7rem;
+            
+
+        }
+    }
+
+   
+}

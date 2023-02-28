@@ -1598,6 +1598,7 @@ ul > li {
 }
 .frontpage_news div{
   padding: 2rem;
+  flex-basis: 33%;
 }
 .frontpage_news div img{
   width: auto;
@@ -1605,13 +1606,14 @@ ul > li {
 }
 .frontpage_news div img:hover{
   opacity: 0.8;
+  color: blue;
+}
+.frontpage_news div .news_meta{
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.news_archive_button{
+  text-align: center;
 }
 
 
-/*ASYNC GRID ARCHIVE POSTS*/
-
-.archive-posts__grid.async-grid{
-  display: flex;
-  justify-content: center;
-  flex: 1;
-}

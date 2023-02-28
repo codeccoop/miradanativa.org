@@ -1538,6 +1538,7 @@ ul > li {
 
 .frontpage_news div {
   padding: 2rem;
+  flex-basis: 33%;
 }
 
 .frontpage_news div img {
@@ -1547,13 +1548,16 @@ ul > li {
 
 .frontpage_news div img:hover {
   opacity: 0.8;
+  color: blue;
 }
 
-/*ASYNC GRID ARCHIVE POSTS*/
-.archive-posts__grid.async-grid {
-  display: flex;
-  justify-content: center;
-  flex: 1;
+.frontpage_news div .news_meta {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.news_archive_button {
+  text-align: center;
 }
 
 .festival__hero-section {
@@ -1841,6 +1845,35 @@ ul > li {
 
 p.contacto__titulo {
   font-weight: 600;
+}
+
+article.single-post {
+  background: #E5E5E5;
+  color: black;
+}
+article.single-post .post-heading {
+  text-align: center;
+  padding: 4rem 0;
+}
+article.single-post .post-heading .post-heading__category p {
+  text-transform: uppercase;
+  color: #7CCD90;
+  font-size: 16px;
+}
+article.single-post .post-heading .post-heading__post-title h1 {
+  font-size: 40px;
+  margin: 3rem 0;
+}
+article.single-post .post-heading .post-heading__post-details p {
+  display: inline;
+  font-size: 12px;
+}
+article.single-post .post-heading .post-heading__post-details p.bold {
+  font-weight: 700;
+}
+article.single-post .post-heading .post-heading__feat-img {
+  margin-top: 4rem;
+  padding: 0 14.7rem;
 }
 
 /*ASYNC GRID ARCHIVE POSTS*/
