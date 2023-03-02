@@ -1864,7 +1864,12 @@ article.single-post .post-heading .post-heading__post-title h1 {
   font-size: 40px;
   margin: 3rem 0;
 }
+article.single-post .post-heading .post-heading__post-title p {
+  font-size: 24px;
+  margin: 3rem 0;
+}
 article.single-post .post-heading .post-heading__post-details p {
+  margin: 3rem 0;
   display: inline;
   font-size: 12px;
 }
@@ -1872,8 +1877,34 @@ article.single-post .post-heading .post-heading__post-details p.bold {
   font-weight: 700;
 }
 article.single-post .post-heading .post-heading__feat-img {
-  margin-top: 4rem;
-  padding: 0 14.7rem;
+  padding: 0 2rem;
+  margin-top: 5rem;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .post-heading .post-heading__feat-img {
+    padding: 0 14.7rem;
+  }
+}
+article.single-post .related-posts__section {
+  padding: 0 2rem;
+  margin-top: 5rem;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-posts__section {
+    padding: 0 14.7rem;
+  }
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid {
+  display: flex;
+  justify-content: space-between;
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item {
+  flex-basis: 30%;
+  align-items: center;
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item a img {
+  width: auto;
+  height: 170px;
 }
 
 /*ASYNC GRID ARCHIVE POSTS*/
