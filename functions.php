@@ -147,9 +147,9 @@ function add_theme_caps()
     // $festival->add_cap('edit_private_peliculas', true);
     // $festival->add_cap('edit_published_peliculas', true);
     // //test
-    
+
     // // $festival->add_cap('read_pelicula', false);
-  
+
     // $festival->add_cap('delete_peliculas', true);
     // $festival->add_cap('delete_others_peliculas', false);
     // $festival->add_cap('edit_private_peliculas', true);
@@ -177,7 +177,7 @@ function miradanativa_remove_menu_pages()
         remove_menu_page('edit.php');
         remove_menu_page('edit-comments.php');
         remove_menu_page('tools.php');  //change menu item here
-        remove_menu_page( 'admin.php?page=megamenu' );
+        remove_menu_page('admin.php?page=megamenu');
         # remove_menu_page('edit.php?post_type=festival'); //change menu item here
     }
 }
@@ -185,7 +185,7 @@ function miradanativa_remove_menu_pages()
 add_action('add_meta_boxes', 'miradanativa_filter_yasr_metabox', 99);
 function miradanativa_filter_yasr_metabox()
 {
-    if (current_user_can('festival')){
+    if (current_user_can('festival')) {
         remove_meta_box('yasr_metabox_overall_rating', array('festival', 'pelicula'), 'normal');
         remove_meta_box('wpseo_meta', array('festival', 'pelicula'), 'normal');
         remove_meta_box('yasr_metabox_below_editor_metabox', array('festival', 'pelicula'), 'normal');
@@ -285,10 +285,11 @@ function miradanativa_find_cataleg_by_slug($slug)
 
 /*get_the_date filter to modify date format for a post*/
 
-add_action( 'get_the_date', 'mn_filter_publish_dates', 10, 3 );
+add_action('get_the_date', 'mn_filter_publish_dates', 10, 3);
 
-function mn_filter_publish_dates( $the_date, $d, $post ) {
-	$post_id = $post->ID;
+function mn_filter_publish_dates($the_date, $d, $post)
+{
+    $post_id = $post->ID;
     return $the_date;
-	return date( 'Y-d-m - h:j:s', strtotime( $the_date ) );
+    return date('Y-d-m - h:j:s', strtotime($the_date));
 }

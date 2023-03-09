@@ -64,9 +64,11 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	}
 
 	function renderEvents( data ) {
+		console.log(data);
 		return new Promise( function( res, rej ) {
 			try {
 				data = JSON.parse( data );
+				
 				const posts = ( data.posts || [] ).map( ( e ) => {
 					// e.date = new Date( e.date );
 					return e;
@@ -89,7 +91,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	}
 
 	function renderEvent( datum ) {
-		console.log(datum);
 		const el = document.createElement( 'figure' );
 		el.classList.add( 'grid-item' );
 		const anchor = document.createElement( 'a' );

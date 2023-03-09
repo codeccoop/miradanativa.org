@@ -71,28 +71,39 @@
 		<?php
 		$related_query = new WP_Query(array(
 			'post_type'    => 'post',
-			// 'category__in' => wp_get_post_categories(get_the_ID()),
+			'category__in' => wp_get_post_categories(get_the_ID()),
 			'post__not_in' => array(get_the_ID()),
 			'posts_per_page'  => 3,
 			'post_status'  => 'publish',
 			'orderby' => 'date',
 		));
 		?>
-		<h2 class="section-title"> Posts relacionados </h2>
+		<h2 class="section-title"> <span class="capitalized">T</span>e puede interesar </h2>
 		<div class="related-posts">
-			<?php if ($related_query->have_posts()) { ?>
+			<?php if ($related_query->have_posts()) : ?>
 				<div class="related-posts__grid">
 					<?php while ($related_query->have_posts()) { ?>
 						<?php $related_query->the_post(); ?>
 						<div class="grid-item">
 							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('post-thumb-small'); ?></a>
 							<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-							<p><?php the_excerpt(); ?></p>
+							<div class="post-details">
+								<p><?php $date = get_the_date();
+									echo $date; ?></p>
+								<span>|</span>
+								<p><?php $tags = get_the_tags();
+									foreach ($tags as $key => $tag) {
+										echo $tag->name;
+										echo str_repeat('&nbsp;', 1);
+									} ?>
+								</p>
+							</div>
+							<div class="post-excerpt"><?php the_excerpt(); ?></div>
 						</div>
 					<?php } ?>
 				</div>
 				<?php wp_reset_postdata(); ?>
-			<?php } ?>
+			<?php endif; ?>
 		</div>
 
 

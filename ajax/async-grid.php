@@ -38,6 +38,7 @@ if (!function_exists('mn_get_grid_posts')) {
             $author = get_the_author();
             $date = get_the_date();
             $tag = get_the_tags();
+            $lang = pll_get_post_language($ID);
 
             // try {
             //     $date = DateTime::createFromFormat('d/m/Y', get_field('date', $ID));
@@ -60,7 +61,8 @@ if (!function_exists('mn_get_grid_posts')) {
                 'thumbnail' => $thumbnail,
                 'author' => get_the_author($ID),
                 'date' => get_the_date('j \d\e F \d\e Y', $ID),
-                'tag' => get_the_tags($ID)
+                'tag' => get_the_tags($ID),
+                'lang' => pll_get_post_language($ID)
             ));
         }
         if ($term != 'all') {
