@@ -10,15 +10,17 @@ if (!function_exists('mn_get_grid_posts')) {
         $term = $_POST['term'];
         $page = $_POST['page'];
         $type = $_POST['type'];
+        $lang = pll_current_language();
+        $posts_per_page = 9;
 
         $args = array(
             'post_type' => $type,
             'post_status' => 'publish',
-            'posts_per_page' => 3,
-            'offset' => ($page - 1) * 3,
+            'posts_per_page' => $posts_per_page,
+            'offset' => ($page - 1) * $posts_per_page,
             // 'meta_key' => 'date',
             // 'orderby' => 'meta_value',
-            'order' => 'DESC',
+            'order' => 'DESC'
         );
 
         if ($term != 'all') {
@@ -31,23 +33,12 @@ if (!function_exists('mn_get_grid_posts')) {
             'posts' => array(),
             'pages' => 0
         );
+
+
         while ($query->have_posts()) {
             $query->the_post();
             $ID = get_the_ID();
             $thumbnail = get_the_post_thumbnail_url($ID, 'medium');
-            $author = get_the_author();
-            $date = get_the_date();
-            $tag = get_the_tags();
-            $lang = pll_get_post_language($ID);
-
-            // try {
-            //     $date = DateTime::createFromFormat('d/m/Y', get_field('date', $ID));
-            //     $date = $date->getTimestamp();
-            // } catch (Exception $e) {
-            //     $date = null;
-            // }
-            // $hour = get_field('hour', $ID);
-
             if (!$thumbnail) {
                 $thumbnail = get_template_directory_uri() . '/assets/images/event--default.png';
             }
@@ -69,15 +60,15 @@ if (!function_exists('mn_get_grid_posts')) {
             $cat = get_term_by('slug', $term, 'category');
             $count = $cat->count;
         } else {
-            $count = wp_count_posts($type);
+            $count = pll_count_posts($lang);
             if ($count) {
-                $count = $count->publish;
+                $count = $count;
             } else {
                 $count = 0;
             }
         }
 
-        $pages = ceil($count / 3);
+        $pages = ceil($count / $posts_per_page);
         $data['pages'] = $pages;
 
         wp_send_json($data, 200);
