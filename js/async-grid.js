@@ -95,14 +95,25 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		el.classList.add( 'grid-item' );
 		const anchor = document.createElement( 'a' );
 		anchor.href = datum.url;
+		const container = document.createElement ( 'div' );
+		container.classList.add( 'img-container' );
+		anchor.appendChild( container );
+		const veiledDiv = document.createElement ( 'div' );
+		veiledDiv.classList.add( 'veiled' );
+		veiledDiv.classList.add( datum.category[0].slug );
+		container.appendChild( veiledDiv );
+		// const postTag = document.createElement ('h6');
+		// postTag.classList.add ('post-tag');
+		// postTag.innerHTML = datum.category[0].name;
+		// container.appendChild (postTag);
 		const img = document.createElement( 'img' );
 		img.src = datum.thumbnail;
-		anchor.appendChild( img );
+		container.appendChild( img );
 		const caption = document.createElement( 'figcaption' );
 		caption.classList.add( 'small' );
 		caption.innerHTML =
 
-      '<b class="archive-posts__figcaption title">' +
+      '<b class="archive-posts__figcaption title' + ' ' + datum.category[0].slug + '">' +
       datum.title +
       '</b>' +
       ( datum.date ? '<br/><span class="archive-posts__figcaption meta">' + datum.date : '' ) +  (datum.tag ? ' | ' + datum.tag.map(el => el.name).join(", ") : '') + '</span>' +

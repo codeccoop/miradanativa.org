@@ -2,15 +2,29 @@
 #archive-posts{
     background-color: #E5E5E5;
     color: black;
+    padding-bottom: 3rem;
     header {
         background-color: #E5E5E5;
         color: black;
     }
     .archive-posts__filters{
         display: flex;
+        font-size: $font__size-mb;
+        @media only screen and (min-width: 800px){
+            font-size: $font__size;
+        }
         justify-content: center;
         .archive-posts__filter.async-filter{
             text-decoration: none;
+            &.all{
+                color: black;
+            }
+            &.resena{
+                color: #8F3985;
+            }
+            &.noticia{
+                color:#FA824C
+            }
             cursor: pointer;
             &:not(:first-child){
                 margin-left: 2rem;
@@ -30,6 +44,14 @@
         flex-flow: row wrap;
         justify-content: center;
         margin-top: 3rem;
+        flex-direction: column;
+        padding: 0 2rem;
+        text-align: center;
+        @media only screen and (min-width: 800px){
+            flex-direction: row;
+            text-align: left;
+            padding: 0;
+        }
         figure.grid-item{
             flex-basis: 31%;
             // position: relative;
@@ -41,23 +63,72 @@
                 align-items: center;
                 &:hover{
                     .archive-posts__figcaption.title{
-                        color: #7bcc91;
+                        &.noticia, &.noticia-2{
+                            color: #FA824C;
+                        }
+                        &.resena, &.resenya{
+                                color: #8F3985;
+                            }
                     }
+                    div.img-container{
+                        div.veiled{
+                            opacity: 0.6;
+                            &.noticia, &.noticia-2{
+                                background-color: #FA824C;
+                            }
+                            &.resena, &.resenya{
+                                background-color: #8F3985;
+                            }
+                        }
+                        img{
+                            -webkit-filter: grayscale(100%);
+                            filter: grayscale(100%);
+                        }
+
+                    }
+                    
+                }
+                div.img-container{
+                    position: relative;
+                    div.veiled{
+                        position: absolute;
+                        height: 210px;
+                        width: 100%;
+                        max-width: 100%;
+                        z-index: 1;
+                        -webkit-transition: .3s ease-in-out;
+                        transition: .3s ease-in-out;
+                        @media only screen and (min-width: 800px){
+                            height: 250px;
+                        }
+                    }
+                    // .post-tag{
+                    //     position: absolute;
+                    //     z-index: 1;
+                    //     bottom: 0;
+                    //     color: white;
+                    //     background: orange;
+                    //     width: 30%;
+                    //     height: 3rem;
+                    //     padding-top: 0.5rem;
+                    //     text-align: center;
+                    //     left: -6px;
+                    // }
                     img{
-                        -webkit-filter: grayscale(100%);
-	                    filter: grayscale(100%);
+                        z-index: 0;
+                        display: block;
+                        height: 210px;
+                        width: auto;
+                        max-width: 100%;
+                        -webkit-filter: grayscale(0%);
+                        -webkit-transition: .3s ease-in-out;
+                        transition: .3s ease-in-out;
+                        @media only screen and (min-width: 800px){
+                            height: 250px;
+                        }
                     }
                 }
-                img{
-                    display: block;
-                    height: 250px;
-                    width: auto;
-                    max-width: 100%;
-                    -webkit-filter: grayscale(0%);
-	                filter: grayscale(0%);
-                    -webkit-transition: .3s ease-in-out;
-	                transition: .3s ease-in-out;
-                }
+                
                 figcaption {
                     color: black;
                     .archive-posts__figcaption{

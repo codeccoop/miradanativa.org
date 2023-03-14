@@ -16,9 +16,9 @@ get_header();
         </div><!-- .archive-header-inner -->
     </header><!-- .archive-header -->
     <nav class="archive-posts__filters">
-        <a data-term="all" class="archive-posts__filter async-filter">TODO</a>
-        <a data-term="reseña" class="archive-posts__filter async-filter">RECOMENDACIONES</a>
-        <a data-term="noticia" class="archive-posts__filter async-filter">NOTICIAS</a>
+        <a data-term="all" class="archive-posts__filter async-filter all">TODO</a>
+        <a data-term="reseña" class="archive-posts__filter async-filter resena">RECOMENDACIONES</a>
+        <a data-term="noticia" class="archive-posts__filter async-filter noticia">NOTICIAS</a>
     </nav>
     <div class="archive-posts__grid async-grid">
     </div>
