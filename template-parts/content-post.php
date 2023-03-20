@@ -18,12 +18,12 @@
 
 	<?php
 
-	get_template_part('template-parts/entry-header'); ?>
+	get_template_part('template-parts/entry-header');
+	$cat = get_the_category(); ?>
 
 	<div class="post-heading">
-		<div class="post-heading__category">
-			<p><?php $cat = get_the_category();
-				echo $cat[0]->name; ?></p>
+		<div class="post-heading__category ">
+			<p class="<?php echo $cat[0]->slug; ?>"><?php echo $cat[0]->name; ?></p>
 		</div>
 		<div class="post-heading__post-title">
 			<h1><?php the_title(); ?></h1>
@@ -78,15 +78,16 @@
 			'orderby' => 'date',
 		));
 		?>
-		<h2 class="section-title"> <span class="capitalized">T</span>e puede interesar </h2>
+		<h2 class="section-title"><?php pll_e("Te puede interesar"); ?> </h2>
 		<div class="related-posts">
 			<?php if ($related_query->have_posts()) : ?>
 				<div class="related-posts__grid">
 					<?php while ($related_query->have_posts()) { ?>
 						<?php $related_query->the_post(); ?>
 						<div class="grid-item">
+							<div class="veiled <?php echo $cat[0]->slug; ?>"></div>
 							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('post-thumb-small'); ?></a>
-							<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+							<h5><a class="<?php echo $cat[0]->slug; ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 							<div class="post-details">
 								<p><?php $date = get_the_date();
 									echo $date; ?></p>
@@ -104,6 +105,11 @@
 				</div>
 				<?php wp_reset_postdata(); ?>
 			<?php endif; ?>
+		</div>
+		<div class="wp-block-buttons is-content-justification-center">
+			<div class="wp-block-button inverted is-style-outline">
+				<a class="news_archive_button wp-block-button__link" href="/<?php pll_e("noticias"); ?>" target="_blank"> <?php pll_e("Ver más publicaciones") ?> </a>
+			</div>
 		</div>
 
 

@@ -1532,7 +1532,7 @@ ul > li {
   }
 }
 .frontpage_news_section_title {
-  text-transform: lowercase;
+  text-transform: none;
   font-size: 2.5rem;
 }
 
@@ -1910,8 +1910,13 @@ article.single-post .post-heading {
 }
 article.single-post .post-heading .post-heading__category p {
   text-transform: uppercase;
-  color: #7CCD90;
   font-size: 12px;
+}
+article.single-post .post-heading .post-heading__category p.noticia, article.single-post .post-heading .post-heading__category p.noticia-2 {
+  color: #FA824C;
+}
+article.single-post .post-heading .post-heading__category p.resena, article.single-post .post-heading .post-heading__category p.resenya {
+  color: #8F3985;
 }
 @media only screen and (min-width: 800px) {
   article.single-post .post-heading .post-heading__category p {
@@ -1963,7 +1968,7 @@ article.single-post .related-posts__section {
   width: calc(100% - 4rem);
 }
 article.single-post .related-posts__section .section-title {
-  text-transform: lowercase;
+  text-transform: none;
   color: black;
   letter-spacing: 0rem;
   font-size: 32px;
@@ -1972,9 +1977,6 @@ article.single-post .related-posts__section .section-title {
   article.single-post .related-posts__section .section-title {
     font-size: 40px;
   }
-}
-article.single-post .related-posts__section .section-title .capitalized {
-  text-transform: uppercase;
 }
 article.single-post .related-posts__section .related-posts .related-posts__grid {
   display: flex;
@@ -1990,16 +1992,53 @@ article.single-post .related-posts__section .related-posts .related-posts__grid 
   flex-basis: 33%;
   align-items: center;
   margin-bottom: 4rem;
+  position: relative;
 }
 @media only screen and (min-width: 800px) {
   article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:not(:first-child) {
     margin-left: 3%;
   }
 }
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item div.veiled {
+  position: absolute;
+  height: 180px;
+  width: 100%;
+  max-width: 100%;
+  z-index: 1;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item div.veiled {
+    height: 205px;
+  }
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover div.veiled {
+  opacity: 0.6;
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover div.veiled.noticia, article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover div.veiled.noticia-2 {
+  background-color: #FA824C;
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover div.veiled.resena, article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover div.veiled.resenya {
+  background-color: #8F3985;
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover a img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover h5 a.noticia, article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover h5 a.noticia-2 {
+  color: #FA824C;
+}
+article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover h5 a.resena, article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item:hover h5 a.resenya {
+  color: #8F3985;
+}
 article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item a img {
   cursor: pointer;
   width: fit-content;
   height: 180px;
+  -webkit-filter: grayscale(0%);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 @media only screen and (min-width: 800px) {
   article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item a img {
@@ -2029,6 +2068,12 @@ article.single-post .related-posts__section .related-posts .related-posts__grid 
 }
 article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item .post-excerpt {
   margin-top: 2rem;
+}
+article.single-post .wp-block-buttons.is-content-justification-center {
+  padding-bottom: 6rem;
+}
+article.single-post .wp-block-buttons.is-content-justification-center a {
+  color: black;
 }
 
 /*ASYNC GRID ARCHIVE POSTS*/

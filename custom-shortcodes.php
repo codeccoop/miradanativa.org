@@ -12,15 +12,11 @@ function miradanativa_get_noticies_posts()
     return array($posts);
 }
 
-function miradanativa_getposts_function($lang)
+function miradanativa_getposts_function()
 {
     $posts = miradanativa_get_noticies_posts();
     $posts = $posts[0];
-    if ($lang === 'cat') {
-        $html = '<h5 class="frontpage_news_section_title"> <span class="uppercase">N</span>otícies </h5>';
-    } else {
-        $html = '<h5 class="frontpage_news_section_title"> <span class="uppercase">N</span>oticias </h5>';
-    }
+    $html = '<h5 class="frontpage_news_section_title">' . pll__("Noticias") . '</h5>';
 
 
     $html .= '<div class="frontpage_news">';
@@ -42,16 +38,10 @@ function miradanativa_getposts_function($lang)
 
     }
     $html .= '</div>';
-    if ($lang === 'cat') {
-        $html .= '<div class="wp-block-buttons is-content-justification-center"> <div class="wp-block-button inverted is-style-outline"> <a class="news_archive_button wp-block-button__link" href="' . site_url() . '/noticies" target="_blank"> Veure més entrades </a></div></div>';
-    } else {
-        $html .= '<div class="wp-block-buttons is-content-justification-center"> <div class="wp-block-button inverted is-style-outline"> <a class="news_archive_button wp-block-button__link" href="' . site_url() . '/noticias" target="_blank"> Ver más entradas </a></div></div>';
-    }
+    $html .= '<div class="wp-block-buttons is-content-justification-center"> <div class="wp-block-button inverted is-style-outline"> <a class="news_archive_button wp-block-button__link" href="' . site_url() . '/noticias" target="_blank">' . pll__("Ver más publicaciones") . '</a></div></div>';
     return $html;
 }
 ?>
 <?php
-add_shortcode('miradanativa_getposts', function ($attrs) {
-    return miradanativa_getposts_function($attrs['lang']);
-});
+add_shortcode('miradanativa_getposts', 'miradanativa_getposts_function');
 ?>

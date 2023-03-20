@@ -16,9 +16,9 @@ get_header();
         </div><!-- .archive-header-inner -->
     </header><!-- .archive-header -->
     <nav class="archive-posts__filters">
-        <a data-term="all" class="archive-posts__filter async-filter all">TODO</a>
-        <a data-term="reseña" class="archive-posts__filter async-filter resena">RECOMENDACIONES</a>
-        <a data-term="noticia" class="archive-posts__filter async-filter noticia">NOTICIAS</a>
+        <a data-term="all" class="archive-posts__filter async-filter all"> <?php pll_e("TODO"); ?></a>
+        <a data-term="reseña" class="archive-posts__filter async-filter resena"><?php pll_e("RECOMENDACIONES"); ?></a>
+        <a data-term="noticia" class="archive-posts__filter async-filter noticia"><?php pll_e("NOTICIAS"); ?></a>
     </nav>
     <div class="archive-posts__grid async-grid">
     </div>

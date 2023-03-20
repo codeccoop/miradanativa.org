@@ -293,3 +293,16 @@ function mn_filter_publish_dates($the_date, $d, $post)
     return $the_date;
     return date('Y-d-m - h:j:s', strtotime($the_date));
 }
+
+/*POLYLANG*/
+/*Allow polylang to include custom strings to the string-translation database*/
+
+add_action('init', function () {
+    pll_register_string('elmercatcultural-maspublicaciones', "Ver más publicaciones");
+    pll_register_string('elmercatcultural-Noticias', "Noticias");
+    pll_register_string('elmercatcultural-archivo-todo', "TODO");
+    pll_register_string('elmercatcultural-archivo-recomendaciones', "RECOMENDACIONES");
+    pll_register_string('elmercatcultural-archivo-Noticias', "NOTICIAS");
+    pll_register_string('elmercatcultural-archivo-slug', "noticias");
+    pll_register_string('elmercatcultural-posts-relacionados', "Te puede interesar");
+});

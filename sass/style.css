@@ -1597,7 +1597,7 @@ ul > li {
 
 
 .frontpage_news_section_title{
-  text-transform: lowercase;
+  text-transform: none;
   font-size: 2.5rem;
 }
 .frontpage_news_section_title .uppercase{
