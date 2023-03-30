@@ -1957,6 +1957,9 @@ article.single-post .post-heading .post-heading__post-details p.bold {
 article.single-post .post-heading .post-heading__feat-img {
   margin-top: 5rem;
 }
+article.single-post .post-heading .post-heading__feat-img img {
+  width: 100%;
+}
 article.single-post .post-inner .entry-content {
   width: 100%;
   max-width: 100%;
@@ -2070,7 +2073,7 @@ article.single-post .related-posts__section .related-posts .related-posts__grid 
   margin-top: 2rem;
 }
 article.single-post .wp-block-buttons.is-content-justification-center {
-  padding-bottom: 6rem;
+  padding: 6rem 0;
 }
 article.single-post .wp-block-buttons.is-content-justification-center a {
   color: black;

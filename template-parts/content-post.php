@@ -28,7 +28,7 @@
 		<div class="post-heading__post-title">
 			<h1><?php the_title(); ?></h1>
 			<?php $mypod = pods();
-			echo '<p>' . $mypod->display('subttulo') . '</p>';
+			echo '<p>' . $mypod->display('subtitulo') . '</p>';
 			?>
 		</div>
 		<div class="post-heading__post-details">
@@ -78,9 +78,9 @@
 			'orderby' => 'date',
 		));
 		?>
-		<h2 class="section-title"><?php pll_e("Te puede interesar"); ?> </h2>
-		<div class="related-posts">
-			<?php if ($related_query->have_posts()) : ?>
+		<?php if ($related_query->have_posts()) : ?>
+			<h2 class="section-title"><?php pll_e("Te puede interesar"); ?> </h2>
+			<div class="related-posts">
 				<div class="related-posts__grid">
 					<?php while ($related_query->have_posts()) { ?>
 						<?php $related_query->the_post(); ?>
@@ -104,8 +104,8 @@
 					<?php } ?>
 				</div>
 				<?php wp_reset_postdata(); ?>
-			<?php endif; ?>
-		</div>
+			</div>
+		<?php endif; ?>
 		<div class="wp-block-buttons is-content-justification-center">
 			<div class="wp-block-button inverted is-style-outline">
 				<a class="news_archive_button wp-block-button__link" href="/<?php pll_e("noticias"); ?>" target="_blank"> <?php pll_e("Ver más publicaciones") ?> </a>

@@ -57,6 +57,9 @@ article.single-post{
         }
         .post-heading__feat-img{
             margin-top: 5rem;
+            img{
+                width:100%;
+            }
         }
     }
     .post-inner .entry-content{
@@ -181,7 +184,7 @@ article.single-post{
 
     }
     .wp-block-buttons.is-content-justification-center{
-        padding-bottom: 6rem;
+        padding: 6rem 0;
         a {
             color: black;
         }
