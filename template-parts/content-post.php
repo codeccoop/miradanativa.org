@@ -14,6 +14,11 @@
 
 ?>
 
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Habibi&display=swap" rel="stylesheet">
+</head>
 <article class="single-post" <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php
@@ -28,13 +33,20 @@
 		<div class="post-heading__post-title">
 			<h1><?php the_title(); ?></h1>
 			<?php $mypod = pods();
+			//echo print_r($mypod);
+			//$mypod = pods('mypod', $post);
+			// if ($mypod->exists('autor_')) {
+			// 	echo print_r("exists");
+			// };
 			echo '<p>' . $mypod->display('subtitulo') . '</p>';
 			?>
 		</div>
 		<div class="post-heading__post-details">
 			<p class="bold"><?php the_date(); ?> </p>
 			<p> per </p>
-			<p class="bold"><?php the_author(); ?></p>
+			<p class="bold"><?php echo $mypod->display('autor_1');
+							if ($mypod->display('autor_2') !== '') echo ', ' . $mypod->display('autor_2'); ?>
+			</p>
 		</div>
 		<div class="post-heading__feat-img">
 			<p><?php the_post_thumbnail('full'); ?></p>
@@ -66,6 +78,12 @@
 		</div><!-- .entry-content -->
 
 	</div><!-- .post-inner -->
+	<?php
+	if ($cat[0]->slug == 'resena') { ?>
+		<div class="related-posts__section">
+			<h1>PELICULA RELACIONADA</h1>
+		</div>
+	<?php } ?>
 
 	<div class="related-posts__section">
 		<?php

@@ -1891,7 +1891,7 @@ p.contacto__titulo {
 }
 
 article.single-post {
-  background: #E5E5E5;
+  background: #F2F2F2;
   color: black;
   font-size: 16px;
 }
@@ -1905,10 +1905,11 @@ article.single-post .post-heading {
   margin-left: auto;
   margin-right: auto;
   max-width: 100rem;
-  width: calc(100% - 4rem);
-  padding-top: 2rem;
+  width: calc(100% - 50rem);
+  padding-top: 8rem;
 }
 article.single-post .post-heading .post-heading__category p {
+  margin-bottom: 8rem;
   text-transform: uppercase;
   font-size: 12px;
 }
@@ -1955,14 +1956,20 @@ article.single-post .post-heading .post-heading__post-details p.bold {
   font-weight: 700;
 }
 article.single-post .post-heading .post-heading__feat-img {
-  margin-top: 5rem;
+  margin: 5rem 0rem;
 }
 article.single-post .post-heading .post-heading__feat-img img {
   width: 100%;
 }
-article.single-post .post-inner .entry-content {
+article.single-post .post-inner .entry-content, article.single-post .wp-block-columns {
+  font-family: "habibi", sans-serif;
+  width: calc(100% - 50rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+article.single-post .post-inner .entry-content > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide):not(.um), article.single-post .wp-block-columns > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide):not(.um) {
+  margin: 0;
   width: 100%;
-  max-width: 100%;
 }
 article.single-post .related-posts__section {
   margin-left: auto;
