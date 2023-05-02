@@ -33,11 +33,6 @@
 		<div class="post-heading__post-title">
 			<h1><?php the_title(); ?></h1>
 			<?php $mypod = pods();
-			//echo print_r($mypod);
-			//$mypod = pods('mypod', $post);
-			// if ($mypod->exists('autor_')) {
-			// 	echo print_r("exists");
-			// };
 			echo '<p>' . $mypod->display('subtitulo') . '</p>';
 			?>
 		</div>
@@ -79,9 +74,32 @@
 
 	</div><!-- .post-inner -->
 	<?php
-	if ($cat[0]->slug == 'resena') { ?>
-		<div class="related-posts__section">
-			<h1>PELICULA RELACIONADA</h1>
+	if ($cat[0]->slug == 'resena' || $cat[0]->slug == 'resenya') { ?>
+		<div class="related-film__section">
+			<div class="related-film__content">
+				<h1>PELICULA RELACIONADA</h1>
+				<?php $filmID = $mypod->display('film_selector');
+
+				$filmparams = array(
+					'titulo' => $filmID,
+					'where'   => "t.post_title = '$filmID'"
+				);
+				$pelicula = pods('pelicula', $filmparams);
+
+				echo $pelicula->display('titulo');
+				echo $pelicula->display('duracion');
+				if ($cat[0]->slug == 'resena') { ?>
+					<a href="https://www.miradanativa.org/pelicula/<?php echo $pelicula->display('slug'); ?>"><img src="<?php echo $pelicula->display('cartel_en_ficha'); ?>" alt=""></a>
+				<?php } elseif ($cat[0]->slug == 'resenya') { ?>
+					<a href="https://www.miradanativa.org/ca/pelicula/<?php echo $pelicula->display('slug'); ?>"><img src="<?php echo $pelicula->display('cartel_en_ficha'); ?>" alt=""></a>
+
+				<?php } ?>
+
+
+
+
+			</div>
+
 		</div>
 	<?php } ?>
 
