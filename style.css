@@ -6,7 +6,7 @@
  Author:       Còdec
  Author URI:   https://www.codeccoop.org
  Template:     twentytwenty
- Version:      1.0.0
+ Version:      1.0.1
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  miradanativa
@@ -1904,9 +1904,13 @@ article.single-post .post-heading {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  max-width: 100rem;
-  width: calc(100% - 50rem);
-  padding-top: 8rem;
+  padding: 8rem 0;
+  width: calc(100% - 4rem);
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .post-heading {
+    width: calc(100% - 50rem);
+  }
 }
 article.single-post .post-heading .post-heading__category p {
   margin-bottom: 8rem;
@@ -1955,36 +1959,103 @@ article.single-post .post-heading .post-heading__post-details p {
 article.single-post .post-heading .post-heading__post-details p.bold {
   font-weight: 700;
 }
-article.single-post .post-heading .post-heading__feat-img {
-  margin: 5rem 0rem;
-}
-article.single-post .post-heading .post-heading__feat-img img {
-  width: 100%;
-}
 article.single-post .post-inner .entry-content, article.single-post .wp-block-columns {
   font-family: "habibi", sans-serif;
-  width: calc(100% - 50rem);
   margin-left: auto;
   margin-right: auto;
+  width: calc(100% - 4rem);
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .post-inner .entry-content, article.single-post .wp-block-columns {
+    width: calc(100% - 50rem);
+  }
 }
 article.single-post .post-inner .entry-content > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide):not(.um), article.single-post .wp-block-columns > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide):not(.um) {
-  margin: 0;
   width: 100%;
 }
 article.single-post .related-film__section {
+  margin-top: 6rem;
   background-color: #7ccd90;
 }
 article.single-post .related-film__section .related-film__content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 100rem;
   width: calc(100% - 4rem);
+  padding-top: 0.5rem;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-film__section .related-film__content {
+    width: calc(100% - 25rem);
+  }
+}
+article.single-post .related-film__section .related-film__content .section-title {
+  text-transform: none;
+  color: black;
+  letter-spacing: 0rem;
+  font-size: 32px;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-film__section .related-film__content .section-title {
+    font-size: 40px;
+  }
+}
+article.single-post .related-film__section .related-film__content .related-film__film {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8rem;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-film__section .related-film__content .related-film__film {
+    flex-direction: row;
+  }
+}
+article.single-post .related-film__section .related-film__content .related-film__film .details__player {
+  position: relative;
+}
+article.single-post .related-film__section .related-film__content .related-film__film .details__player .indi_play_img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 65px;
+  width: 65px;
+}
+article.single-post .related-film__section .related-film__content .related-film__film .details__player img.film-cover {
+  width: auto;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-film__section .related-film__content .related-film__film .details__player img.film-cover {
+    max-width: 40rem;
+  }
+}
+article.single-post .related-film__section .related-film__content .related-film__film .details__details {
+  margin-top: 2rem;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-film__section .related-film__content .related-film__film .details__details {
+    margin-left: 2rem;
+    margin-top: auto;
+  }
+}
+article.single-post .related-film__section .related-film__content .related-film__film .details__details p {
+  line-height: 1.2;
+  margin: 0;
+}
+article.single-post .related-film__section .related-film__content .related-film__film .details__details p.bold {
+  font-size: 18px;
+  font-weight: 700;
 }
 article.single-post .related-posts__section {
   margin-left: auto;
   margin-right: auto;
-  max-width: 100rem;
   width: calc(100% - 4rem);
+  margin-top: 6rem;
+}
+@media only screen and (min-width: 800px) {
+  article.single-post .related-posts__section {
+    width: calc(100% - 25rem);
+  }
 }
 article.single-post .related-posts__section .section-title {
   text-transform: none;
@@ -2087,6 +2158,7 @@ article.single-post .related-posts__section .related-posts .related-posts__grid 
 }
 article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item .post-excerpt {
   margin-top: 2rem;
+  font-size: 16px;
 }
 article.single-post .wp-block-buttons.is-content-justification-center {
   padding: 6rem 0;

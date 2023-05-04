@@ -43,9 +43,6 @@
 							if ($mypod->display('autor_2') !== '') echo ', ' . $mypod->display('autor_2'); ?>
 			</p>
 		</div>
-		<div class="post-heading__feat-img">
-			<p><?php the_post_thumbnail('full'); ?></p>
-		</div>
 		<?php
 
 
@@ -74,34 +71,51 @@
 
 	</div><!-- .post-inner -->
 	<?php
-	if ($cat[0]->slug == 'resena' || $cat[0]->slug == 'resenya') { ?>
-		<div class="related-film__section">
-			<div class="related-film__content">
-				<h1>PELICULA RELACIONADA</h1>
-				<?php $filmID = $mypod->display('film_selector');
-
-				$filmparams = array(
-					'titulo' => $filmID,
-					'where'   => "t.post_title = '$filmID'"
-				);
-				$pelicula = pods('pelicula', $filmparams);
-
-				echo $pelicula->display('titulo');
-				echo $pelicula->display('duracion');
-				if ($cat[0]->slug == 'resena') { ?>
-					<a href="https://www.miradanativa.org/pelicula/<?php echo $pelicula->display('slug'); ?>"><img src="<?php echo $pelicula->display('cartel_en_ficha'); ?>" alt=""></a>
-				<?php } elseif ($cat[0]->slug == 'resenya') { ?>
-					<a href="https://www.miradanativa.org/ca/pelicula/<?php echo $pelicula->display('slug'); ?>"><img src="<?php echo $pelicula->display('cartel_en_ficha'); ?>" alt=""></a>
-
-				<?php } ?>
+	if ($cat[0]->slug == 'resena' || $cat[0]->slug == 'resenya') {
+		$filmID = $mypod->display('film_selector');
+		if (!empty($filmID)) {
+			$filmparams = array(
+				'titulo' => $filmID,
+				'where'   => "t.post_title = '$filmID'"
+			);
+			$pelicula = pods('pelicula', $filmparams); ?>
 
 
+			<div class="related-film__section">
+				<div class="related-film__content">
+					<h2 class="section-title"><?php pll_e("Ver película"); ?></h2>
 
+					<div class="related-film__film">
+						<div class="details__player">
+
+							<!-- <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/play-button-1.png'; ?>" alt=""> -->
+
+
+							<?php if ($cat[0]->slug == 'resena') { ?>
+								<a href="https://www.miradanativa.org/pelicula/<?php echo $pelicula->display('slug'); ?>">
+									<div class="indi_play_img" onclick="togglePlayer(777030158); return true;"></div>
+								</a>
+								<img class="film-cover" src="<?php echo $pelicula->display('cartel_en_ficha'); ?>" alt="">
+							<?php } elseif ($cat[0]->slug == 'resenya') { ?>
+								<a href="https://www.miradanativa.org/ca/pelicula/<?php echo $pelicula->display('slug'); ?>">
+									<div class="indi_play_img" onclick="togglePlayer(777030158); return true;"></div>
+								</a>
+								<img class="film-cover" src="<?php echo $pelicula->display('cartel_en_ficha'); ?>" alt="">
+
+							<?php } ?>
+						</div>
+						<div class="details__details">
+							<p class="bold"> <?php echo $pelicula->display('titulo'); ?> </p>
+							<p> <?php if ($pelicula->display('pueblo_indigena') !== '') echo $pelicula->display('pueblo_indigena'); ?>
+								<?php if ($pelicula->display('zona_geografica') !== '') echo ' | ' . $pelicula->display('zona_geografica'); ?> </p>
+							<p> <?php if ($pelicula->display('duracion') !== '') echo $pelicula->display('duracion'); ?> </p>
+						</div>
+					</div>
+				</div>
 
 			</div>
-
-		</div>
-	<?php } ?>
+	<?php }
+	} ?>
 
 	<div class="related-posts__section">
 		<?php
