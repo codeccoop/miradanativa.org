@@ -6,7 +6,7 @@
  Author:       Còdec
  Author URI:   https://www.codeccoop.org
  Template:     twentytwenty
- Version:      1.0.1
+ Version:      1.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  miradanativa
@@ -2124,7 +2124,7 @@ article.single-post .related-posts__section .related-posts .related-posts__grid 
 }
 article.single-post .related-posts__section .related-posts .related-posts__grid .grid-item a img {
   cursor: pointer;
-  width: fit-content;
+  width: 100%;
   height: 180px;
   -webkit-filter: grayscale(0%);
   -webkit-transition: 0.3s ease-in-out;
@@ -2231,7 +2231,6 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 #archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover .archive-posts__figcaption.title.noticia, #archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover .archive-posts__figcaption.title.noticia-2 {
   color: #FA824C;
@@ -2273,7 +2272,7 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
   z-index: 0;
   display: block;
   height: 210px;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   -webkit-filter: grayscale(0%);
   -webkit-transition: 0.3s ease-in-out;
@@ -2309,6 +2308,84 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
 }
 #archive-posts .archive-posts__pages.async-pager li.active {
   color: #7bcc91;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+/*CUSTOM SHORTCODES.PHP*/
+@media only screen and (max-width: 800px) {
+  .wp-block-cover .wp-block-cover__inner-container {
+    width: 100%;
+  }
+}
+.frontpage_news_section_title {
+  text-transform: none;
+  font-size: 2.5rem;
+}
+
+.frontpage_news_section_title .uppercase {
+  text-transform: uppercase;
+}
+
+.frontpage_news {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 800px) {
+  .frontpage_news {
+    flex-direction: row;
+  }
+}
+.frontpage_news div {
+  padding: 2rem;
+  flex-basis: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (min-width: 800px) {
+  .frontpage_news div {
+    align-items: flex-start;
+  }
+}
+.frontpage_news div img {
+  height: 200px;
+}
+
+.frontpage_news div img:hover {
+  opacity: 0.8;
+  color: blue;
+}
+
+.frontpage_news .frontpage_title {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+@media only screen and (min-width: 800px) {
+  .frontpage_news .frontpage_title {
+    text-align: start;
+  }
+}
+.frontpage_news div .news_meta {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.frontpage_news .news_excerpt {
+  text-align: center;
+}
+
+@media only screen and (min-width: 800px) {
+  .frontpage_news .news_excerpt {
+    text-align: start;
+  }
+}
+.news_archive_button {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

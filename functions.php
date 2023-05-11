@@ -304,6 +304,7 @@ add_action('init', function () {
     pll_register_string('elmercatcultural-archivo-recomendaciones', "RECOMENDACIONES");
     pll_register_string('elmercatcultural-archivo-Noticias', "NOTICIAS");
     pll_register_string('elmercatcultural-archivo-slug', "noticias");
+    pll_register_string('elmercatcultural-archivo-slug', "No se han encontrado publicaciones");
     pll_register_string('elmercatcultural-films-relacionados', "Ver película");
     pll_register_string('elmercatcultural-posts-relacionados', "Te puede interesar");
 });

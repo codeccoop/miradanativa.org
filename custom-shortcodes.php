@@ -38,7 +38,13 @@ function miradanativa_getposts_function()
 
     }
     $html .= '</div>';
-    $html .= '<div class="wp-block-buttons is-content-justification-center"> <div class="wp-block-button inverted is-style-outline"> <a class="news_archive_button wp-block-button__link" href="' . site_url() . '/noticias" target="_blank">' . pll__("Ver más publicaciones") . '</a></div></div>';
+    if (pll_current_language() === 'es') {
+        $html .= '<div class="wp-block-buttons is-content-justification-center"> <div class="wp-block-button inverted is-style-outline"> <a class="news_archive_button wp-block-button__link" href="' . site_url() . '/noticias" target="_blank">' . pll__("Ver más publicaciones") . '</a></div></div>';
+    } else {
+        $html .= '<div class="wp-block-buttons is-content-justification-center"> <div class="wp-block-button inverted is-style-outline"> <a class="news_archive_button wp-block-button__link" href="' . site_url() . '/noticies" target="_blank">' . pll__("Ver más publicaciones") . '</a></div></div>';
+    }
+
+
     return $html;
 }
 ?>
