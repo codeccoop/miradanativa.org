@@ -113,9 +113,9 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		caption.classList.add( 'small' );
 		caption.innerHTML =
 
-      '<b class="archive-posts__figcaption title' + ' ' + datum.category[0].slug + '">' +
+      '<h5 class="archive-posts__figcaption title' + ' ' + datum.category[0].slug + '">' +
       datum.title +
-      '</b>' +
+      '</h5>' +
       ( datum.date ? '<br/><span class="archive-posts__figcaption meta">' + datum.date : '' ) +  (datum.tag ? ' | ' + datum.tag.map(el => el.name).join(", ") : '') + '</span>' +
 	  (datum.excerpt ? '<br/><span class="archive-posts__figcaption excerpt">' + datum.excerpt : '') + '</span>';
 

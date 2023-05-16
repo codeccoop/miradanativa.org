@@ -145,7 +145,11 @@
 								<p><?php $tags = get_the_tags();
 									foreach ($tags as $key => $tag) {
 										echo $tag->name;
-										echo str_repeat('&nbsp;', 1);
+										if ($key !== array_key_last($tags)) {
+											echo str_repeat(',&nbsp;', 1);
+										} else {
+											echo str_repeat('&nbsp;', 1);
+										}
 									} ?>
 								</p>
 							</div>

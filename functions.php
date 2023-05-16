@@ -299,7 +299,6 @@ function mn_filter_publish_dates($the_date, $d, $post)
 
 add_action('init', function () {
     pll_register_string('elmercatcultural-maspublicaciones', "Ver más publicaciones");
-    pll_register_string('elmercatcultural-Noticias', "Noticias");
     pll_register_string('elmercatcultural-archivo-todo', "TODO");
     pll_register_string('elmercatcultural-archivo-recomendaciones', "RECOMENDACIONES");
     pll_register_string('elmercatcultural-archivo-Noticias', "NOTICIAS");
@@ -308,3 +307,19 @@ add_action('init', function () {
     pll_register_string('elmercatcultural-films-relacionados', "Ver película");
     pll_register_string('elmercatcultural-posts-relacionados', "Te puede interesar");
 });
+
+
+add_filter('pll_get_post_types', 'my_i18n_post_types', 10, 2);
+function my_i18n_post_types($post_types, $is_settings)
+{
+    if ($is_settings) {
+
+        // Add this post type to possible i18n enabled post-types (polylang settings)
+        $post_types['ficha_pelicula'] = 'ficha_pelicula';
+    } else {
+
+        // Force enable this post type
+        $post_types['ficha_pelicula'] = 'ficha_pelicula';
+    }
+    return $post_types;
+}

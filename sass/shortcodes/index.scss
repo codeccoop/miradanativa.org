@@ -9,8 +9,9 @@
   
   
   .frontpage_news_section_title{
-    text-transform: none;
     font-size: 2.5rem;
+    text-transform: none;
+    letter-spacing: 0.05rem;
   }
   .frontpage_news_section_title .uppercase{
     text-transform: uppercase;
@@ -40,8 +41,8 @@
   
   
   .frontpage_news div img{
-    //width: auto;
-    height: 200px;
+    width: 313px;
+    height: 175px;
   }
   .frontpage_news div img:hover{
     opacity: 0.8;
@@ -63,6 +64,7 @@
   }
   .frontpage_news .news_excerpt{
     text-align: center;
+    font-size: $font__size-mb;
   }
   @media only screen and (min-width: 800px){
     .frontpage_news .news_excerpt{

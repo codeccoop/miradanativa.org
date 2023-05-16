@@ -16,7 +16,7 @@ function miradanativa_getposts_function()
 {
     $posts = miradanativa_get_noticies_posts();
     $posts = $posts[0];
-    $html = '<h5 class="frontpage_news_section_title">' . pll__("Noticias") . '</h5>';
+    $html = '<h5 class="frontpage_news_section_title">' . "Blog" . '</h5>';
 
 
     $html .= '<div class="frontpage_news">';

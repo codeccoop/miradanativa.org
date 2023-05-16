@@ -134,13 +134,13 @@
                     .archive-posts__figcaption{
                         &.title, &.excerpt, &.meta{
                             display: block;
-                            margin-top: 1rem; 
+                            margin: 0.1rem auto;
                         }
                         &.meta{
                             font-size: 12px;
                         }
                         &.title{
-                            font-size: 32px;
+                            //font-size: 32px;
                             -webkit-transition: .3s ease-in-out;
 	                        transition: .3s ease-in-out;
                         }

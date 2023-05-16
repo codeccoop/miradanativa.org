@@ -6,7 +6,7 @@
  Author:       Còdec
  Author URI:   https://www.codeccoop.org
  Template:     twentytwenty
- Version:      1.0.0
+ Version:      1.4.2
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  miradanativa
@@ -2288,13 +2288,12 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
 }
 #archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.title, #archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.excerpt, #archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.meta {
   display: block;
-  margin-top: 1rem;
+  margin: 0.1rem auto;
 }
 #archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.meta {
   font-size: 12px;
 }
 #archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.title {
-  font-size: 32px;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
@@ -2318,8 +2317,9 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
   }
 }
 .frontpage_news_section_title {
-  text-transform: none;
   font-size: 2.5rem;
+  text-transform: none;
+  letter-spacing: 0.05rem;
 }
 
 .frontpage_news_section_title .uppercase {
@@ -2351,7 +2351,8 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
   }
 }
 .frontpage_news div img {
-  height: 200px;
+  width: 313px;
+  height: 175px;
 }
 
 .frontpage_news div img:hover {
@@ -2377,6 +2378,7 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
 
 .frontpage_news .news_excerpt {
   text-align: center;
+  font-size: 16px;
 }
 
 @media only screen and (min-width: 800px) {
