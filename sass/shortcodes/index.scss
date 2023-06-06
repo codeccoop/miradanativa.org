@@ -42,7 +42,8 @@
   
   .frontpage_news div img{
     width: 313px;
-    height: 175px;
+    height: 170px;
+    object-fit: cover;
   }
   .frontpage_news div img:hover{
     opacity: 0.8;
