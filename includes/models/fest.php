@@ -3,14 +3,14 @@
 add_action('init', 'mn_register_festival_cpt', 10);
 function mn_register_festival_cpt()
 {
-    $POST_TYPE = 'festival';
+    $POST_TYPE = 'fest';
     register_post_type(
         $POST_TYPE,
         [
             'labels' => [
-                'name' => __('Festivals'),
+                'name' => __('Fests'),
                 'singular_name' => __(
-                    'Festival'
+                    'Fest'
                 )
             ],
 

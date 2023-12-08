@@ -12,10 +12,10 @@ require_once 'includes/taxonomies/realizacion.php';
 require_once 'includes/taxonomies/cataleg.php';
 /* post type */
 require_once 'includes/models/film.php';
-require_once 'includes/models/festival.php';
+require_once 'includes/models/fest.php';
 /* ACF */
 require_once 'includes/acf/film.php';
-require_once 'includes/acf/festival.php';
+require_once 'includes/acf/fest.php';
 /* custom shortcodes */
 require_once 'includes/shortcodes/custom.php';
 require_once 'includes/shortcodes/festival.php';
@@ -23,7 +23,9 @@ require_once 'includes/shortcodes/indi_separator.php';
 require_once 'includes/shortcodes/carousels.php';
 require_once 'includes/shortcodes/pods_config.php';
 /* ajax */
-require 'includes/ajax/async-grid.php';
+require_once 'includes/ajax/async-grid.php';
+
+require_once 'restore.php';
 
 /* Child theme style loader */
 add_action('wp_enqueue_scripts', 'mn_enqueue_styles');

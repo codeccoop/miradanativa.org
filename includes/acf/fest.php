@@ -333,7 +333,7 @@ add_action('acf/include_fields', function () {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'festival',
+                    'value' => 'fest',
                 ),
             ),
         ),
