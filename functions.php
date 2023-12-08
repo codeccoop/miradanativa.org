@@ -48,7 +48,7 @@ function mn_enqueue_styles()
 
     wp_enqueue_script(
         'mn-festival',
-        get_stylesheet_directory_uri() . '/js/festival.js',
+        get_stylesheet_directory_uri() . '/assets/js/festival.js',
         [],
         $theme->get('Version'),
         true
@@ -56,7 +56,7 @@ function mn_enqueue_styles()
 
     wp_enqueue_script(
         'mn-festival-colors',
-        get_stylesheet_directory_uri() . '/js/color.js',
+        get_stylesheet_directory_uri() . '/assets/js/color.js',
         [],
         $theme->get('Version'),
         false
@@ -64,7 +64,7 @@ function mn_enqueue_styles()
 
     wp_enqueue_script(
         'async-grid',
-        get_stylesheet_directory_uri() . '/js/async-grid.js',
+        get_stylesheet_directory_uri() . '/assets/js/async-grid.js',
         [],
         $theme->get('Version'),
         false
