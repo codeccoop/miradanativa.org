@@ -1,0 +1,310 @@
+article.single-post {
+  background: #f2f2f2;
+  color: black;
+
+  font-size: $font__size-mb;
+  @media only screen and (min-width: 600px) {
+    font-size: $font__size;
+  }
+
+  .post-heading {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8rem 0;
+    width: calc(100% - 4rem);
+
+    @media (min-width: 1200px) {
+      width: calc(100% - 50rem);
+    }
+
+    .post-heading__category p {
+      margin-bottom: 8rem;
+      text-transform: uppercase;
+      font-size: $font__size-tag-mb;
+
+      &.noticia,
+      &.noticia-2 {
+        color: #fa824c;
+      }
+
+      &.resena,
+      &.resenya {
+        color: #8f3985;
+      }
+
+      @media (min-width: 600px) {
+        font-size: $font__size-tag;
+      }
+    }
+
+    .post-heading__post-title h1 {
+      font-size: $font__size-title-mb;
+      margin: 3rem 1rem;
+
+      @media (min-width: 600px) {
+        font-size: $font__size-title;
+      }
+    }
+
+    .post-heading__post-title p {
+      font-size: $font__size-subtitle-mb;
+      margin: 3rem 0;
+
+      @media (min-width: 600px) {
+        font-size: $font__size-subtitle;
+      }
+    }
+
+    .post-heading__post-details p {
+      margin: 3rem 0;
+      display: inline;
+      font-size: $font__size-small-mb;
+
+      @media (min-width: 600px) {
+        font-size: $font__size-small;
+      }
+
+      &.bold {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .post-inner .entry-content,
+  .wp-block-columns {
+    font-family: "Libre Baskerville", serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 4rem);
+
+    @media (min-width: 1200px) {
+      width: calc(100% - 50rem);
+    }
+
+    > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide):not(.um) {
+      width: 100%;
+    }
+  }
+
+  .related-film__section {
+    margin-top: 6rem;
+    background-color: #7ccd90;
+
+    .related-film__content {
+      margin-left: auto;
+      margin-right: auto;
+      width: calc(100% - 4rem);
+      padding-top: 0.5rem;
+
+      @media (min-width: 900px) {
+        width: calc(100% - 25rem);
+      }
+
+      .section-title {
+        text-transform: none;
+        color: black;
+        letter-spacing: 0rem;
+        font-size: $font__size-title-mb;
+        @media only screen and (min-width: 900px) {
+          font-size: $font__size-title;
+        }
+      }
+
+      .related-film__film {
+        justify-content: left;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 8rem;
+
+        @media (min-width: 900px) {
+          flex-direction: row;
+        }
+
+        .details__player {
+          position: relative;
+
+          .indi_play_img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 65px;
+            width: 65px;
+          }
+
+          img.film-cover {
+            width: auto;
+
+            @media (min-width: 900px) {
+              max-width: 40rem;
+            }
+          }
+        }
+
+        .details__details {
+          margin-top: 2rem;
+
+          @media (min-width: 900px) {
+            margin-left: 2rem;
+          }
+
+          h3 {
+            margin-top: 0;
+            font-weight: bold;
+          }
+
+          p {
+            line-height: 1.2;
+            margin: 0;
+
+            &.bold {
+              font-size: 18px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .related-posts__section {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 4rem);
+    margin-top: 6rem;
+
+    @media (min-width: 900px) {
+      width: calc(100% - 25rem);
+    }
+
+    .section-title {
+      text-transform: none;
+      color: black;
+      letter-spacing: 0rem;
+      font-size: $font__size-title-mb;
+
+      @media (min-width: 600px) {
+        font-size: $font__size-title;
+      }
+    }
+
+    .related-posts {
+      .related-posts__grid {
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: 600px) {
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+
+        .grid-item {
+          flex-basis: 33%;
+          align-items: center;
+          margin-bottom: 4rem;
+          position: relative;
+
+          @media (min-width: 900px) {
+            &:not(:first-child) {
+              margin-left: 3%;
+            }
+          }
+
+          div.veiled {
+            position: absolute;
+            height: 180px;
+            width: 100%;
+            max-width: 100%;
+            z-index: 1;
+            -webkit-transition: 0.3s ease-in-out;
+            transition: 0.3s ease-in-out;
+            pointer-events: none;
+
+            @media (min-width: 900px) {
+              height: 205px;
+            }
+          }
+
+          &:hover {
+            div.veiled {
+              opacity: 0.6;
+              &.noticia,
+              &.noticia-2 {
+                background-color: #fa824c;
+              }
+
+              &.resena,
+              &.resenya {
+                background-color: #8f3985;
+              }
+            }
+
+            a img {
+              -webkit-filter: grayscale(100%);
+              filter: grayscale(100%);
+            }
+
+            h5 a {
+              &.noticia,
+              &.noticia-2 {
+                color: #fa824c;
+              }
+
+              &.resena,
+              &.resenya {
+                color: #8f3985;
+              }
+            }
+          }
+
+          a img {
+            cursor: pointer;
+            object-fit: cover;
+            height: 180px;
+            -webkit-filter: grayscale(0%);
+            -webkit-transition: 0.3s ease-in-out;
+            transition: 0.3s ease-in-out;
+            @media only screen and (min-width: 900px) {
+              height: 205px;
+            }
+          }
+
+          h5 {
+            margin-bottom: 1rem;
+            a {
+              cursor: pointer;
+              text-decoration: none;
+              color: black;
+            }
+          }
+
+          .post-details {
+            margin-top: 0;
+            font-size: $font__size-small-mb;
+            @media only screen and (min-width: 900px) {
+              font-size: $font__size-small;
+            }
+
+            p {
+              margin-top: 0;
+              display: inline;
+            }
+          }
+
+          .post-excerpt {
+            margin-top: 2rem;
+            font-size: $font__size-mb;
+          }
+        }
+      }
+    }
+  }
+
+  .wp-block-buttons.is-content-justification-center {
+    padding: 6rem 0;
+    a {
+      color: black;
+    }
+  }
+}

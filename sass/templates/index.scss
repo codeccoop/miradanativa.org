@@ -61,6 +61,13 @@
     margin-top: 2rem;
     border-radius: 2%;
     text-transform: none;
+    text-decoration: none;
+    padding-top: 1em;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
     @media only screen and (min-width: 800px) {
       margin-left: auto;
       margin-right: 4rem;
@@ -68,12 +75,9 @@
       right: 0;
       top: 0;
     }
-    a {
-      color: white;
-      text-decoration: none;
-    }
   }
 }
+
 .festival__content {
   //position: absolute;
   top: 100px;
@@ -258,4 +262,3 @@
 p.contacto__titulo {
   font-weight: 600;
 }
-

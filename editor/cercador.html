@@ -1,0 +1,19 @@
+<!-- wp:spacer {"height":"50px","width":"0px","style":{"layout":{}}} -->
+<div style="height:50px;width:0px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:group {"align":"full","className":"indi_search_main","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
+<div class="wp-block-group alignfull indi_search_main"><!-- wp:shortcode -->
+[waf_tax_filter post_type="film" taxonomies="mn_genero,mn_tematica,mn_zona_geografica,mn_metraje,mn_pueblo_indigena" el="#catalogResults"]
+<!-- /wp:shortcode --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"archive-content","layout":{"type":"constrained"}} -->
+<div id="catalogResults" class="wp-block-group archive-content"></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div id="catalogPager" class="wp-block-group"><!-- wp:shortcode -->
+[waf_pager per_page="12"]
+<!-- /wp:shortcode --></div>
+<!-- /wp:group -->

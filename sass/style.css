@@ -865,6 +865,25 @@ img.custom-logo {
   background-image: url("https://www.miradanativa.org/wp-content/uploads/2021/07/playButton.png");
   background-repeat: no-repeat;
   z-index: 98;
+  margin-bottom: 5%;
+}
+
+@media (max-width: 1300px) {
+  .indi_play_img {
+    margin-bottom: 10%;
+  }
+}
+
+@media (max-width: 900px) {
+  .indi_play_img {
+    margin-bottom: 20%;
+  }
+}
+
+@media (max-width: 600px) {
+  .indi_play_img {
+    margin-bottom: 30%;
+  }
 }
 
 .indi_play_img:hover {
@@ -1668,4 +1687,9 @@ ul > li {
 }
 .news_archive_button {
   text-align: center;
+}
+
+:where(.wp-block-cover-image:not(.has-text-color)),
+:where(.wp-block-cover:not(.has-text-color)) {
+  color: #fff;
 }

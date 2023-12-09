@@ -41,7 +41,7 @@ add_action('acf/include_fields', function () {
                 'aria-label' => '',
                 'type' => 'image',
                 'instructions' => 'Adjunta la imagen del logo del festival en un formato pequeño (ejemplo: 250px de ancho por 150px de alto)',
-                'required' => 1,
+                'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
                     'width' => '',
@@ -310,7 +310,7 @@ add_action('acf/include_fields', function () {
             array(
                 'key' => 'field_6572ddfa9828d',
                 'label' => 'Programación',
-                'name' => 'programming',
+                'name' => 'program',
                 'aria-label' => '',
                 'type' => 'file',
                 'instructions' => 'Adjunta el archivo con la programación en formato .pdf',

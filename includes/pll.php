@@ -36,4 +36,19 @@ function mn_register_pll_strings()
     pll_register_string($ns, 'Con el soporte de', $ns);
     pll_register_string($ns, 'MiradaNativa no se hace responsable de los contenidos ni del tratamiento de los datos que se hagan desde los festivales alojados en esta plataforma. Toda la responsabilidad es del festival anfitrión. En caso de duda, pueden ponerse en contacto con nosotros.', $ns);
     pll_register_string($ns, 'Página web del festival', $ns);
+
+    /* blog */
+    pll_register_string($ns, 'TODO', $ns);
+    pll_register_string($ns, 'RECOMENDACIONES', $ns);
+    pll_register_string($ns, 'NOTICIAS', $ns);
+    pll_register_string($ns, 'Ver película', $ns);
+    pll_register_string($ns, 'Te puede interesar', $ns);
+    pll_register_string($ns, 'noticias', $ns);
+    pll_register_string($ns, 'Ver más publicaciones', $ns);
+    pll_register_string($ns, 'all', $ns);
+    pll_register_string($ns, 'resena', $ns);
+    pll_register_string($ns, 'noticia', $ns);
+
+    /* archive */
+    pll_register_string($ns, 'No se ha encontrado contenido relacionado', $ns);
 }

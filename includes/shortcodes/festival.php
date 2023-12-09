@@ -3,6 +3,7 @@
 add_shortcode('mn_fest_cataleg', 'mn_fest_cataleg');
 function mn_fest_cataleg($atts)
 {
+    echo '<h1 style="color: white">' . $post_slug . '</h1>';
     $post_slug = get_post_field('post_name', get_post());
     $query = new WP_Query([
         'posts_per_page' => -1,
@@ -16,6 +17,8 @@ function mn_fest_cataleg($atts)
         ],
     ]);
 
+    global $post;
+    $global_post = $post;
     ob_start();
     while ($query->have_posts()) {
         $query->the_post();
@@ -31,5 +34,9 @@ function mn_fest_cataleg($atts)
     }
 
     $out = ob_get_clean();
+
+    $query->reset_postdata();
+    $post = $global_post;
+
     return $out;
 };

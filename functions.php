@@ -13,18 +13,20 @@ require_once 'includes/taxonomies/cataleg.php';
 /* post type */
 require_once 'includes/models/film.php';
 require_once 'includes/models/fest.php';
-/* ACF */
+require_once 'includes/models/blog.php';
+/* acf */
 require_once 'includes/acf/film.php';
 require_once 'includes/acf/fest.php';
+require_once 'includes/acf/blog.php';
 /* pll */
 require_once 'includes/pll.php';
 /* custom shortcodes */
-require_once 'includes/shortcodes/news.php';
 require_once 'includes/shortcodes/festival.php';
 require_once 'includes/shortcodes/indi_separator.php';
 require_once 'includes/shortcodes/carousels.php';
+require_once 'includes/shortcodes/blog.php';
 
-// require_once 'migration.php';
+require_once 'migration.php';
 
 /* Child theme style loader */
 add_action('wp_enqueue_scripts', 'mn_enqueue_styles');
@@ -66,12 +68,14 @@ function mn_enqueue_styles()
     wp_enqueue_script(
         'jquery-jcarrousel-js-file',
         get_stylesheet_directory_uri() . '/assets/js/jquery.jcarousel.min.js',
+        ['jquery'],
         $theme->get('Version'),
     );
 
     wp_enqueue_script(
         'jquery-jcarrousel-responsive-js-file',
         get_stylesheet_directory_uri() . '/assets/js/jcarousel.responsive.js',
+        ['jquery'],
         $theme->get('Version'),
     );
 
@@ -96,6 +100,16 @@ function mn_enqueue_styles()
         $theme->get('Version'),
         true,
     );
+
+    if (is_archive() && get_post_type() === 'blog') {
+        wp_enqueue_script(
+            'mn-blog-filter',
+            get_stylesheet_directory_uri() . '/assets/js/blog.js',
+            [],
+            $theme->get('Version'),
+            true
+        );
+    }
 }
 
 /* Add pages tags supports */
@@ -242,4 +256,16 @@ function mn_wp_head()
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M85DF3R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 <?php
+}
+
+add_action('init', 'mn_default_posts_per_page');
+function mn_default_posts_per_page()
+{
+    update_option('posts_per_page', 12);
+}
+
+add_action('admin_menu', 'mn_hide_posts_menu');
+function mn_hide_posts_menu()
+{
+    remove_menu_page('edit.php');
 }

@@ -5,7 +5,17 @@ function mn_get_post_by_slug($slug, $post_type)
     $posts = get_posts([
         'name' => $slug,
         'post_type' => $post_type,
-        'numberposts' => 1
+        'numberposts' => 1,
+        'post_status' => [
+            'publish',
+            'pending',
+            'draft',
+            'auto-draft',
+            'future',
+            'private',
+            'inherit',
+            'trash'
+        ]
     ]);
     if (sizeof($posts) === 0) return null;
     return $posts[0];
@@ -27,9 +37,15 @@ function mn_get_taxonomies($post_type = null)
 
     $festival_taxonomies = [];
 
+    $post_taxonomies = [
+        'post_tag',
+        'category',
+    ];
+
     if ($post_type === 'pelicula') return $pelicula_taxonomies;
     else if ($post_type === 'festival') return $festival_taxonomies;
-    else return array_merge($pelicula_taxonomies, $festival_taxonomies);
+    else if ($post_type === 'post') return $post_taxonomies;
+    else return array_merge($pelicula_taxonomies, $festival_taxonomies, $post_taxonomies);
 }
 
 function mn_get_custom_fields($post_type = null)
@@ -50,18 +66,44 @@ function mn_get_custom_fields($post_type = null)
         'enlaces',
     ];
 
-    $festival_fields = [];
+    $festival_fields = [
+        'cartel_festival',
+        'logo_festival',
+        'sobre_nosotras',
+        'color_del_festival',
+        'color_del_fondo',
+        'color_de_fuente',
+        'link_twitter',
+        'link_instagram',
+        'link_facebook',
+        'link_youtube',
+        'web_festival',
+        'mail_contacto',
+        'direccion_contacto',
+        'logos_colaboradores',
+        'logos_impulsores',
+        'programacion'
+    ];
+
+    $post_fields = [
+        'subtitulo',
+        'autor_1',
+        'autor_2',
+        'film_selector',
+    ];
 
     if ($post_type === 'pelicula') return $pelicula_fields;
     else if ($post_type === 'festival') return $festival_fields;
-    else return array_merge($pelicula_fields, $festival_fields);
+    else if ($post_type === 'post') return $post_fields;
+    else return array_merge($pelicula_fields, $festival_fields, $post_fields);
 }
 
 function mn_get_post_types()
 {
     return [
         'pelicula',
-        'festival'
+        'festival',
+        'post',
     ];
 }
 
@@ -95,7 +137,11 @@ function mn_get_field_key($field)
         'direccion_contacto' => 'address',
         'logos_colaboradores' => 'partners_logos',
         'logos_impulsores' => 'founders_logos',
-        'programacion' => 'programming',
+        'programacion' => 'program',
+        'subtitulo' => 'subtitle',
+        'autor_1' => 'author_1',
+        'autor_2' => 'author_2',
+        'film_selector' => 'film',
     ];
 
     if (isset($map[$field])) return $map[$field];
@@ -107,7 +153,12 @@ function mn_get_field_value($field, $value)
     if (!$value) return null;
     try {
         $is_image = in_array($field, ['cartel_en_ficha', 'cartel_en_carrousels', 'cartel_festival', 'logo_festival']);
-        if ($is_image) return (int) $value['ID'];
+
+        if ($field === 'film_selector') {
+            $pelicula = get_post((int) $value['ID']);
+            $film = mn_get_post_by_slug($pelicula->post_name, 'film');
+            return $film->ID;
+        } else if ($is_image) return (int) $value['ID'];
         if (sizeof($value) > 0) return reset($value);
         return "";
     } catch (Exception) {
@@ -124,9 +175,19 @@ function mn_create_posts($post_type, $lng = 'es')
     $posts = get_posts([
         'post_type' => $post_type,
         'posts_per_page' => -1,
+        'post_status' => [
+            'publish',
+            'pending',
+            'draft',
+            'auto-draft',
+            'future',
+            'private',
+            'inherit',
+            'trash'
+        ]
     ]);
 
-    if ($post_type === 'festival') {
+    if (in_array($post_type, ['festival', 'post'])) {
         $posts = array_values(array_filter($posts, function ($post) use ($lng) {
             return pll_get_post_language($post->ID) === $lng;
         }));
@@ -135,27 +196,36 @@ function mn_create_posts($post_type, $lng = 'es')
     foreach ($posts as $post) {
         $post_meta = mn_get_post_meta($post_type, $post->ID, $lng);
         $post_terms = mn_get_post_terms($post_type, $post->ID, $lng);
+        $post_thumbnail = get_post_thumbnail_id($post->ID);
 
         $postarr = wp_slash(get_object_vars($post));
         unset($postarr['ID']);
-        $postarr['post_type'] = $post_type === 'pelicula' ? 'film' : 'fest';
+        $postarr['post_type'] = $post_type === 'pelicula'
+            ? 'film' : ($post_type === 'festival'
+                ? 'fest' :
+                'blog');
 
         if (isset($post_meta['titulo']) && sizeof($post_meta['titulo'])) {
             $postarr['title'] = $post_meta['titulo'][0];
         }
 
-        if ($lng === 'ca' && $post_type !== 'festival') {
+        if ($lng === 'ca' && !in_array($post_type, ['festival', 'post'])) {
             $postarr['post_name'] = $postarr['post_name'] . '-ca';
         }
 
         $new_id = wp_insert_post($postarr);
         pll_set_post_language($new_id, $lng);
+        if ($post_thumbnail) {
+            set_post_thumbnail($new_id, $post_thumbnail);
+        }
 
         foreach ($post_terms as $taxonomy => $terms) {
-            wp_set_post_terms($new_id, implode(',', array_map(function ($term) use ($lng) {
-                if ($lng === 'ca') return $term . '-ca';
-                return $term;
-            }, $terms)), 'mn_' . $taxonomy);
+            $ns_tax = in_array($taxonomy, ['post_tag', 'category']) ? $taxonomy : 'mn_' . $taxonomy;
+            wp_set_post_terms($new_id, implode(',', array_map(function ($term) use ($lng, $taxonomy) {
+                if ($lng !== 'ca') return $term;
+                if (in_array($taxonomy, ['cataleg', 'post_tag', 'category'])) return $term;
+                return $term . '-ca';
+            }, $terms)), $ns_tax);
         }
 
         foreach ($post_meta as $field => $value) {
@@ -218,6 +288,8 @@ function mn_create_terms($taxonomy, $lng = 'es')
 {
     if (!in_array($taxonomy, mn_get_taxonomies())) {
         throw new Exception('Invalid taxonomy');
+    } else if (in_array($taxonomy, ['post_tag', 'category'])) {
+        return;
     }
 
     $terms = get_terms([
@@ -268,6 +340,8 @@ function mn_create_terms($taxonomy, $lng = 'es')
 
 function mn_translate_terms($taxonomy)
 {
+    if (in_array($taxonomy, ['post_tag', 'category'])) return;
+
     $terms = get_terms([
         'taxonomy' => $taxonomy,
         'hide_empty' => false,
@@ -303,6 +377,16 @@ function mn_translate_posts($post_type)
     $posts = get_posts([
         'post_type' => $post_type,
         'posts_per_page' => -1,
+        'post_status' => [
+            'publish',
+            'pending',
+            'draft',
+            'auto-draft',
+            'future',
+            'private',
+            'inherit',
+            'trash'
+        ],
     ]);
 
     foreach ($posts as $post) {
@@ -311,15 +395,14 @@ function mn_translate_posts($post_type)
 
         if ($post_type === 'film') {
             $trans = mn_get_post_by_slug($post->post_name . '-ca', $post_type);
+            if (!$trans) continue;
         } else {
-            $festival = mn_get_post_by_slug($post->post_name, 'festival');
-            $trans = pll_get_post_translations($festival->ID);
+            $source_type = $post_type === 'fest' ? 'festival' : 'post';
+            $_post = mn_get_post_by_slug($post->post_name, $source_type);
+            $trans = pll_get_post_translations($_post->ID);
+            if (!$trans) continue;
             $trans = get_post($trans['ca']);
-            $trans = mn_get_post_by_slug($trans->post_name, 'fest');
-        }
-
-        if (!$trans) {
-            throw new Exception("No trans found for {$post_type} {$post->post_name}");
+            $trans = mn_get_post_by_slug($trans->post_name, $post_type);
         }
 
         pll_save_post_translations([
@@ -334,13 +417,14 @@ function mn_migrate_db()
     foreach (mn_get_taxonomies() as $taxonomy) {
         mn_create_terms($taxonomy);
         mn_create_terms($taxonomy, 'ca');
+        if (in_array($taxonomy, ['post_tag', 'category'])) continue;
         mn_translate_terms('mn_' . $taxonomy);
     }
 
     foreach (mn_get_post_types() as $post_type) {
         mn_create_posts($post_type);
         mn_create_posts($post_type, 'ca');
-        $post_type = $post_type === 'pelicula' ? 'film' : 'fest';
+        $post_type = $post_type === 'pelicula' ? 'film' : ($post_type === 'post' ? 'blog' : 'fest');
         mn_translate_posts($post_type);
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-add_shortcode('miradanativa_getposts', 'mn_news_feed');
-function mn_news_feed()
+add_shortcode('mn_blog_feed', 'mn_blog_feed');
+function mn_blog_feed()
 {
     $posts = get_posts([
-        'post_type' => 'post',
+        'post_type' => 'blog',
         'numberposts' => 3,
         'post_status' => 'publish'
     ]);
 
     ob_start(); ?>
-    <h5 class="frontpage_news_section_title">Blog</h5>
+    <h5 class="wp-block-heading has-primary-color has-text-color has-link-color">Blog</h5>
     <div class="frontpage_news">
         <?php foreach ($posts as $key => $post) : ?>
             <div class="<?= $post->ID ?>">
@@ -30,9 +30,13 @@ function mn_news_feed()
             </div>
         <?php endforeach; ?>
     </div>
-    <div class="wp-block-buttons is-content-justification-center">
-        <div class="wp-block-button inverted is-style-outline">
-            <a class="news_archive_button wp-block-button__link" href="<?= site_url() . '/noticias'; ?>" target="_blank"><?= pll__("Ver más publicaciones") ?></a>
+    <div class="wp-block-buttons is-content-justification-center is-layout-flex wp-container-core-buttons-layout-4 wp-block-buttons-is-layout-flex">
+        <div class="wp-block-button is-style-outline">
+            <?php
+            $lng = pll_current_language();
+            $blog_url = $lng === 'es' ? site_url() . '/blog' : site_url() . '/' . $lng . '/blog';
+            ?>
+            <a href="<?= $blog_url; ?>" class="wp-block-button__link wp-element-button"><?= pll__('Ver más publicaciones'); ?></a>
         </div>
     </div>
 <?php

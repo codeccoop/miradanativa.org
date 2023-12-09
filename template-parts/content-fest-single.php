@@ -36,7 +36,9 @@ p, h1, h2, h3, h4, h5, h6, pre, label, button {
 	<div class="post-inner thin">
 		<div class="entry-content">
 			<div class="festival__hero-section" style="background-image: url('<?php the_field('poster'); ?>')">
-				<img class="festival__logo" src='<?php the_field('logo'); ?>'>
+				<?php if (get_field('logo')) : ?>
+					<img class="festival__logo" src='<?php the_field('logo'); ?>'>
+				<?php endif; ?>
 			</div>
 			<div class="tabs">
 				<button role="tab" aria-selected="true" aria-controls="peliculas-content" id="peliculas-button">
@@ -48,10 +50,12 @@ p, h1, h2, h3, h4, h5, h6, pre, label, button {
 				<button role="tab" aria-selected="false" aria-controls="contacto-content" id="contacto-button">
 					<?= pll__('Contacto'); ?>
 				</button>
-				<?php if (get_field('programming')) : ?>
-					<button id="descarga-button" style="background-color:<?php the_field('primary_color'); ?>;">
-						<a href="<?php the_field('programming'); ?>" target="_blank" download style="color: <?php the_field('text_color'); ?>;" rel="noopener"><?= pll__('Descarga la programación'); ?></a>
-					</button>
+				<?php if (get_field('program')) : ?>
+					<a href="<?php the_field('program'); ?>" target="_blank" download style="color: <?php the_field('text_color'); ?>;" rel="noopener">
+						<button id="descarga-button" style="background-color:<?php the_field('primary_color'); ?>;">
+							<?= pll__('Descarga la programación'); ?>
+						</button>
+					</a>
 				<?php endif; ?>
 			</div>
 
