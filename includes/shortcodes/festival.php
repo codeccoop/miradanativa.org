@@ -9,7 +9,7 @@ function mn_fest_cataleg($atts)
         'post_type' => 'film',
         'tax_query' => [
             [
-                'taxonomy' => 'cataleg',
+                'taxonomy' => 'mn_cataleg',
                 'field' => 'slug',
                 'terms' => $post_slug,
             ]
@@ -19,7 +19,15 @@ function mn_fest_cataleg($atts)
     ob_start();
     while ($query->have_posts()) {
         $query->the_post();
-        get_template_part('template-parts/content', 'film');
+?>
+        <article <?php post_class(); ?>>
+            <div class="post-inner thin">
+                <div class="entry-content">
+                    <?php get_template_part('template-parts/content', 'film'); ?>
+                </div>
+            </div>
+        </article>
+<?php
     }
 
     $out = ob_get_clean();

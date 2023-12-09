@@ -186,7 +186,11 @@ if (!function_exists('mn_film_render_terms')) {
 						<?= do_shortcode('[carousel_more_like_this pelicula_id="' . get_the_ID() . '"]'); ?>
 					</div>
 					<div class="wp-block-button is-style-fill inverted">
-						<a class="wp-block-button__link" href="/catalogo"><?= pll__('Catálogo'); ?></a>
+						<?php if (pll_current_language() === 'es') : ?>
+							<a class="wp-block-button__link" href="/catalogo"><?= pll__('Catálogo'); ?></a>
+						<?php else : ?>
+							<a class="wp-block-button__link" href="/cataleg"><?= pll__('Catálogo'); ?></a>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

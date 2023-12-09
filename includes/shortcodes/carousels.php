@@ -80,17 +80,19 @@ function mn_taxonomy_carousel($taxonomy, $term, $post_type, $lang)
         'posts_per_page' => 40,
         'orderby' => 'date',
         'order' => 'DESC',
-        'tax_query' => [
+        'tax_query' => [[
             'taxonomy' => $taxonomy,
             'field' => 'slug',
             'terms' => [$term->slug],
             'operator' => 'IN'
-        ],
+        ]],
     ]);
 
     if (sizeof($posts) > 0) {
         $title = $term->name;
         return mn_render_carousel($posts, $post_type, $title);
+    } else {
+        echo "<h1>No posts founs</h1>";
     }
 
     return '';
@@ -106,11 +108,15 @@ function mn_render_carousel($posts, $post_type, $title)
         <div class='jcarousel-wrapper'>
             <div class="jcarousel">
                 <div>
-                    <?php foreach ($posts as $post) :
+                    <?php
+                    $global_post = $GLOBALS['post'];
+                    foreach ($posts as $post) :
                         setup_postdata($post);
+                        $GLOBALS['post'] = $post;
                         get_template_part('template-parts/content', $post_type);
                         wp_reset_postdata();
-                    endforeach; ?>
+                    endforeach;
+                    $GLOBALS['post'] = $global_post; ?>
                 </div>
             </div>
             <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a><a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>

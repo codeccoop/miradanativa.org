@@ -19,9 +19,15 @@ get_header(); ?>
         <?php if (have_posts()) : ?>
             <div class="archive-content">
                 <?php while (have_posts()) {
-                    the_post();
-                    get_template_part('template-parts/content', get_post_type());
-                } ?>
+                    the_post(); ?>
+                    <article <?php post_class(); ?>>
+                        <div class="post-inner thin">
+                            <div class="entry-content">
+                                <?php get_template_part('template-parts/content', get_post_type()); ?>
+                            </div>
+                        </div>
+                    </article>
+                <?php } ?>
             </div>
         <?php else : ?>
             <div class="no-results-form section-inner thin">

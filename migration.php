@@ -140,13 +140,8 @@ function mn_create_posts($post_type, $lng = 'es')
         unset($postarr['ID']);
         $postarr['post_type'] = $post_type === 'pelicula' ? 'film' : 'fest';
 
-        if (isset($meta['titulo']) && sizeof($meta['titulo'])) {
+        if (isset($post_meta['titulo']) && sizeof($post_meta['titulo'])) {
             $postarr['title'] = $post_meta['titulo'][0];
-            if ($lng === 'ca') {
-                if (isset($meta['titulo_cat']) && sizeof($meta['titulo_cat'])) {
-                    $postarr['title'] = $meta['titulo_cat'][0];
-                }
-            }
         }
 
         if ($lng === 'ca' && $post_type !== 'festival') {
@@ -154,6 +149,7 @@ function mn_create_posts($post_type, $lng = 'es')
         }
 
         $new_id = wp_insert_post($postarr);
+        pll_set_post_language($new_id, $lng);
 
         foreach ($post_terms as $taxonomy => $terms) {
             wp_set_post_terms($new_id, implode(',', array_map(function ($term) use ($lng) {
@@ -167,8 +163,6 @@ function mn_create_posts($post_type, $lng = 'es')
             $value = mn_get_field_value($key, $value);
             update_field($key, $value, $new_id);
         }
-
-        pll_set_post_language($new_id, $lng);
     }
 }
 
@@ -207,8 +201,13 @@ function mn_get_post_meta($post_type, $post_id, $lng = 'es')
     $meta = [];
     foreach ($fields as $field) {
         $key = $field;
-        if ($lng === 'ca') $field = $field . '_cat';
         $values = pods_field($post_type, $post_id, $field);
+        if ($lng === 'ca') {
+            $trans = pods_field($post_type, $post_id, $field . '_cat');
+            if ($trans && sizeof($trans) > 0) {
+                $values = $trans;
+            }
+        }
         $meta[$key] = $values;
     }
 

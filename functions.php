@@ -16,8 +16,6 @@ require_once 'includes/models/fest.php';
 /* ACF */
 require_once 'includes/acf/film.php';
 require_once 'includes/acf/fest.php';
-/* ajax */
-require_once 'includes/ajax/async-grid.php';
 /* pll */
 require_once 'includes/pll.php';
 /* custom shortcodes */
@@ -25,6 +23,8 @@ require_once 'includes/shortcodes/news.php';
 require_once 'includes/shortcodes/festival.php';
 require_once 'includes/shortcodes/indi_separator.php';
 require_once 'includes/shortcodes/carousels.php';
+
+// require_once 'migration.php';
 
 /* Child theme style loader */
 add_action('wp_enqueue_scripts', 'mn_enqueue_styles');
@@ -61,23 +61,6 @@ function mn_enqueue_styles()
         [],
         $theme->get('Version'),
         false
-    );
-
-    wp_enqueue_script(
-        'async-grid',
-        get_stylesheet_directory_uri() . '/assets/js/async-grid.js',
-        [],
-        $theme->get('Version'),
-        false
-    );
-
-    wp_localize_script(
-        'async-grid',
-        'ajax_data',
-        [
-            'nonce' => wp_create_nonce('async_grid'),
-            'ajax_url' => admin_url('admin-ajax.php'),
-        ]
     );
 
     wp_enqueue_script(
@@ -186,5 +169,15 @@ add_action('init', function () {
 add_filter('waf_template_film', 'mn_film_template_part');
 function mn_film_template_part()
 {
-    get_template_part('template-parts/content', 'film');
+    ob_start();
+?>
+    <article <?php post_class(); ?>>
+        <div class="post-inner thin">
+            <div class="entry-content">
+                <?php get_template_part('template-parts/content', 'film'); ?>
+            </div>
+        </div>
+    </article>
+<?php
+    return ob_get_clean();
 }

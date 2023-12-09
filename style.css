@@ -6,7 +6,7 @@
  Author:       Còdec
  Author URI:   https://www.codeccoop.org
  Template:     twentytwenty
- Version:      2.0.0
+ Version:      1.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  miradanativa
@@ -1466,60 +1466,51 @@ ul > li {
     flex-direction: row;
   }
 }
-.archive-edition article.type-pelicula,
-.archive-pelicula article.type-pelicula,
-.type-festival article.type-pelicula {
+.archive-film article.type-film,
+.type-fest article.type-film {
   position: relative;
   flex: 0 0 100%;
   padding: 1rem 0;
 }
 
 @media (min-width: 782px) {
-  .archive-edition article.type-pelicula,
-.archive-pelicula article.type-pelicula,
-.type-festival article.type-pelicula {
+  .archive-film article.type-film,
+.type-fest article.type-film {
     flex: 0 0 50%;
   }
 }
 @media (min-width: 1220px) {
-  .archive-edition article.type-pelicula,
-.archive-pelicula article.type-pelicula,
-.type-festival article.type-pelicula {
+  .archive-film article.type-film,
+.type-fest article.type-film {
     flex: 0 0 33.33%;
   }
 }
-.archive-edition .archive-header .archive-header-inner,
-.archive-pelicula .archive-header .archive-header-inner {
+.archive-film .archive-header .archive-header-inner {
   width: 100%;
   max-width: unset;
   padding: 0 calc(10vw + 4rem);
 }
 
-.archive-edition .archive-title,
-.archive-pelicula .archive-title {
+.archive-film .archive-title {
   text-align: left;
   font-size: 4rem;
 }
 
 @media (min-width: 782px) {
-  .archive-edition .archive-title,
-.archive-pelicula .archive-title {
+  .archive-film .archive-title {
     font-size: 5rem;
   }
 }
-.archive-edition .archive-title span.color-accent,
-.archive-pelicula .archive-title span.color-accent {
+.archive-film .archive-title span.color-accent {
   display: none;
 }
 
-.archive-edition .pagination,
-.archive-pelicula .pagination {
+.archive-film .pagination {
   display: flex;
   justify-content: center;
 }
 
-.archive-edition .pagination .nav-links,
-.archive-pelicula .pagination .nav-links {
+.archive-film .pagination .nav-links {
   width: auto;
   flex-wrap: nowrap;
 }
@@ -1726,13 +1717,15 @@ ul > li {
     padding-top: 7rem;
   }
 }
-#nosotras-content .nosotras__footer .left__web, #nosotras-content .nosotras__footer .right__social {
+#nosotras-content .nosotras__footer .left__web,
+#nosotras-content .nosotras__footer .right__social {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 @media only screen and (min-width: 800px) {
-  #nosotras-content .nosotras__footer .left__web, #nosotras-content .nosotras__footer .right__social {
+  #nosotras-content .nosotras__footer .left__web,
+#nosotras-content .nosotras__footer .right__social {
     margin-bottom: 4rem;
   }
 }
@@ -1756,17 +1749,17 @@ ul > li {
   min-width: 100vw;
   padding: 0 5%;
 }
-#peliculas-content .type-pelicula .entry-content {
+#peliculas-content .type-film .entry-content {
   padding: 0 2rem;
 }
-#peliculas-content .type-pelicula .entry-content article {
+#peliculas-content .type-film .entry-content article {
   width: 100%;
 }
-#peliculas-content .type-pelicula .entry-content article a {
+#peliculas-content .type-film .entry-content article a {
   display: block;
   position: relative;
 }
-#peliculas-content .type-pelicula .entry-content article a .indi_film_details {
+#peliculas-content .type-film .entry-content article a .indi_film_details {
   width: 100%;
   border-radius: 0;
   left: 0;
@@ -1820,7 +1813,7 @@ ul > li {
   margin: 0;
 }
 
-.festival article.pelicula .indi_film_details {
+.festival article.film .indi_film_details {
   margin: 0px 0px 9px -1px;
   width: 90%;
 }
@@ -1866,10 +1859,12 @@ ul > li {
   justify-content: flex-start;
   align-items: center;
 }
-.social__logos #twitter-link svg, .social__logos #youtube-link svg {
+.social__logos #twitter-link svg,
+.social__logos #youtube-link svg {
   fill: #7bcc91;
 }
-.social__logos #instagram-link svg, .social__logos #facebook-link svg {
+.social__logos #instagram-link svg,
+.social__logos #facebook-link svg {
   stroke: #7bcc91;
 }
 .social__logos a {
@@ -1888,6 +1883,18 @@ ul > li {
 
 p.contacto__titulo {
   font-weight: 600;
+}
+
+.archive-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 5%;
+  min-width: 100vw;
+}
+.archive-content article.status-publish {
+  flex: 0 0 33%;
+  position: relative;
+  padding: 1rem 0;
 }
 
 article.single-post {
@@ -2186,175 +2193,24 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
   }
 }
 
-.indi_film_not_available_search {
+.indi_film_not_available {
   font-size: 14px;
   margin-right: 5px;
   text-align: end;
   bottom: 0;
   position: absolute;
   right: 0;
-  background: #FF7E74;
-  padding: 8px;
+  background: #ff7e74;
+  padding: 6px 10px;
   font-weight: 800;
   border-radius: 5px;
   opacity: 1;
 }
 
-.indi_film_not_available_carroussel {
+.jcarousel .indi_film_not_available {
   font-size: 10px;
-  margin-right: 5px;
-  text-align: end;
-  bottom: 0;
-  position: absolute;
-  right: 0;
-  background: #FF7E74;
-  padding: 3px;
-  font-weight: 800;
-  border-radius: 5px;
-  opacity: 1;
-}
-
-/*ASYNC GRID ARCHIVE POSTS*/
-#archive-posts {
-  background-color: #E5E5E5;
-  color: black;
-  padding-bottom: 3rem;
-}
-#archive-posts header {
-  background-color: #E5E5E5;
-  color: black;
-}
-#archive-posts .archive-posts__filters {
-  display: flex;
-  font-size: 16px;
-  justify-content: center;
-}
-@media only screen and (min-width: 800px) {
-  #archive-posts .archive-posts__filters {
-    font-size: 18px;
-  }
-}
-#archive-posts .archive-posts__filters .archive-posts__filter.async-filter {
-  text-decoration: none;
-  cursor: pointer;
-}
-#archive-posts .archive-posts__filters .archive-posts__filter.async-filter.all {
-  color: black;
-}
-#archive-posts .archive-posts__filters .archive-posts__filter.async-filter.resena {
-  color: #8F3985;
-}
-#archive-posts .archive-posts__filters .archive-posts__filter.async-filter.noticia {
-  color: #FA824C;
-}
-#archive-posts .archive-posts__filters .archive-posts__filter.async-filter:not(:first-child) {
-  margin-left: 2rem;
-}
-#archive-posts .archive-posts__filters .archive-posts__filter.async-filter.active {
-  font-weight: 900;
-}
-#archive-posts .archive-posts__grid.async-grid {
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin-top: 3rem;
-  flex-direction: column;
-  padding: 0 2rem;
-  text-align: center;
-}
-@media only screen and (min-width: 800px) {
-  #archive-posts .archive-posts__grid.async-grid {
-    flex-direction: row;
-    text-align: left;
-    padding: 0;
-  }
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item {
-  flex-basis: 31%;
-  margin: 3rem 1rem;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover .archive-posts__figcaption.title.noticia, #archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover .archive-posts__figcaption.title.noticia-2 {
-  color: #FA824C;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover .archive-posts__figcaption.title.resena, #archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover .archive-posts__figcaption.title.resenya {
-  color: #8F3985;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover div.img-container div.veiled {
-  opacity: 0.6;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover div.img-container div.veiled.noticia, #archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover div.img-container div.veiled.noticia-2 {
-  background-color: #FA824C;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover div.img-container div.veiled.resena, #archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover div.img-container div.veiled.resenya {
-  background-color: #8F3985;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a:hover div.img-container img {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a div.img-container {
-  position: relative;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a div.img-container div.veiled {
-  position: absolute;
-  height: 210px;
-  width: 100%;
-  max-width: 100%;
-  z-index: 1;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-@media only screen and (min-width: 800px) {
-  #archive-posts .archive-posts__grid.async-grid figure.grid-item a div.img-container div.veiled {
-    height: 250px;
-  }
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a div.img-container img {
-  z-index: 0;
-  display: block;
-  height: 210px;
-  width: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  -webkit-filter: grayscale(0%);
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-@media only screen and (min-width: 800px) {
-  #archive-posts .archive-posts__grid.async-grid figure.grid-item a div.img-container img {
-    height: 250px;
-  }
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption {
-  color: black;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.title, #archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.excerpt, #archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.meta {
-  display: block;
-  margin: 0.1rem auto;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.meta {
-  font-size: 12px;
-}
-#archive-posts .archive-posts__grid.async-grid figure.grid-item a figcaption .archive-posts__figcaption.title {
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-#archive-posts .archive-posts__pages.async-pager {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-}
-#archive-posts .archive-posts__pages.async-pager li {
-  cursor: pointer;
-}
-#archive-posts .archive-posts__pages.async-pager li.active {
-  color: #7bcc91;
+  padding: 3px 6px;
+  border-radius: 3px;
 }
 
 /* -------------------------------------------------------------------------------------------- */
@@ -2437,6 +2293,90 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
 }
 .news_archive_button {
   text-align: center;
+}
+
+.waf-filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.waf-filter-controls .waf-control {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  padding: 0 0.5em;
+}
+.waf-filter-controls .waf-control > select,
+.waf-filter-controls .waf-control > label {
+  visibility: hidden;
+  display: none;
+}
+.waf-filter-controls .waf-control .ms-parent {
+  margin: 0.5em 0;
+}
+.waf-filter-controls .waf-control .ms-parent .ms-choice {
+  border: 1px solid #7ccd90;
+  color: #7ccd90;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.waf-filter-controls .waf-control .ms-parent .ms-choice span {
+  color: #7ccd90;
+  text-transform: none;
+}
+.waf-filter-controls .waf-control .ms-parent .ms-drop {
+  width: 260px;
+  background-color: hsla(135deg, 5%, 13%, 0.8);
+  border: 1px solid #7ccd90;
+  margin-top: 5px;
+  width: 220px;
+}
+.waf-filter-controls .waf-control .ms-parent .ms-drop ul > li {
+  margin: 0;
+}
+.waf-filter-controls .waf-control .ms-parent .ms-drop ul > li label {
+  color: white;
+}
+.waf-filter-controls .waf-control .ms-parent .ms-drop ul > li label span {
+  margin-left: 1em;
+  display: block;
+  text-wrap: wrap;
+}
+
+.waf-pager {
+  margin-top: 2rem;
+  position: relative;
+}
+.waf-pager .waf-nav-pager {
+  display: flex;
+  justify-content: center;
+  color: #7ccd90;
+}
+.waf-pager .waf-nav-pager .waf-arrow {
+  cursor: pointer;
+  margin: 0 0.5em;
+}
+.waf-pager .waf-nav-pager .waf-arrow.disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.waf-pager .waf-nav-pager ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+.waf-pager .waf-nav-pager ul li {
+  cursor: pointer;
+  margin: 0 0.5em;
+}
+.waf-pager .waf-nav-pager ul li.current {
+  font-weight: bold;
+  color: white;
+}
+
+#wafResults {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /*# sourceMappingURL=style.css.map */

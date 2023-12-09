@@ -1,0 +1,96 @@
+.waf-filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .waf-control {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    padding: 0 0.5em;
+
+    > select,
+    > label {
+      visibility: hidden;
+      display: none;
+    }
+
+    .ms-parent {
+      margin: 0.5em 0;
+      .ms-choice {
+        border: 1px solid #7ccd90;
+        color: #7ccd90;
+        background-color: rgb(0, 0, 0, 0.2);
+        border-radius: 4px;
+
+        span {
+          color: #7ccd90;
+          text-transform: none;
+        }
+      }
+
+      .ms-drop {
+        width: 260px;
+        background-color: hsla(135, 5%, 13%, 0.8);
+        border: 1px solid #7ccd90;
+        margin-top: 5px;
+        width: 220px;
+
+        ul > li {
+          margin: 0;
+
+          label {
+            color: white;
+            span {
+              margin-left: 1em;
+              display: block;
+              text-wrap: wrap;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.waf-pager {
+  margin-top: 2rem;
+  position: relative;
+
+  .waf-nav-pager {
+    display: flex;
+    justify-content: center;
+    color: #7ccd90;
+
+    .waf-arrow {
+      cursor: pointer;
+      margin: 0 0.5em;
+
+      &.disabled {
+        opacity: 0.6;
+        cursor: default;
+      }
+    }
+
+    ul {
+      margin: 0;
+      list-style: none;
+      display: flex;
+
+      li {
+        cursor: pointer;
+        margin: 0 0.5em;
+
+        &.current {
+          font-weight: bold;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+#wafResults {
+  display: flex;
+  flex-wrap: wrap;
+}

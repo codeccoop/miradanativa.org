@@ -1,17 +1,15 @@
 // Import variables and mixins.
 @import "abstracts/abstracts";
 
-
-
 @import "style";
 
 @import "templates/index";
+@import "templates/archive";
 
 @import "template-parts/content-post";
-@import "template-parts/fitxa-pelicula";
-@import "template-parts/search-pelicula";
-@import "template-parts/inCarroussel-pelicula";
-
-@import "archive-posts/archive-posts";
+@import "template-parts/content-film-single";
+@import "template-parts/content-film";
 
 @import "shortcodes/index";
+
+@import "plugins/waf";
