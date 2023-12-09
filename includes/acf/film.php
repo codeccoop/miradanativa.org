@@ -52,7 +52,7 @@ add_action('acf/include_fields', function () {
             array(
                 'key' => 'field_6572df8cb68c0',
                 'label' => 'Imagen carousel',
-                'name' => 'carousel_image',
+                'name' => 'thumbnail',
                 'aria-label' => '',
                 'type' => 'image',
                 'instructions' => 'ratio 16:9, eg. 640x360',

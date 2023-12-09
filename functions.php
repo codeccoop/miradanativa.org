@@ -16,16 +16,15 @@ require_once 'includes/models/fest.php';
 /* ACF */
 require_once 'includes/acf/film.php';
 require_once 'includes/acf/fest.php';
+/* ajax */
+require_once 'includes/ajax/async-grid.php';
+/* pll */
+require_once 'includes/pll.php';
 /* custom shortcodes */
-require_once 'includes/shortcodes/custom.php';
+require_once 'includes/shortcodes/news.php';
 require_once 'includes/shortcodes/festival.php';
 require_once 'includes/shortcodes/indi_separator.php';
 require_once 'includes/shortcodes/carousels.php';
-require_once 'includes/shortcodes/pods_config.php';
-/* ajax */
-require_once 'includes/ajax/async-grid.php';
-
-require_once 'restore.php';
 
 /* Child theme style loader */
 add_action('wp_enqueue_scripts', 'mn_enqueue_styles');
@@ -83,25 +82,25 @@ function mn_enqueue_styles()
 
     wp_enqueue_script(
         'jquery-jcarrousel-js-file',
-        get_template_directory_uri() . '/assets/js/jquery.jcarousel.min.js',
+        get_stylesheet_directory_uri() . '/assets/js/jquery.jcarousel.min.js',
         $theme->get('Version'),
     );
 
     wp_enqueue_script(
         'jquery-jcarrousel-responsive-js-file',
-        get_template_directory_uri() . '/assets/js/jcarousel.responsive.js',
+        get_stylesheet_directory_uri() . '/assets/js/jcarousel.responsive.js',
         $theme->get('Version'),
     );
 
     wp_enqueue_style(
         'jquery-jcarrousel-responsive-css-file',
-        get_template_directory_uri() . '/assets/js/jcarousel.responsive.css',
+        get_stylesheet_directory_uri() . '/assets/css/jcarousel.responsive.css',
         $theme->get('Version'),
     );
 
     wp_enqueue_script(
         'floating_menu-file',
-        get_template_directory_uri() . '/assets/js/floating_menu.js',
+        get_stylesheet_directory_uri() . '/assets/js/floating_menu.js',
         ['jquery'],
         $theme->get('Version'),
         true,
@@ -109,7 +108,7 @@ function mn_enqueue_styles()
 
     wp_enqueue_script(
         'message-processing',
-        get_template_directory_uri() . '/assets/js/message_processing.js',
+        get_stylesheet_directory_uri() . '/assets/js/message_processing.js',
         ['jquery'],
         $theme->get('Version'),
         true,
@@ -128,55 +127,6 @@ function tags_support_query($wp_query)
 {
     if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
 }
-
-/*
-add_action('init', 'mn_translate_terms', 5);
-function mn_translate_terms()
-{
-
-    if (!isset($_GET['mn_translate_term'])) return;
-    if (ob_get_contents()) ob_end_clean();
-    $es_ID = (int) $_GET['es_ID'];
-    $ca_ID = (int) $_GET['ca_ID'];
-    pll_save_term_translations(array(
-        'es' => $es_ID,
-        'ca' => $ca_ID
-    ));
-
-
-    header('Contest-Type: application/json');
-    echo '{"success": true}';
-    die();
-}
-
-add_action('init', 'mn_get_films', 5);
-function mn_get_films()
-{
-    if (!isset($_GET['mn_get_films'])) return;
-
-    $query = new WP_Query([
-        'post_type' => 'pelicula',
-        'post_status' => [
-            'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash'
-        ],
-        'posts_per_page' => -1,
-
-    ]);
-
-    $data = [];
-    while ($query->have_posts()) {
-        global $post;
-        $query->the_post();
-        $postarr = wp_slash(get_object_vars($post));
-        $data[] = $postarr;
-    }
-
-    if (ob_get_contents()) ob_end_clean();
-    header('Content-Type: application/json');
-    echo json_encode($data);
-    die();
-}
- */
 
 function mn_add_custom_headers()
 {
@@ -232,3 +182,9 @@ add_action('init', function () {
         remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
     }
 });
+
+add_filter('waf_template_film', 'mn_film_template_part');
+function mn_film_template_part()
+{
+    get_template_part('template-parts/content', 'film');
+}

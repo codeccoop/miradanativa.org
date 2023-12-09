@@ -1,10 +1,12 @@
 <?php
 
-add_shortcode('slug_printer', function () {
+add_shortcode('mn_fest_cataleg', 'mn_fest_cataleg');
+function mn_fest_cataleg($atts)
+{
     $post_slug = get_post_field('post_name', get_post());
     $query = new WP_Query([
         'posts_per_page' => -1,
-        'post_type' => 'pelicula',
+        'post_type' => 'film',
         'tax_query' => [
             [
                 'taxonomy' => 'cataleg',
@@ -17,9 +19,9 @@ add_shortcode('slug_printer', function () {
     ob_start();
     while ($query->have_posts()) {
         $query->the_post();
-        get_template_part('template-parts/content', 'pelicula-list');
+        get_template_part('template-parts/content', 'film');
     }
 
     $out = ob_get_clean();
     return $out;
-});
+};

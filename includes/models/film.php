@@ -8,24 +8,19 @@ function mn_register_film_cpt()
         $POST_TYPE,
         [
             'labels' => [
-                'name' => __('Films'),
-                'singular_name' => __(
-                    'Film'
-                )
+                'name' => __('Películas'),
+                'singular_name' => __('Película'),
             ],
 
             // Frontend
             'has_archive' => false,
             'public' => true,
-            'publicly_queryable' => true,
+            'rewrite' => ['slug' => 'pelicula'],
 
             // Admin
             'capability_type' => 'post',
-            'menu_icon' => 'dashicons-admin-home',
-            'menu_position' => 28,
-            'query_var' => true,
-            'show_in_menu' => true,
-            'show_ui' => true,
+            'menu_icon' => 'dashicons-format-video',
+            'menu_position' => 27,
             'show_in_rest' => true,
             'supports' => [
                 'title',
@@ -33,129 +28,6 @@ function mn_register_film_cpt()
                 'excerpt',
                 'custom-fields',
             ],
-            'taxonomies' => [
-                "category"
-            ]
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'vimeo_id',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'cartel_en_carrousels',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'int',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'cartel_en_ficha',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'int',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'sinopsis',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'sinopsis_larga',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'duracion',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'ano_produccion',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'idioma',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'subtitulos',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'reparto',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'premios',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
-        ]
-    );
-
-    register_post_meta(
-        $POST_TYPE,
-        'enlaces',
-        [
-            'show_in_rest' => true,
-            'single' => true,
-            'type' => 'string',
         ]
     );
 }

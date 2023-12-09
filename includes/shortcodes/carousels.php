@@ -1,146 +1,146 @@
 <?php
 
-function adjust_vimeography_privacy_filter()
+function mn_carousels($taxonomy, $post_type, $lang)
 {
-    return 'none';
+    $out = '';
+
+    $terms = get_terms([
+        'taxonomy' => $taxonomy,
+        'hide_empty' => true
+    ]);
+
+    if (sizeof($terms) > 0) {
+        foreach ($terms as $term) {
+            if ($term->slug === 'destacados') continue;
+            $out .= mn_taxonomy_carousel($taxonomy, $term->slug, $post_type, $lang);
+        }
+    }
+
+    return $out;
 }
 
-add_filter('vimeography.request.privacy.filter', 'adjust_vimeography_privacy_filter');
-add_filter('vimeography.privacy.enable_referrer', '__return_true');
-
-// global $indiCategories, $indiTemas, $indiCatalogOrder, $indiHomeOrder, $indiTemaOrder;
-$indiCategories = [
-    "indifest2020" => [
-        "titulo" => "Estrenos del IndiFEST 2020",
-        "shortGalleryId" => "6",
-        "detailledGalleryId" => "6"
-    ],
-    "documentales" => [
-        "titulo" => "Reportajes y Documentales",
-        "shortGalleryId" => "9",
-        "detailledGalleryId" => "9"
-    ],
-    "peliculas" => [
-        "titulo" => "Peliculas",
-        "shortGalleryId" => "4",
-        "detailledGalleryId" => "4"
-    ],
-    "cortometrajes" => [
-        "titulo" => "Cortometrajes",
-        "shortGalleryId" => "5",
-        "detailledGalleryId" => "5"
-    ],
-    "anime" => [
-        "titulo" => "Animé y Animación",
-        "shortGalleryId" => "2",
-        "detailledGalleryId" => "2"
-    ],
-    "familiar" => [
-        "titulo" => "Familiar y Infantil",
-        "shortGalleryId" => "1",
-        "detailledGalleryId" => "1"
-    ],
-    "musica" => [
-        "titulo" => "Musicales, VideoClips, Conciertos",
-        "shortGalleryId" => "7",
-        "detailledGalleryId" => "7"
-    ],
-    "destacados" => [
-        "titulo" => "Destacados",
-        "shortGalleryId" => "8",
-        "detailledGalleryId" => "8"
-    ]
-];
-
-$indiTemas = [
-    "Identidad y Pandemia" => [
-        "titulo" => "Identidad y pandemia. Alternativas desde el buen vivir de los pueblos",
-        "shortGalleryId" => "14",
-        "detailledGalleryId" => "14"
-    ],
-    "Agua es Vida" => [
-        "titulo" => "Agua es Vida. Territorio y Transnacionales",
-        "shortGalleryId" => "13",
-        "detailledGalleryId" => "13"
-    ],
-    "Defensoras de Derechos" => [
-        "titulo" => "Defensoras de Derechos. Criminalización y judicialización",
-        "shortGalleryId" => "12",
-        "detailledGalleryId" => "12"
-    ],
-    "Communicacion derechos" => [
-        "titulo" => "Comunicación por la Defensa de Derechos",
-        "shortGalleryId" => "11",
-        "detailledGalleryId" => "11"
-    ],
-    "Resistencias Indígenas" => [
-        "titulo" => "Resistencias Indígenas",
-        "shortGalleryId" => "10",
-        "detailledGalleryId" => "10"
-    ],
-];
-
-$indiCatalogOrder = [
-    "indifest2020",
-    "documentales",
-    "cortometrajes",
-    "anime",
-    "familiar",
-    "musica",
-    "peliculas"
-];
-
-$indiTemaOrder = [
-    "Identidad y Pandemia",
-    "Agua es Vida",
-    "Defensoras de Derechos",
-    "Communicacion derechos",
-    "Resistencias Indígenas"
-];
-
-$indiHomeOrder = ["destacados"];
-
-function catalogTemplate($categoryName)
+function mn_more_like_this_carousel($post_id, $template, $lang)
 {
-    global $indiCategories;
-    return "<h2>" . $indiCategories[$categoryName]['titulo'] . "</h2>" . do_shortcode('[vimeography id="' . $indiCategories[$categoryName]['shortGalleryId'] . '"]');
-};
+    $tematicas = array_map(function ($term) {
+        return $term->slug;
+    }, get_the_terms($post_id, 'mn_tematica'));
 
-function homeTemplate($categoryName)
-{
-    global $indiCategories;
-    return "<h2>" . $indiCategories[$categoryName]['titulo'] . "</h2>" . do_shortcode('[vimeography id="' . $indiCategories[$categoryName]['shortGalleryId'] . '"]');
-};
+    $pueblos = array_map(function ($term) {
+        return $term->slug;
+    }, get_the_terms($post_id, 'mn_pueblo_indigena'));
 
-function temaTemplate($categoryName)
-{
-    global $indiTemas;
-    return "<h2>" . $indiTemas[$categoryName]['titulo'] . "</h2>" . do_shortcode('[vimeography id="' . $indiTemas[$categoryName]['shortGalleryId'] . '"]');
-};
+    $zonas = array_map(function ($term) {
+        return $term->slug;
+    }, get_the_terms($post_id, 'mn_zona_geografica'));
 
-add_shortcode('printCatalogCaroussels', function () {
-    global $indiCatalogOrder;
-    $out = "";
-    foreach ($indiCatalogOrder as &$category) {
-        $out = $out . catalogTemplate($category);
+    $posts = get_posts([
+        'post_type' => 'film',
+        'posts_per_page' => 20,
+        'orderby' => 'title',
+        'order' => 'DESC',
+        'tax_query' => [
+            'relation' => 'OR',
+            [
+                'taxonomy' => 'mn_tematica',
+                'terms' => $tematicas,
+                'field' => 'slug',
+                'include_children' => false,
+                'operator' => 'IN'
+            ],
+            [
+                'taxonomy' => 'mn_pueblo_indigena',
+                'terms' => $pueblos,
+                'field' => 'slug',
+                'include_children' => false,
+                'operator' => 'IN'
+            ],
+            [
+                'taxonomy' => 'mn_zona_geografica',
+                'terms' => $zonas,
+                'field' => 'slug',
+                'include_children' => false,
+                'operator' => 'IN'
+            ],
+        ]
+    ]);
+
+    if (sizeof($posts) > 0) {
+        $title = pll__("Películas relacionadas");
+        return mn_render_carousel($posts, $template, $title);
     }
-    return $out;
+
+    return "";
+}
+
+function mn_taxonomy_carousel($taxonomy, $term, $post_type, $lang)
+{
+    $term = get_term_by('slug', $term, $taxonomy);
+    $posts = get_posts([
+        'post_type' => $post_type,
+        'posts_per_page' => 40,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'tax_query' => [
+            'taxonomy' => $taxonomy,
+            'field' => 'slug',
+            'terms' => [$term->slug],
+            'operator' => 'IN'
+        ],
+    ]);
+
+    if (sizeof($posts) > 0) {
+        $title = $term->name;
+        return mn_render_carousel($posts, $post_type, $title);
+    }
+
+    return '';
+}
+
+function mn_render_carousel($posts, $post_type, $title)
+{
+    ob_start() ?>
+    <div class='indi_carousel_wrapper'>
+        <?php if (!empty($title)) : ?>
+            <h2><?= $title; ?></h2>
+        <?php endif; ?>
+        <div class='jcarousel-wrapper'>
+            <div class="jcarousel">
+                <div>
+                    <?php foreach ($posts as $post) :
+                        setup_postdata($post);
+                        get_template_part('template-parts/content', $post_type);
+                        wp_reset_postdata();
+                    endforeach; ?>
+                </div>
+            </div>
+            <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a><a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
+        </div>
+    </div>
+<?php
+    return ob_get_clean();
+}
+
+add_shortcode('carrousels_tematicas', function ($atts) {
+    if (!isset($atts['lang'])) $atts['lang'] = pll_current_language();
+    return mn_carousels('tematica', 'film', $atts['lang']);
 });
 
-add_shortcode('printHomeCaroussels', function () {
-    global $indiHomeOrder;
-    $out = "";
-    foreach ($indiHomeOrder as &$category) {
-        $out = $out . homeTemplate($category);
-    }
-    return $out;
+add_shortcode('carrousels_generos', function ($atts) {
+    if (!isset($atts['lang'])) $atts['lang'] = null;
+    return mn_carousels('genero', 'film', $atts['lang']);
 });
 
-add_shortcode('printTemaCaroussels', function () {
-    global $indiTemaOrder;
-    $out = "";
-    foreach ($indiTemaOrder as &$category) {
-        $out = $out . temaTemplate($category);
-    }
-    return $out;
+add_shortcode('carousel_more_like_this', function ($atts) {
+    if (!isset($atts['lang'])) $atts['lang'] = pll_current_language();
+    return mn_more_like_this_carousel($atts['pelicula_id'], 'film', $atts['lang']);
+});
+
+add_shortcode('carrousel_for_tematica', function ($atts) {
+    if (!isset($atts['lang'])) $atts['lang'] = pll_current_language();
+    return mn_taxonomy_carousel('mn_tematica', $atts['slug'], 'film', $atts['lang']);
+});
+
+add_shortcode('carrousel_for_genero', function ($atts) {
+    if (!isset($atts['lang'])) $atts['lang'] = pll_current_language();
+    return mn_taxonomy_carousel('mn_genero', $atts['slug'], 'film', $atts['lang']);
 });

@@ -8,7 +8,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage www.miradanativa.org
+ * @subpackage MiradaNativa
  * 
  */
 

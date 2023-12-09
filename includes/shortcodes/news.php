@@ -1,7 +1,6 @@
 <?php
 
-add_shortcode('miradanativa_getposts', 'mn_news_feed');
-function mn_news_feed()
+function miradanativa_getposts_function()
 {
     $posts = get_posts([
         'post_type' => 'post',
@@ -38,3 +37,4 @@ function mn_news_feed()
 <?php
     return ob_get_clean();
 }
+add_shortcode('miradanativa_getposts', 'miradanativa_getposts_function');
