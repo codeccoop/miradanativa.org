@@ -158,7 +158,9 @@ if (!function_exists('mn_film_render_terms')) {
 						<h2><?= pll__('Etiquetas'); ?></h2>
 						<ul class="indi_etiqueta">
 							<?php foreach ($etiquetas as $etiqueta) : ?>
-								<li><?= $etiqueta->name; ?></li>
+								<li>
+									<a style="text-decoration: none;" href="<?= get_term_link($etiqueta); ?>"><?= $etiqueta->name; ?></a>
+								</li>
 							<?php endforeach; ?>
 						</ul>
 					</div>

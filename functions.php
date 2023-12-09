@@ -181,3 +181,65 @@ function mn_film_template_part()
 <?php
     return ob_get_clean();
 }
+
+add_action('wp_head', 'mn_wp_head');
+function mn_wp_head()
+{
+?>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M85DF3R');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+        function togglePlayer(vimeo_id) {
+            var $target = jQuery('.player_iframe');
+            if ($target.length > 0) {
+
+                if ($target.attr('src')) {
+                    $target.attr('src', "");
+                } else {
+                    $target.attr('src', $target.attr('_src'));
+                    $target.css('width', '100%');
+                }
+            }
+
+            jQuery('.player_placeholder').toggle();
+            jQuery('.player_container').toggle();
+            jQuery('.player_div').toggle();
+
+            if (window.matchMedia('(min-width: 600px)').matches) {
+                if ($target.attr('src')) {
+                    jQuery('.player_div').focus();
+                    jQuery('html, body').animate({
+                        scrollTop: jQuery(".player_div").offset().top
+                    }, 2000);
+                }
+            }
+
+        };
+
+        jQuery(document).ready(function() {
+            jQuery('.jcarousel').jcarousel({});
+        });
+    </script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M85DF3R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<?php
+}
