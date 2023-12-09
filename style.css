@@ -6,7 +6,7 @@
  Author:       Còdec
  Author URI:   https://www.codeccoop.org
  Template:     twentytwenty
- Version:      1.0.0
+ Version:      2.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  miradanativa
@@ -735,9 +735,15 @@ img.custom-logo {
   float: left;
 }
 
+.player_container .indi-wp-block-button-left {
+  margin-left: 3%;
+  margin-top: 1%;
+}
+
 .indi-wp-block-button-right {
   float: right;
   margin-right: 10%;
+  margin-top: -3%;
 }
 
 .indi_ficha_visuals {
@@ -880,17 +886,24 @@ img.custom-logo {
 }
 
 ul.indi_etiqueta > li {
+  margin-bottom: 0;
   margin-left: 0px;
   margin-right: 1.3rem;
   display: inline-block;
   border-radius: 5px;
-  border-color: #000000;
+  border-color: #fff;
   border-width: 1px;
   border-style: solid;
   padding-right: 0.8rem;
   padding-left: 0.8rem;
   padding-top: 0.2rem;
   padding-bottom: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.1333333333);
+  font-weight: 600;
+}
+
+ul.indi_etiqueta > li:hover {
+  background-color: transparent;
 }
 
 .indi_ficha_more_like_this {
@@ -983,9 +996,15 @@ ul.indi_etiqueta > li {
   .indi_ficha_visuals .indi_ficha_overview p {
     width: 65%;
   }
-  .indi_ficha_visuals .indi-wp-block-button-left,
-.player_container .indi-wp-block-button-left {
-    float: right;
+  .indi_ficha_visuals .indi-wp-block-button-right {
+    margin-right: 2%;
+    margin-top: -5%;
+  }
+  .indi_ficha_visuals .indi-wp-block-button-right .wp-block-button__link {
+    padding: 0.6em 0.95em;
+  }
+  .player_container .indi-wp-block-button-left {
+    float: left;
     margin-right: 10%;
     margin-bottom: 10px;
   }
@@ -1027,6 +1046,7 @@ ul.indi_etiqueta > li {
   letter-spacing: 0.05rem;
 }
 
+.jcarousel article .indi_film_details,
 article .indi_film_details {
   box-sizing: border-box;
   display: block;
@@ -1895,6 +1915,8 @@ p.contacto__titulo {
   flex: 0 0 33%;
   position: relative;
   padding: 1rem 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 article.single-post {
@@ -2295,49 +2317,49 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
   text-align: center;
 }
 
-.waf-filter-controls {
+.waf-controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.waf-filter-controls .waf-control {
+.waf-controls .waf-control {
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
   padding: 0 0.5em;
 }
-.waf-filter-controls .waf-control > select,
-.waf-filter-controls .waf-control > label {
+.waf-controls .waf-control > select,
+.waf-controls .waf-control > label {
   visibility: hidden;
   display: none;
 }
-.waf-filter-controls .waf-control .ms-parent {
+.waf-controls .waf-control .ms-parent {
   margin: 0.5em 0;
 }
-.waf-filter-controls .waf-control .ms-parent .ms-choice {
+.waf-controls .waf-control .ms-parent .ms-choice {
   border: 1px solid #7ccd90;
   color: #7ccd90;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
-.waf-filter-controls .waf-control .ms-parent .ms-choice span {
+.waf-controls .waf-control .ms-parent .ms-choice span {
   color: #7ccd90;
   text-transform: none;
 }
-.waf-filter-controls .waf-control .ms-parent .ms-drop {
+.waf-controls .waf-control .ms-parent .ms-drop {
   width: 260px;
   background-color: hsla(135deg, 5%, 13%, 0.8);
   border: 1px solid #7ccd90;
   margin-top: 5px;
   width: 220px;
 }
-.waf-filter-controls .waf-control .ms-parent .ms-drop ul > li {
+.waf-controls .waf-control .ms-parent .ms-drop ul > li {
   margin: 0;
 }
-.waf-filter-controls .waf-control .ms-parent .ms-drop ul > li label {
+.waf-controls .waf-control .ms-parent .ms-drop ul > li label {
   color: white;
 }
-.waf-filter-controls .waf-control .ms-parent .ms-drop ul > li label span {
+.waf-controls .waf-control .ms-parent .ms-drop ul > li label span {
   margin-left: 1em;
   display: block;
   text-wrap: wrap;
@@ -2368,6 +2390,11 @@ article.single-post .wp-block-buttons.is-content-justification-center a {
 .waf-pager .waf-nav-pager ul li {
   cursor: pointer;
   margin: 0 0.5em;
+}
+.waf-pager .waf-nav-pager ul li.waf-ellipsis {
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 1.3;
 }
 .waf-pager .waf-nav-pager ul li.current {
   font-weight: bold;

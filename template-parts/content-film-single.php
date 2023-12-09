@@ -208,7 +208,7 @@ if (!function_exists('mn_film_render_terms')) {
 		<?= do_shortcode('[um_loggedin show_lock=yes]
 		<div style="padding:55% 0 0 0;position:relative;">
 			<iframe class="player_iframe" _src="https://player.vimeo.com/video/' . get_field('vimeo_id') . '" frameborder="0" style="display:none"></iframe>
-			<iframe class="player_iframe" src="https://player.vimeo.com/video/' . get_field('vimeo_id') . '?autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="' . get_field('title') . '"></iframe>
+			<iframe class="player_iframe" src="https://player.vimeo.com/video/' . get_field('vimeo_id') . '?autoplay=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="' . get_field('title') . '"></iframe>
 		</div>
 		[/um_loggedin]'); ?>
 	</div>

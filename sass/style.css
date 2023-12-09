@@ -5,7 +5,7 @@
  Author:       Còdec
  Author URI:   https://www.codeccoop.org
  Template:     twentytwenty
- Version:      1.0.0
+ Version:      2.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  miradanativa
@@ -735,9 +735,16 @@ img.custom-logo {
 .indi-wp-block-button-left {
   float: left;
 }
+
+.player_container .indi-wp-block-button-left {
+  margin-left: 3%;
+  margin-top: 1%;
+}
+
 .indi-wp-block-button-right {
   float: right;
   margin-right: 10%;
+  margin-top: -3%;
 }
 
 .indi_ficha_visuals {
@@ -880,17 +887,24 @@ img.custom-logo {
 }
 
 ul.indi_etiqueta > li {
+  margin-bottom: 0;
   margin-left: 0px;
   margin-right: 1.3rem;
   display: inline-block;
   border-radius: 5px;
-  border-color: #000000;
+  border-color: #fff;
   border-width: 1px;
   border-style: solid;
   padding-right: 0.8rem;
   padding-left: 0.8rem;
   padding-top: 0.2rem;
   padding-bottom: 0.3rem;
+  background-color: #fff2;
+  font-weight: 600;
+}
+
+ul.indi_etiqueta > li:hover {
+  background-color: transparent;
 }
 
 .indi_ficha_more_like_this {
@@ -994,9 +1008,18 @@ ul.indi_etiqueta > li {
   .indi_ficha_visuals .indi_ficha_overview p {
     width: 65%;
   }
-  .indi_ficha_visuals .indi-wp-block-button-left,
+
+  .indi_ficha_visuals .indi-wp-block-button-right {
+    margin-right: 2%;
+    margin-top: -5%;
+  }
+
+  .indi_ficha_visuals .indi-wp-block-button-right .wp-block-button__link {
+    padding: 0.6em 0.95em;
+  }
+
   .player_container .indi-wp-block-button-left {
-    float: right;
+    float: left;
     margin-right: 10%;
     margin-bottom: 10px;
   }
@@ -1043,6 +1066,7 @@ ul.indi_etiqueta > li {
   letter-spacing: 0.05rem;
 }
 
+.jcarousel article .indi_film_details,
 article .indi_film_details {
   box-sizing: border-box;
   display: block;
