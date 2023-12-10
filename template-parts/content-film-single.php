@@ -189,8 +189,8 @@ if (!function_exists('mn_film_render_terms')) {
 					</div>
 					<div class="wp-block-buttons is-horizontal is-content-justification-center is-layout-flex wp-container-core-buttons-layout-3 wp-block-buttons-is-layout-flex">
 						<div class="wp-block-button inverted is-style-outline">
-							<?php $cataleg_url = pll_current_language() === 'es' ? '/catalogo' : '/ca/cataleg'; ?>
-							<a class="wp-block-button__link wp-element-button" href="<?= $cataleg_url; ?>" style="border-radius:5px">Catálogo</a>
+							<?php $cataleg_url = pll_current_language() === 'es' ? '/search' : '/ca/cercador'; ?>
+							<a class="wp-block-button__link wp-element-button" href="<?= $cataleg_url; ?>" style="border-radius:5px"><?= pll__('Catálogo'); ?></a>
 						</div>
 					</div>
 				</div>
