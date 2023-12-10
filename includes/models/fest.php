@@ -22,12 +22,7 @@ function mn_register_festival_cpt()
             'menu_icon' => 'dashicons-video-alt',
             'menu_position' => 28,
             'show_in_rest' => true,
-            'supports' => [
-                'title',
-                'thumbnail',
-                'excerpt',
-                'custom-fields',
-            ],
+            'supports' => ['title'],
         ]
     );
 }

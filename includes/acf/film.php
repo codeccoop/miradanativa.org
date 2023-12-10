@@ -10,26 +10,6 @@ add_action('acf/include_fields', function () {
         'title' => 'Pelicula',
         'fields' => array(
             array(
-                'key' => 'field_6572df30b68be',
-                'label' => 'Titulo',
-                'name' => 'title',
-                'aria-label' => '',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 1,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'maxlength' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-            ),
-            array(
                 'key' => 'field_6572df61b68bf',
                 'label' => 'Vimeo ID',
                 'name' => 'vimeo_id',
@@ -81,7 +61,7 @@ add_action('acf/include_fields', function () {
                 'aria-label' => '',
                 'type' => 'image',
                 'instructions' => '1920x1080',
-                'required' => 0,
+                'required' => 1,
                 'conditional_logic' => 0,
                 'wrapper' => array(
                     'width' => '',

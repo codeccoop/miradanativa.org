@@ -22,12 +22,7 @@ function mn_register_film_cpt()
             'menu_icon' => 'dashicons-format-video',
             'menu_position' => 27,
             'show_in_rest' => true,
-            'supports' => [
-                'title',
-                'thumbnail',
-                'excerpt',
-                'custom-fields',
-            ],
+            'supports' => ['title'],
         ]
     );
 }
