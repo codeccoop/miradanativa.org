@@ -21,17 +21,24 @@ function mn_carousels($taxonomy, $post_type, $lang)
 
 function mn_more_like_this_carousel($post_id, $template, $lang)
 {
-    $tematicas = array_map(function ($term) {
+    $terms = get_the_terms($post_id, 'mn_tematica');
+    $tematicas = $terms ? array_map(function ($term) {
         return $term->slug;
-    }, get_the_terms($post_id, 'mn_tematica'));
+    }, $terms) : [];
 
-    $pueblos = array_map(function ($term) {
+    $terms = get_the_terms($post_id, 'mn_pueblo_indigena');
+    $pueblos = $terms ? array_map(function ($term) {
         return $term->slug;
-    }, get_the_terms($post_id, 'mn_pueblo_indigena'));
+    }, $terms) : [];
 
-    $zonas = array_map(function ($term) {
+    $terms = get_the_terms($post_id, 'mn_zona_geografica');
+    $zonas = $terms ? array_map(function ($term) {
         return $term->slug;
-    }, get_the_terms($post_id, 'mn_zona_geografica'));
+    }, $terms) : [];
+
+    if (empty($pueblos) && empty($zonas) && empty($tematicas)) {
+        return '';
+    }
 
     $posts = get_posts([
         'post_type' => 'film',
@@ -69,7 +76,7 @@ function mn_more_like_this_carousel($post_id, $template, $lang)
         return mn_render_carousel($posts, $template, $title);
     }
 
-    return "";
+    return '';
 }
 
 function mn_taxonomy_carousel($taxonomy, $term, $post_type, $lang)

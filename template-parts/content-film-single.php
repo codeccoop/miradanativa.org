@@ -28,7 +28,7 @@ if (!function_exists('mn_film_render_terms')) {
 			<p><span class="indi_overview_sinopsis"><?php the_field('description'); ?></span></p>
 			<p><?php the_field('duration');
 				$tematicas = get_the_terms(get_the_ID(), 'mn_tematica');
-				if (sizeof($tematicas) > 0) : ?>
+				if ($tematicas && sizeof($tematicas) > 0) : ?>
 					<span class="indi_text_separator">|</span>
 					<?= mn_film_render_terms($tematicas); ?>
 				<?php endif; ?>
@@ -112,7 +112,7 @@ if (!function_exists('mn_film_render_terms')) {
 						</div>
 					<?php endif;
 					$zonas = get_the_terms(get_the_ID(), 'mn_zona_geografica');
-					if (sizeof($zonas)) : ?>
+					if ($zonas && sizeof($zonas)) : ?>
 						<div class="indi_ficha_tecnica_field">
 							<span class="indi_ficha_label"><?= pll__('Zona Geográfica'); ?>: </span>
 							<span class="indi_ficha_tecnica_value"><?= mn_film_render_terms($zonas); ?></span>

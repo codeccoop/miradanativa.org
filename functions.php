@@ -26,7 +26,7 @@ require_once 'includes/shortcodes/indi_separator.php';
 require_once 'includes/shortcodes/carousels.php';
 require_once 'includes/shortcodes/blog.php';
 
-require_once 'migration.php';
+// require_once 'migration.php';
 
 /* Child theme style loader */
 add_action('wp_enqueue_scripts', 'mn_enqueue_styles');
