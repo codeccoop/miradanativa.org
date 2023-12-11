@@ -23,6 +23,7 @@ function mn_register_film_cpt()
             'menu_position' => 27,
             'show_in_rest' => true,
             'supports' => ['title'],
+            'taxonomies' => ['post_tag'],
         ]
     );
 }
