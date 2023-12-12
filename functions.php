@@ -269,3 +269,9 @@ function mn_hide_posts_menu()
 {
     remove_menu_page('edit.php');
 }
+
+add_action('after_setup_theme', 'mn_load_textdomain');
+function mn_load_textdomain()
+{
+    load_child_theme_textdomain('miradanativa', get_stylesheet_directory() . '/languages');
+}

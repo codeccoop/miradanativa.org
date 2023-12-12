@@ -4,8 +4,8 @@ add_action('init', 'mn_register_cataleg_taxonomy', 99);
 function mn_register_cataleg_taxonomy()
 {
     $labels = [
-        'name' => __('Catálogos'),
-        'singular_name' => __('Catálogo'),
+        'name' => __('Catálogos', 'miradanativa'),
+        'singular_name' => __('Catálogo', 'miradanativa'),
     ];
 
     $args = [

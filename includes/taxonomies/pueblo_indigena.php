@@ -5,8 +5,8 @@ function mn_register_pobles_type_tax()
 {
     register_taxonomy('mn_pueblo_indigena', 'film', [
         'labels' => [
-            'name' => __('Pueblos indígenas'),
-            'singular_name' => __('Pueblo indígena'),
+            'name' => __('Pueblos indígenas', 'miradanativa'),
+            'singular_name' => __('Pueblo indígena', 'miradanativa'),
         ],
         'public' => true,
         'show_in_rest' => true,
