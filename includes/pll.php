@@ -2,6 +2,8 @@
 add_action('init', 'mn_register_pll_strings');
 function mn_register_pll_strings()
 {
+    if (!function_exists('pll_register_string')) return;
+
     $ns = 'miradanativa';
     /* film */
     pll_register_string($ns, 'Película no disponible actualmente', $ns);
