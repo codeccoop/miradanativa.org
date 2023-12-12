@@ -24,7 +24,7 @@ if (!function_exists('mn_film_render_terms')) {
 	<?php endif; ?>
 	<div class="wp-block-cover__inner-container">
 		<div class="indi_ficha_overview alignfull">
-			<h1><?php the_field('title'); ?></h1>
+			<h1><?php the_title(); ?></h1>
 			<p><span class="indi_overview_sinopsis"><?php the_field('description'); ?></span></p>
 			<p><?php the_field('duration');
 				$tematicas = get_the_terms(get_the_ID(), 'mn_tematica');
