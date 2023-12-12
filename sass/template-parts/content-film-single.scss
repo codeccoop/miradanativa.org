@@ -103,14 +103,16 @@
 .indi_ficha_detail .wp-block-group__inner-container {
   min-width: 300px;
 }
-
+.indi_ficha_tecnica_field{
+  display: flex;
+}
 .indi_ficha_label {
   position: relative;
   display: inline-block;
   color: #000000;
   font-family: "Roboto", sans-serif;
   text-align: right;
-  width: 13rem;
+  width: 14rem;
   vertical-align: top;
 }
 
@@ -119,7 +121,7 @@
   display: inline-block;
   margin-left: 0.5rem;
   text-align: left;
-  width: calc(100% - 20rem);
+  flex: 1;
 }
 
 .player_container .wp-block-button__link {
@@ -220,14 +222,7 @@ ul.indi_etiqueta > li:hover {
     width: 40%;
   }
 
-  .indi_ficha_label {
-    width: 13rem;
-  }
-
-  .indi_ficha_tecnica_value {
-    width: 24rem;
-    width: calc(100% - 140px);
-  }
+  
 }
 
 @media (max-width: 1000px) {
@@ -245,13 +240,10 @@ ul.indi_etiqueta > li:hover {
   }
 
   .indi_ficha_label {
-    width: 8rem;
+    width: 9rem;
   }
 
-  .indi_ficha_tecnica_value {
-    width: 15rem;
-    width: calc(100% - 140px);
-  }
+
 }
 
 @media (max-width: 600px) {
@@ -299,10 +291,6 @@ ul.indi_etiqueta > li:hover {
     width: 12rem;
   }
 
-  .indi_ficha_tecnica_value {
-    width: 15rem;
-    width: calc(100% - 14rem);
-  }
 }
 
 .indi_film_not_available_message {
