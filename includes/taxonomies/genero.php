@@ -5,8 +5,8 @@ function mn_register_genere_type_tax()
 {
     register_taxonomy('mn_genero', 'film', [
         'labels' => [
-            'name' => __('Géneros'),
-            'singular_name' => __('Género'),
+            'name' => __('Géneros', 'miradanativa'),
+            'singular_name' => __('Género', 'miradanativa'),
         ],
         'public' => true,
         'show_in_rest' => true,

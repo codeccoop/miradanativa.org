@@ -5,8 +5,8 @@ function mn_register_produccio_type_tax()
 {
     register_taxonomy('mn_produccion', 'film', [
         'labels' => [
-            'name' => __('Producciones'),
-            'singular_name' => __('Producción'),
+            'name' => __('Producciones', 'miradanativa'),
+            'singular_name' => __('Producción', 'miradanativa'),
         ],
         'public' => true,
         'show_in_rest' => true,

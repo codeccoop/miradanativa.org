@@ -8,8 +8,8 @@ function mn_register_festival_cpt()
         $POST_TYPE,
         [
             'labels' => [
-                'name' => __('Festivales'),
-                'singular_name' => __('Festival'),
+                'name' => __('Festivales', 'miradanativa'),
+                'singular_name' => __('Festival', 'miradanativa'),
             ],
 
             // Frontend

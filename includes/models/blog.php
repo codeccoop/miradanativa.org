@@ -8,8 +8,8 @@ function mn_register_blog_cpt()
         $POST_TYPE,
         [
             'labels' => [
-                'name' => __('Blog'),
-                'singular_name' => __('Entrada del blog'),
+                'name' => __('Blog', 'miradanativa'),
+                'singular_name' => __('Entrada del blog', 'miradanativa'),
             ],
 
             // Frontend

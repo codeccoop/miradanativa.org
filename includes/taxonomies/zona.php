@@ -5,8 +5,8 @@ function mn_register_zona_type_tax()
 {
     register_taxonomy('mn_zona_geografica', 'film', [
         'labels' => [
-            'name' => __('Zonas Geográficas'),
-            'singular_name' => __('Zona Geográfica'),
+            'name' => __('Zonas Geográficas', 'miradanativa'),
+            'singular_name' => __('Zona Geográfica', 'miradanativa'),
         ],
         'public' => true,
         'show_in_rest' => true,
