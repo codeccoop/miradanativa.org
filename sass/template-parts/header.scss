@@ -1,0 +1,16 @@
+#site-header.header-footer-group.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 170;
+  margin: 0 auto;
+}
+
+#site-header.header-footer-group {
+  height: 60px;
+  z-index: 170;
+  margin: 0 auto;
+  position: relative;
+  transition: all 5s ease;
+}

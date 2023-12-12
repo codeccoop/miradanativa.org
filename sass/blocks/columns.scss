@@ -1,0 +1,54 @@
+.wp-block-column.indi_model_column {
+  background-color: #ffffff;
+  border-radius: 21px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  padding: 0rem 2rem 0rem 2rem;
+}
+
+.wp-block-column.indi_model_column > * {
+  margin-left: 2rem;
+}
+
+.wp-block-column.indi_model_column > p {
+  margin-left: 1rem;
+  padding-top: -5rem;
+}
+
+.wp-block-column.indi_model_column > ul {
+  margin-left: 1rem;
+  color: black;
+  list-style: url("/wp-content/uploads/2021/08/Vector_chk.png");
+  margin: 0;
+  padding: 0;
+}
+
+.wp-block-column.indi_model_column > ul > li {
+  margin-bottom: 2rem;
+}
+
+.wp-block-column.indi_model_column > h2 {
+  text-transform: none;
+  color: black;
+  text-align: center;
+  margin-left: 1rem;
+  align-self: flex-start;
+}
+
+.wp-block-column.indi_model_column > .wp-block-buttons.is-content-justification-center {
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+figure.wp-block-media-text__media > img {
+  width: 80px;
+}
+
+.wp-block-media-text.is-stacked-on-mobile > .wp-block-media-text__content {
+  padding: 4rem 0rem 4rem 0rem;
+}
+
+.wp-block-media-text.is-stacked-on-mobile {
+  grid-template-columns: 10% auto;
+}

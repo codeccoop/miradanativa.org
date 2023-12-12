@@ -1,17 +1,26 @@
 // Import variables and mixins.
 @import "abstracts/abstracts";
 
-
-
 @import "style";
 
 @import "templates/index";
+@import "templates/archive";
 
-@import "template-parts/content-post";
-@import "template-parts/fitxa-pelicula";
-@import "template-parts/search-pelicula";
-@import "template-parts/inCarroussel-pelicula";
-
-@import "archive-posts/archive-posts";
+@import "template-parts/content-blog";
+@import "template-parts/content-film-single";
+@import "template-parts/content-film";
+@import "template-parts/footer";
+@import "template-parts/header";
 
 @import "shortcodes/index";
+@import "shortcodes/carousel";
+@import "shortcodes/blog.scss";
+@import "shortcodes/indi-separator.scss";
+
+@import "plugins/waf";
+@import "plugins/contact-form";
+@import "plugins/ultimate-member";
+
+@import "blocks/blockquote";
+@import "blocks/columns";
+@import "blocks/table";

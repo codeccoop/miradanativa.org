@@ -1,0 +1,325 @@
+.indi-wp-block-button-left {
+  float: left;
+}
+
+.player_container .indi-wp-block-button-left {
+  margin-left: 3%;
+  margin-top: 1%;
+}
+
+.indi-wp-block-button-right {
+  float: right;
+  margin-right: 10%;
+  margin-top: -3%;
+}
+
+.indi_ficha_visuals {
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+
+.indi_ficha_detail {
+  background-color: #7ccd90;
+  margin: 0px;
+}
+
+.indi_ficha_detail,
+.indi_ficha_visuals,
+.indi_ficha_more_like_this {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: normal;
+  line-height: 1.5;
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+.indi_ficha_detail .alignfull,
+.indi_ficha_visuals .alignfull,
+.indi_ficha_more_like_this .alignfull {
+  margin: 0px;
+}
+
+.indi_ficha_detail a,
+.indi_ficha_visuals a {
+  color: #ffffff;
+}
+
+.indi_ficha_detail a:hover,
+.indi_ficha_visuals a:hover,
+.indi_ficha_more_like_this a:hover {
+  cursor: pointer;
+}
+
+.indi_ficha_detail h2 {
+  color: #000000;
+  margin: 3.5rem 0 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.indi_ficha_visuals .wp-block-cover__inner-container {
+  width: 100%;
+  align-self: flex-end;
+}
+
+.indi_ficha_visuals .indi_ficha_overview h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.1rem;
+  margin-bottom: 5.4rem;
+  margin: 0.67em 0;
+  font-family: "Roboto", sans-serif;
+  font-feature-settings: "lnum";
+  font-variant-numeric: lining-nums;
+}
+
+.indi_ficha_visuals .indi_ficha_overview p {
+  width: 40%;
+  font-size: 1.4rem;
+  line-height: 1.85rem;
+}
+
+.indi_overview_sinopsis {
+  width: 40%;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.indi_text_separator {
+  font-family: "Roboto", serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #7ccd90;
+}
+
+.indi_ficha_detail h2 {
+  font-size: 2rem;
+}
+
+.indi_ficha_detail .wp-block-group__inner-container {
+  min-width: 300px;
+}
+
+.indi_ficha_label {
+  position: relative;
+  display: inline-block;
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  text-align: right;
+  width: 13rem;
+  vertical-align: top;
+}
+
+.indi_ficha_tecnica_value {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.5rem;
+  text-align: left;
+  width: calc(100% - 20rem);
+}
+
+.player_container .wp-block-button__link {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.indi_play_img {
+  background-image: url("https://www.miradanativa.org/wp-content/uploads/2021/07/playButton.png");
+  background-repeat: no-repeat;
+  z-index: 98;
+  margin-bottom: 3%;
+}
+
+.indi_play_img:hover {
+  background-image: url("https://www.miradanativa.org/wp-content/uploads/2021/07/hoverPlay.png");
+  background-repeat: no-repeat;
+  z-index: 98;
+}
+
+.indi_show_on_hover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.indi_play_img:hover .indi_show_on_hover {
+  display: inline;
+}
+
+ul.indi_etiqueta > li {
+  margin-bottom: 0;
+  margin-left: 0px;
+  margin-right: 1.3rem;
+  display: inline-block;
+  border-radius: 5px;
+  border-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  padding-right: 0.8rem;
+  padding-left: 0.8rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.3rem;
+  background-color: #fff2;
+  font-weight: 600;
+}
+
+ul.indi_etiqueta > li:hover {
+  background-color: transparent;
+}
+
+.indi_ficha_more_like_this {
+  text-align: center;
+}
+
+.indi_ficha_more_like_this h2 {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.indi_ficha_more_like_this .wp-block-button__link {
+  margin-top: 3.5rem;
+}
+
+.pagination-single,
+.post-meta-wrapper {
+  display: none;
+}
+
+.indi_closePlayer {
+  display: inline-block;
+  float: right;
+}
+
+.player_container {
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding-top: 5px;
+  max-width: 90%;
+}
+
+.player_div {
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+@media (max-width: 1400px) {
+  .indi_ficha_detail h2 {
+    font-size: 20px;
+  }
+
+  .indi_ficha_visuals .indi_ficha_overview p {
+    width: 40%;
+  }
+
+  .indi_ficha_label {
+    width: 13rem;
+  }
+
+  .indi_ficha_tecnica_value {
+    width: 24rem;
+    width: calc(100% - 140px);
+  }
+}
+
+@media (max-width: 1000px) {
+  .indi_ficha_detail,
+  .indi_ficha_visuals,
+  .indi_ficha_visuals .indi_ficha_overview p {
+    font-size: 1.4rem;
+  }
+  .indi_ficha_detail h2 {
+    font-size: 1.8rem;
+  }
+
+  .indi_ficha_visuals .indi_ficha_overview p {
+    width: 60%;
+  }
+
+  .indi_ficha_label {
+    width: 8rem;
+  }
+
+  .indi_ficha_tecnica_value {
+    width: 15rem;
+    width: calc(100% - 140px);
+  }
+}
+
+@media (max-width: 600px) {
+  .indi_ficha_detail .group__inner-container {
+    min-width: 200px;
+  }
+
+  .indi_play_img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .indi_ficha_detail,
+  .indi_ficha_visuals {
+    font-size: 14px;
+  }
+  .indi_ficha_detail h2 {
+    font-size: 18px;
+  }
+
+  .indi_ficha_visuals .indi_ficha_overview p {
+    width: 65%;
+  }
+
+  .indi_ficha_visuals .indi-wp-block-button-right {
+    margin-right: 2%;
+    margin-top: -5%;
+  }
+
+  .indi_ficha_visuals .indi-wp-block-button-right .wp-block-button__link {
+    padding: 0.6em 0.95em;
+  }
+
+  .player_container .indi-wp-block-button-left {
+    float: left;
+    margin-right: 10%;
+    margin-bottom: 10px;
+  }
+
+  .player_div {
+    margin-left: 0px;
+  }
+
+  .indi_ficha_label {
+    width: 12rem;
+  }
+
+  .indi_ficha_tecnica_value {
+    width: 15rem;
+    width: calc(100% - 14rem);
+  }
+}
+
+.indi_film_not_available_message {
+  font-size: $font__size-small;
+  margin-right: auto;
+  margin-bottom: -2rem;
+  padding: 1.5rem 1rem;
+  background: #ff7e74;
+
+  margin-right: auto;
+  font-weight: 800;
+  //border: solid 1px;
+  border-radius: 5px;
+  opacity: 1;
+  @media only screen and (min-width: 800px) {
+    font-size: $font__size-tag;
+    margin-left: 100px;
+    padding: 1.5rem 2rem;
+  }
+}

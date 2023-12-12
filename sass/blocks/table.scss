@@ -1,0 +1,19 @@
+table,
+table * {
+  border: 0px;
+  border-color: #7ccd90;
+}
+
+tr:first-child {
+  background-color: #545f57;
+}
+
+tr:hover {
+  background-color: #545f57;
+}
+
+tr,
+td {
+  border-bottom: 0.1rem solid;
+  border-color: #545f57;
+}

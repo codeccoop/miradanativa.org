@@ -1,0 +1,53 @@
+#new_subscriber {
+  width: 80%;
+  margin: auto;
+  margin-top: -0.8rem;
+  padding: 0 1rem 1rem 2rem;
+}
+
+#new_subscriber input {
+  border-radius: 5px;
+}
+
+input[type="email"] {
+  height: 17px;
+  font-size: 14px;
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+input[type="submit"].mailrelay_btn_submit {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* messages */
+
+.indi_msg_container {
+  margin: auto;
+  max-width: 530px;
+  text-align: center;
+}
+
+.indi_msg_container > .indi_msg_error {
+  margin: auto;
+  padding-top: 1rem;
+  border-radius: 5px;
+  background-color: #a30031;
+  max-width: 500px;
+  text-align: center;
+}
+
+.indi_msg_container > .indi_msg {
+  margin: auto;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 5px;
+  background-color: #7bcc91;
+  max-width: 500px;
+  text-align: center;
+}
+
+.indi_msg_container > *.hidden {
+  display: none;
+}
