@@ -1,0 +1,32 @@
+.jcarousel article {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.jcarousel img {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 1px solid #dddddd;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 0;
+  opacity: 1;
+}
+
+.indi_carousel_wrapper h2 {
+  font-size: 2.5rem;
+  text-transform: none;
+  letter-spacing: 0.05rem;
+}
+
+.jcarousel article .indi_film_details {
+  bottom: 0.1rem;
+  margin-left: 0.1rem;
+  width: calc(100% - 2.2rem);
+  border-radius: 0px 0px 4px 4px;
+  position: absolute;
+  padding: 0 1.2rem 1.2rem 1rem;
+}

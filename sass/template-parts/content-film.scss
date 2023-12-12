@@ -1,3 +1,80 @@
+article.type-film article {
+  position: relative;
+}
+
+article .indi_film_details {
+  width: 100%;
+  bottom: 0;
+  margin-left: 0;
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  padding: 0 1.2rem 1.2rem 1rem;
+  color: white;
+  text-align: left;
+  background: rgb(0, 0, 0);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  opacity: 0.85;
+  z-index: 10;
+}
+
+article .indi_film_details:hover {
+  opacity: 1;
+  background: rgb(0, 0, 0);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  --background: rgba(0, 0, 0, 0.75);
+}
+
+article .indi_film_details h7 {
+  color: white;
+  font-size: 1.9rem;
+  line-height: 2rem;
+  font-weight: bold;
+  float: left;
+  clear: left;
+}
+
+article span.indi_film_details_value {
+  color: white;
+  float: left;
+  clear: left;
+  font-size: 1.2rem;
+}
+
 .indi_film_not_available {
   font-size: 14px;
   margin-right: 5px;

@@ -1,0 +1,15 @@
+.alignfull,
+.entry-content
+  > .wp-block-columns.alignfull.has-background-color.has-text-color.has-background,
+.entry-content > .alignfull:not(.wp-block-group.has-background),
+.entry-content
+  > .wp-block-cover.alignfull.has-background-dim-30.has-primary-background-color.has-background-dim.has-custom-content-position.is-position-center-left,
+.entry-content > .alignwide:not(.wp-block-group.has-background),
+.entry-content > .alignfull:not(.wp-block-group.has-background) {
+  margin-bottom: 0rem;
+  margin-top: 0rem;
+}
+
+ul > li {
+  margin-bottom: 4rem;
+}
