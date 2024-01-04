@@ -1,5 +1,6 @@
 <?php
-
+/* REST */
+require_once 'includes/REST/index.php';
 /* taxonomies */
 require_once 'includes/taxonomies/pueblo_indigena.php';
 require_once 'includes/taxonomies/etiqueta.php';
