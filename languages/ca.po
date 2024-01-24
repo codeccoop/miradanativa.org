@@ -42,7 +42,7 @@ msgid "Etiqueta"
 msgstr "Tag"
 
 msgid "Pueblos indígenas"
-msgstr "Pobles indígena"
+msgstr "Pobles indígenes"
 
 msgid "Pueblo indígena"
 msgstr "Poble indígena"
