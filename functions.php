@@ -122,7 +122,9 @@ function mn_tags_support_all()
 add_action('pre_get_posts', 'tags_support_query', 41);
 function tags_support_query($wp_query)
 {
-    if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
+    if ($wp_query->get('tag')) {
+        $wp_query->set('post_type', 'any');
+    }
 }
 
 function mn_add_custom_headers()
@@ -184,7 +186,7 @@ add_filter('waf_template_film', 'mn_film_template_part');
 function mn_film_template_part()
 {
     ob_start();
-?>
+    ?>
     <article <?php post_class(); ?>>
         <div class="post-inner thin">
             <div class="entry-content">
@@ -193,13 +195,13 @@ function mn_film_template_part()
         </div>
     </article>
 <?php
-    return ob_get_clean();
+        return ob_get_clean();
 }
 
 add_action('wp_head', 'mn_wp_head');
 function mn_wp_head()
 {
-?>
+    ?>
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -275,3 +277,16 @@ function mn_load_textdomain()
 {
     load_child_theme_textdomain('miradanativa', get_stylesheet_directory() . '/languages');
 }
+
+add_filter('mn_filmmark_film', function ($html, $film) {
+    ob_start(); ?>
+    <article <?php post_class(); ?>>
+        <div class="post-inner thin">
+            <div class="entry-content">
+                <?php get_template_part('template-parts/content', 'film'); ?>
+            </div>
+        </div>
+    </article>
+  <?php
+      return ob_get_clean();
+}, 50, 2);
