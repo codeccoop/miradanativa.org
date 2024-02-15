@@ -1,3 +1,15 @@
-.page-template-single-user .um.um-profile {
-  max-width: unset;
+.page-template-single-user {
+  .um.um-profile {
+    max-width: unset;
+  }
+
+  .mn-filmmarks__list-title,
+  .mn-filmmarks__list {
+    min-width: 100vw;
+    padding: 0 5%;
+  }
+
+  .mn-filmmarks__list-title {
+    text-indent: 20px;
+  }
 }

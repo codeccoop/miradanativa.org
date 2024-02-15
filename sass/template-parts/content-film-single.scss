@@ -13,6 +13,10 @@
   margin-top: -3%;
 }
 
+.indi-wp-block-button-right + .indi-wp-block-button-right {
+  margin-right: 2%;
+}
+
 .indi_ficha_visuals {
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -103,7 +107,7 @@
 .indi_ficha_detail .wp-block-group__inner-container {
   min-width: 300px;
 }
-.indi_ficha_tecnica_field{
+.indi_ficha_tecnica_field {
   display: flex;
 }
 .indi_ficha_label {
@@ -221,8 +225,6 @@ ul.indi_etiqueta > li:hover {
   .indi_ficha_visuals .indi_ficha_overview p {
     width: 40%;
   }
-
-  
 }
 
 @media (max-width: 1000px) {
@@ -242,8 +244,6 @@ ul.indi_etiqueta > li:hover {
   .indi_ficha_label {
     width: 9rem;
   }
-
-
 }
 
 @media (max-width: 600px) {
@@ -290,7 +290,6 @@ ul.indi_etiqueta > li:hover {
   .indi_ficha_label {
     width: 12rem;
   }
-
 }
 
 .indi_film_not_available_message {

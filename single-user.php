@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: User Profie
  *
@@ -12,10 +13,7 @@ get_header();
   <?= do_shortcode('[um_loggedin][ultimatemember form_id="237"][/um_loggedin]') ?>
   <div class="post-inner thin">
     <div class="entry-content">
-        <h4 class="wp-block-heading has-text-color has-link-color" style="color: #ffffff"><?= __('Favourites', 'miradanativa') ?></h4>
-        <div class="wp-block-group archive-content archive-film is-layout-constrained wp-block-group-is-layout-constrained">
-        <?= do_shortcode('[mn_filmmark_list]') ?>
-        </div>
+      <?= do_shortcode('[mn_filmmarks_list]') ?>
     </div>
   </div>
 </main>
