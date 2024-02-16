@@ -1,3 +1,9 @@
+.um-form .um-header .um-profile-photo img {
+  .hide-avatars & {
+    display: block;
+  }
+}
+
 .um-locked-content {
   text-align: center;
   border: 0;
