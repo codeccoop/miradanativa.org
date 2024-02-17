@@ -22,8 +22,8 @@ get_header();
     <?= do_shortcode('[ultimatemember form_id="237" photosize="original"]') ?>
     <nav class="mn-profile-tabs">
         <ul>
-            <li data-section="filmmarks"><?= __('Listas', 'miradanativa') ?></li>
-            <li data-section="ratings"><?= __('Valoraciones', 'miradanativa') ?></li>
+            <li data-section="filmmarks"><?= pll__('Listas', 'miradanativa') ?></li>
+            <li data-section="ratings"><?= pll__('Valoraciones', 'miradanativa') ?></li>
         </ul>
     </nav>
     <script>
@@ -47,13 +47,13 @@ get_header();
     <div class="post-inner thin">
         <div class="entry-content">
             <section class="wp-block-group alignwide mn-profile-section" name="filmmarks">
-                <h4 class="mn-filmmarks__list-title" style="color: #ffffff"><?= __('Favoritos', "miradanativa")  ?></h4>
+                <h4 class="mn-filmmarks__list-title" style="color: #ffffff"><?= pll__('Favoritos', "miradanativa")  ?></h4>
                 <div class="archive-content archive-film mn-filmmarks__list">
                 <?= do_shortcode('[mn_filmmarks_list user_id="' . $profile_user->ID . '" list_name="favourites"]') ?>
                 </div>
             </section>
             <section class="wp-block-group alignwide mn-profile-section" name="ratings" hidden>
-                <h4 class="mn-filmmarks__list-title" style="color: #ffffff"><?= __('Valoraciones', "miradanativa")  ?></h4>
+                <h4 class="mn-filmmarks__list-title" style="color: #ffffff"><?= pll__('Valoraciones', "miradanativa")  ?></h4>
                 <?php
                 wp_set_current_user($profile_user->ID);
 echo do_shortcode('[yasr_user_rate_history]');

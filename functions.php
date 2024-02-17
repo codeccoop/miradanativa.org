@@ -294,20 +294,20 @@ add_filter('mn_filmmarks_film', function ($html, $film) {
 
 
 add_action('pre_get_posts', function ($query) {
-    if ($query->get('pagename') == 'profile') {
-        global $wpdb;
-
-        $sql = "select $wpdb->posts.ID
-            from $wpdb->posts
-            and post_type = 'page'
-            and post_status = 'publish'
-            order by rand()
-            limit 1";
-
-        $post_id = $wpdb->get_var($sql);
-        $permalink = get_permalink($post_id);
-
-        header("Location: " . $permalink, true, 302);
-        exit;
+    if ($query->get('page_id') == 294 && get_query_var('lang') === 'ca') {
+        $trans_id = pll_get_post(294, 'ca');
+        $query->set('page_id', $trans_id);
     }
+});
+
+add_filter('rewrite_rules_array', function ($rules) {
+    $newrules = [];
+    foreach ($rules as $key => $rule) {
+        if (preg_match('#^profile/#', $key)) {
+            $newrules['ca/' . $key] = $rule . '&lang=ca';
+        }
+        $newrules[$key] = $rule;
+    }
+
+    return $newrules;
 });

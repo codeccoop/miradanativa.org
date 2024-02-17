@@ -1,8 +1,11 @@
 <?php
+
 add_action('init', 'mn_register_pll_strings');
 function mn_register_pll_strings()
 {
-    if (!function_exists('pll_register_string')) return;
+    if (!function_exists('pll_register_string')) {
+        return;
+    }
 
     $ns = 'miradanativa';
     /* film */
@@ -53,4 +56,9 @@ function mn_register_pll_strings()
 
     /* archive */
     pll_register_string($ns, 'No se ha encontrado contenido relacionado', $ns);
+
+    /* profile */
+    pll_register_string($ns, 'Favoritos', $ns);
+    pll_register_string($ns, 'Listas', $ns);
+    pll_register_string($ns, 'Valoraciones', $ns);
 }
