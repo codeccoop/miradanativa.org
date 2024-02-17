@@ -1,7 +1,175 @@
-.um-form .um-header .um-profile-photo img {
+.page-template-profile-member .um.um-profile {
+  max-width: unset;
+  margin-bottom: 0px !important;
+}
+
+.page-template-profile-member .um.um-profile .um-header {
+  background-color: #7bcc91;
+  border-bottom: unset;
+  display: flex;
+  padding-bottom: 0px;
+  min-height: 170px;
+  padding-bottom: 0px;
+
+  @media (max-width: 960px) {
+    min-height: 140px;
+  }
+}
+
+.page-template-profile-member .um.um-profile .um-header .um-profile-photo {
+  margin: 0 0 0 30px !important;
+  width: 200px;
+  position: relative;
+
+  @media (max-width: 960px) {
+    width: 150px !important;
+  }
+}
+
+.page-template-profile-member
+  .um
+  .um-form
+  .um-header
+  .um-profile-photo
+  a.um-profile-photo-img {
+  position: absolute !important;
+  top: 40px !important;
+  left: 0 !important;
+  border-bottom: none !important;
+  border: none !important;
+}
+
+.page-template-profile-member .um-form .um-header .um-profile-photo img {
   .hide-avatars & {
     display: block;
   }
+}
+
+.page-template-profile-member.hide-avatars img.avatar {
+  display: block;
+}
+
+.page-template-profile-member .um.um-profile .um-profile-meta {
+  margin-top: auto;
+  margin-left: 1em;
+}
+
+.page-template-profile-member .um.um-profile .um-name a {
+  color: white;
+  font-size: 1.4em;
+  line-height: 1;
+
+  @media (max-width: 500px) {
+    font-size: 1.2em;
+    text-align: end;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 1.1em;
+  }
+}
+
+.page-template-profile-member .um.um-profile .um-profile-body {
+  display: none;
+}
+
+.page-template-profile-member .mn-profile-tabs {
+  padding-left: 230px;
+
+  @media (max-width: 960px) {
+    padding-left: 180px;
+  }
+
+  @media (max-width: 500px) {
+    padding-left: 0;
+  }
+}
+
+.page-template-profile-member .mn-profile-tabs ul {
+  margin: 0;
+  display: flex;
+  list-style: none;
+
+  @media (max-width: 500px) {
+    justify-content: flex-end;
+    margin-right: 4rem;
+  }
+}
+
+.page-template-profile-member .mn-profile-tabs ul li {
+  cursor: pointer;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.page-template-profile-member .mn-profile-section .mn-filmmarks__list-title {
+  padding: 0 20px;
+}
+
+.page-template-profile-member .mn-profile-section .yasr-log-div-child {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 0 2%;
+  margin: 2em 0;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page-template-profile-member .mn-profile-section .yasr-log-image {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.page-template-profile-member .mn-profile-section .yasr-log-image img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.page-template-profile-member .mn-profile-section .yasr-log-child-head {
+  display: flex;
+  align-items: end;
+  padding-left: 2em;
+
+  @media (max-width: 500px) {
+    padding-left: 15px;
+  }
+}
+
+.page-template-profile-member .mn-profile-section .yasr-log-child-head > span {
+  font-size: 1.2em;
+
+  @media (max-width: 500px) {
+    font-size: 1em;
+  }
+}
+
+.page-template-profile-member .mn-profile-section .yasr-log-ip-date {
+  display: flex;
+  align-items: start;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  padding-left: 2em;
+
+  @media (max-width: 500px) {
+    grid-column-start: 1;
+    padding-left: 15px;
+  }
+}
+
+.page-template-profile-member .yasr-log-vote > span {
+  color: #7bcc91 !important;
+}
+
+.page-template-profile-member .yasr-log-post {
+  padding-left: 0.5em;
 }
 
 .um-locked-content {
@@ -28,4 +196,8 @@
     margin: auto;
     margin-top: 50px;
   }
+}
+
+.yasr-last-ratings-loader {
+  display: none;
 }

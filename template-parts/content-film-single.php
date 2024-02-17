@@ -1,13 +1,13 @@
 <?php
 if (!function_exists('mn_film_render_terms')) {
-  function mn_film_render_terms($terms)
-  {
-    return implode(',', array_map(function ($term) {
-      $link = get_term_link($term);
-      $name = $term->name;
-      return "<a href='{$link}'>{$name}</a>";
-    }, $terms));
-  }
+    function mn_film_render_terms($terms)
+    {
+        return implode(',', array_map(function ($term) {
+            $link = get_term_link($term);
+            $name = $term->name;
+            return "<a href='{$link}'>{$name}</a>";
+        }, $terms));
+    }
 }
 ?>
 
@@ -27,8 +27,8 @@ if (!function_exists('mn_film_render_terms')) {
       <h1><?php the_title(); ?></h1>
       <p><span class="indi_overview_sinopsis"><?php the_field('description'); ?></span></p>
       <p><?php the_field('duration');
-          $tematicas = get_the_terms(get_the_ID(), 'mn_tematica');
-          if ($tematicas && sizeof($tematicas) > 0) : ?>
+$tematicas = get_the_terms(get_the_ID(), 'mn_tematica');
+if ($tematicas && sizeof($tematicas) > 0) : ?>
           <span class="indi_text_separator">|</span>
           <?= mn_film_render_terms($tematicas); ?>
         <?php endif; ?>
@@ -41,10 +41,10 @@ if (!function_exists('mn_film_render_terms')) {
         <?= do_shortcode('[yasr_visitor_votes size="small"]'); ?>
       </div>
       <div class="indi-wp-block-button-right is-style-fill">
-        <?= do_shortcode('[mn_filmmarks_save film_id="' . get_the_ID() . '"]') ?>
+        <a class="wp-block-button__link" href="/aportar"><?= pll__('Aportar') ?></a>
       </div>
       <div class="indi-wp-block-button-right is-style-fill">
-        <a class="wp-block-button__link" href="/aportar"><?= pll__('Aportar') ?></a>
+        <?= do_shortcode('[mn_filmmarks_save film_id="' . get_the_ID() . '"]') ?>
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@ if (!function_exists('mn_film_render_terms')) {
           <div>
             <span class="indi_ficha_sinopsis">
               <?php if (get_field('long_description')) {
-                the_field('long_description');
+                  the_field('long_description');
               } ?>
             </span>
           </div>
@@ -75,73 +75,73 @@ if (!function_exists('mn_film_render_terms')) {
               <span class="indi_ficha_tecnica_value"><?php the_field('year'); ?></span>
             </div>
           <?php endif;
-          if (get_field('duration')) : ?>
+if (get_field('duration')) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Duración'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?php the_field('duration'); ?></span>
             </div>
           <?php endif;
-          $realizacion = get_the_terms(get_the_ID(), 'mn_realizacion');
-          if ($realizacion && sizeof($realizacion)) : ?>
+$realizacion = get_the_terms(get_the_ID(), 'mn_realizacion');
+if ($realizacion && sizeof($realizacion)) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Realización'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?= mn_film_render_terms($realizacion); ?></span>
             </div>
           <?php endif;
-          $produccion = get_the_terms(get_the_ID(), 'mn_produccion');
-          if ($produccion && sizeof($produccion)) : ?>
+$produccion = get_the_terms(get_the_ID(), 'mn_produccion');
+if ($produccion && sizeof($produccion)) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Producción'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?= mn_film_render_terms($produccion); ?></span>
             </div>
           <?php endif;
-          if (get_field('casting')) : ?>
+if (get_field('casting')) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Reparto'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?php the_field('casting'); ?></span>
             </div>
           <?php endif;
-          if (get_field('awards')) : ?>
+if (get_field('awards')) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Premios'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?php the_field('awards'); ?></span>
             </div>
           <?php endif;
-          $pueblos = get_the_terms(get_the_ID(), 'mn_pueblo_indigena');
-          if ($pueblos && sizeof($pueblos)) : ?>
+$pueblos = get_the_terms(get_the_ID(), 'mn_pueblo_indigena');
+if ($pueblos && sizeof($pueblos)) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Pueblo'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?= mn_film_render_terms($pueblos); ?></span>
             </div>
           <?php endif;
-          $zonas = get_the_terms(get_the_ID(), 'mn_zona_geografica');
-          if ($zonas && sizeof($zonas)) : ?>
+$zonas = get_the_terms(get_the_ID(), 'mn_zona_geografica');
+if ($zonas && sizeof($zonas)) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Zona Geográfica'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?= mn_film_render_terms($zonas); ?></span>
             </div>
           <?php endif;
-          if (get_field('language')) : ?>
+if (get_field('language')) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Idioma'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?php the_field('language'); ?></span>
             </div>
           <?php endif;
-          if (get_field('subtitles')) : ?>
+if (get_field('subtitles')) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Subtítulos'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?php the_field('subtitles'); ?></span>
             </div>
           <?php endif;
-          $tematicas = get_the_terms(get_the_ID(), 'mn_tematica');
-          if ($tematicas && sizeof($tematicas)) : ?>
+$tematicas = get_the_terms(get_the_ID(), 'mn_tematica');
+if ($tematicas && sizeof($tematicas)) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Temática'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?= mn_film_render_terms($tematicas); ?></span>
             </div>
           <?php endif;
-          $generos = get_the_terms(get_the_ID(), 'mn_genero');
-          if ($generos && sizeof($generos)) : ?>
+$generos = get_the_terms(get_the_ID(), 'mn_genero');
+if ($generos && sizeof($generos)) : ?>
             <div class="indi_ficha_tecnica_field">
               <span class="indi_ficha_label"><?= pll__('Género(s)'); ?>: </span>
               <span class="indi_ficha_tecnica_value"><?= mn_film_render_terms($generos); ?></span>
@@ -156,7 +156,7 @@ if (!function_exists('mn_film_render_terms')) {
       <div class="wp-block-group">
         <?php
         $etiquetas = get_the_terms(get_the_ID(), 'mn_etiqueta');
-        if ($etiquetas && sizeof($etiquetas)) : ?>
+if ($etiquetas && sizeof($etiquetas)) : ?>
           <div class="wp-block-group__inner-container">
             <h2><?= pll__('Etiquetas'); ?></h2>
             <ul class="indi_etiqueta">
