@@ -58,7 +58,7 @@ function mn_register_pll_strings()
     pll_register_string($ns, 'No se ha encontrado contenido relacionado', $ns);
 
     /* profile */
-    pll_register_string($ns, 'Favoritos', $ns);
-    pll_register_string($ns, 'Listas', $ns);
-    pll_register_string($ns, 'Valoraciones', $ns);
+    pll_register_string($ns, 'Favorites', $ns);
+    pll_register_string($ns, 'Lists', $ns);
+    pll_register_string($ns, 'Ratings', $ns);
 }

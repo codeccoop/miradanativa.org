@@ -28,8 +28,9 @@ get_header();
     <?= do_shortcode('[ultimatemember form_id="237" photosize="original"]') ?>
     <nav class="mn-profile-tabs">
         <ul>
-            <li data-section="filmmarks"><?= pll__('Listas', 'miradanativa') ?></li>
-            <li data-section="ratings"><?= pll__('Valoraciones', 'miradanativa') ?></li>
+            <!-- <li data-section="filmmarks"><?= pll__('Lists', 'miradanativa') ?></li> -->
+            <li data-section="filmmarks"><?= pll__('Favorites', 'miradanativa') ?></li>
+            <li data-section="ratings"><?= pll__('Ratings', 'miradanativa') ?></li>
         </ul>
     </nav>
     <script>

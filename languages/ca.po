@@ -101,3 +101,12 @@ msgstr "Pel·lícules"
 
 msgid "Película"
 msgstr "Pel·lícula"
+
+# User profile
+msgid "Lists"
+msgstr "Llistes"
+
+msgid "Ratings"
+msgstr "Valoracions"
+
+msgid "Favourites"

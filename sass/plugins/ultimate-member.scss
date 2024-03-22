@@ -86,6 +86,11 @@
   }
 }
 
+.page-template-profile-member .um.um-profile .um-header .um-faicon-check:before,
+.page-template-profile-member .um.um-profile .um-header .um-faicon-cog:before {
+  color: white;
+}
+
 .page-template-profile-member .um.um-profile .um-profile-body {
   display: none;
 }
