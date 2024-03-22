@@ -52,7 +52,7 @@
 	</div><!-- .post-inner -->
 	<?php
 	$cat_name = $cat[0]->slug;
-	if (in_array($cat_name, ['resena', 'resenya']) && !empty(get_field('film'))) :
+	if (!empty(get_field('film'))) :
 		$film = get_post(get_field('film')); ?>
 		<div class="related-film__section">
 			<div class="related-film__content">
@@ -65,7 +65,7 @@
 						<img class="film-cover" src="<?php the_field('poster', $film->ID); ?>" alt="Poster de <?php the_field('title', $film->ID) ?>">
 					</div>
 					<div class="details__details">
-						<h3 class="bold"><?php the_title($film->ID); ?></h3>
+						<h3 class="bold"><?= get_the_title($film->ID); ?></h3>
 						<p>
 							<?php
 							$pueblos = get_the_terms($film->ID, 'mn_pueblo_indigena');
