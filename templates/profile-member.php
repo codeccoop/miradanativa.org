@@ -7,8 +7,8 @@
  */
 
 $lang = pll_current_language();
-$um_user = get_query_var('um_user');
-$profile_user = get_user_by('slug', $um_user);
+$um_user_id = get_query_var('um_user');
+$profile_user = get_user_by('ID', $um_user_id);
 if (empty($profile_user)) {
     if ($lang === 'ca') {
         $site_url = site_url();

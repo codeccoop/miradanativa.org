@@ -291,8 +291,6 @@ add_filter('mn_filmmarks_film', function ($html, $film) {
     return ob_get_clean();
 }, 50, 2);
 
-
-
 add_action('pre_get_posts', function ($query) {
     if ($query->get('page_id') == 294 && get_query_var('lang') === 'ca') {
         $trans_id = pll_get_post(294, 'ca');
