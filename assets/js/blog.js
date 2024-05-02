@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const entries = Array.from(document.querySelectorAll(".blog-item"));
+  const entries = Array.from(document.querySelectorAll(".blog"));
   function selectEntries(term) {
-    if (term === "all") term = "blog-item";
-    else term = "category-" + term;
+    if (term === "all") {
+      entries.forEach((entry) =>{
+        entry.classList.remove("hidden");
+      })
+    } 
+    //term = "blog-item";
+    else {
+      term = "category-" + term;
     entries.forEach((entry) => {
       if (entry.classList.contains(term)) {
         entry.classList.remove("hidden");
@@ -10,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entry.classList.add("hidden");
       }
     });
+    } 
   }
 
   Array.from(document.querySelectorAll(".archive-blog__filter")).forEach((filter) => {
