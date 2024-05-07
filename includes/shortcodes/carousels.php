@@ -45,6 +45,23 @@ function mn_more_like_this_carousel($post_id, $template, $lang)
         'posts_per_page' => 20,
         'orderby' => 'title',
         'order' => 'DESC',
+        'meta_query' => [
+            'relation' => 'AND',
+            [
+              'key' => 'vimeo_id',
+              'compare' => 'EXISTS',
+            ],
+            [
+              'key' => 'vimeo_id',
+              'compare' => '!=',
+              'value' => ''
+            ],
+            [
+                'key' => 'vimeo_id',
+                'compare' => '!=',
+                'value' => 0,
+              ]
+            ],
         'tax_query' => [
             'relation' => 'OR',
             [
@@ -68,7 +85,7 @@ function mn_more_like_this_carousel($post_id, $template, $lang)
                 'include_children' => false,
                 'operator' => 'IN'
             ],
-        ]
+        ],
     ]);
 
     if (sizeof($posts) > 0) {
@@ -87,6 +104,28 @@ function mn_taxonomy_carousel($taxonomy, $term, $post_type, $lang)
         'posts_per_page' => 40,
         'orderby' => 'date',
         'order' => 'DESC',
+        'meta_query' => [
+            'relation' => 'AND',
+            [
+              'key' => 'vimeo_id',
+              'compare' => 'EXISTS',
+            ],
+            [
+              'key' => 'vimeo_id',
+              'compare' => '!=',
+              'value' => ''
+            ],
+            [
+                'key' => 'vimeo_id',
+                'compare' => '!=',
+                'value' => 0,
+              ]
+            ],
+        'meta_query' => [[
+            'key' => 'vimeo_id',
+                'value' => '0',
+                'compare' => '!=',
+        ]],
         'tax_query' => [[
             'taxonomy' => $taxonomy,
             'field' => 'slug',
