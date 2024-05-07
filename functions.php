@@ -309,3 +309,11 @@ add_filter('rewrite_rules_array', function ($rules) {
 
     return $newrules;
 });
+
+add_filter('waf_search_meta_fields', function ($args, $pattern, $post_type) {
+    if ($post_type !== 'film') {
+        return $args;
+    }
+
+    return ['description', 'long_description'];
+}, 10, 3);
