@@ -100,3 +100,68 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.waf-search-form {
+  width: 100%;
+
+  .waf-controls {
+    margin: 0 auto !important;
+    position: relative;
+    width: fit-content;
+
+    input {
+      padding: 1rem 1.4rem;
+      border-radius: 2px;
+    }
+  }
+
+  .waf-control#pattern {
+    width: 500px;
+
+    input {
+      padding-right: calc(1.4rem + 88px);
+    }
+
+    @media (max-width: 720px) {
+      width: 258px;
+
+      input {
+        padding-right: calc(1.4rem + 28px);
+      }
+    }
+  }
+
+  .waf-control[data-type="submit"] {
+    position: absolute;
+    top: 0px;
+    right: 0.5em;
+    height: 100%;
+    padding: 0px;
+
+    @media (max-width: 720px) {
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-80%, -50%) rotate(45deg);
+        border-top: 2px solid;
+        border-right: 2px solid;
+        height: 13px;
+        width: 13px;
+      }
+    }
+
+    input {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      text-transform: none;
+      height: 100%;
+
+      @media (max-width: 720px) {
+        font-size: 0px;
+        position: relative;
+      }
+    }
+  }
+}
