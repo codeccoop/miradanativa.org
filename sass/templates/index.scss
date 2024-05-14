@@ -32,6 +32,7 @@
   clear: both;
   margin: 0 0;
   flex-direction: column;
+
   @media only screen and (min-width: 800px) {
     flex-direction: row;
   }
@@ -48,10 +49,16 @@
       margin-top: 2rem;
     }
   }
+
   #peliculas-button {
     font-size: 16px;
     text-transform: none;
   }
+
+  > a {
+    text-align: center;
+  }
+
   #descarga-button {
     font-size: 16px;
     margin-left: 4rem;

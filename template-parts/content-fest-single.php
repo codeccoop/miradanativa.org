@@ -59,7 +59,7 @@ p, h1, h2, h3, h4, h5, h6, pre, label, button {
 				<?php endif; ?>
 			</div>
 
-			<div class="festival__content" id="peliculas-content" role="tabpanel" labelledby="peliculas-button">
+			<div class="festival__content archive-content" id="peliculas-content" role="tabpanel" labelledby="peliculas-button">
 				<?= do_shortcode('[mn_fest_cataleg]'); ?>
 			</div>
 			<div class="festival__content hidden" id="nosotras-content" role="tabpanel" labelledby="nosotras-button">
