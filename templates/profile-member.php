@@ -37,9 +37,11 @@ get_header();
     </nav>
     <script>
     (() => {
-        if (window.location.hash === "") {
-            window.location.hash = "lists";
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.location.hash === "") {
+                window.location.hash = "lists";
+            }
+        });
 
         let initialScroll, wait;
         function onScroll(initial) {
