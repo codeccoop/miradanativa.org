@@ -296,7 +296,7 @@ add_filter('wpct_bm_list_template', function ($html, $list) {
                     <a href="#list-<?= $list->id ?>">
                         <img src="<?= $img_src ?>" />
                         <div class="indi_film_details">
-                            <h7><span id="indi_film_title"><?= __($list->name, 'miradanaiva') ?></span></h7>
+                            <h7><span id="indi_film_title"><?= __($list->title, 'miradanaiva') ?></span></h7>
                           <span class="indi_film_details_value"><?= count($bookmarks) . ' ' . pll__('titles', 'miradanativa') ?></span>
                         </div>
                     </a>
