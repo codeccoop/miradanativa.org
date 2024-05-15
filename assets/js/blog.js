@@ -9,8 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     //term = "blog-item";
     else {
       term = "category-" + term;
+      const termCa = term + "-2";
+      console.log(termCa);
     entries.forEach((entry) => {
-      if (entry.classList.contains(term)) {
+      if (entry.classList.contains(term) || entry.classList.contains(termCa) ) {
         entry.classList.remove("hidden");
       } else {
         entry.classList.add("hidden");

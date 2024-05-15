@@ -121,11 +121,6 @@ function mn_taxonomy_carousel($taxonomy, $term, $post_type, $lang)
                 'value' => 0,
               ]
             ],
-        'meta_query' => [[
-            'key' => 'vimeo_id',
-                'value' => '0',
-                'compare' => '!=',
-        ]],
         'tax_query' => [[
             'taxonomy' => $taxonomy,
             'field' => 'slug',
