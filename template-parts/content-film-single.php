@@ -44,7 +44,7 @@ if ($tematicas && sizeof($tematicas) > 0) : ?>
         <a class="wp-block-button__link" href="/aportar"><?= pll__('Aportar') ?></a>
       </div>
       <div class="indi-wp-block-button-right is-style-fill">
-        <?= do_shortcode('[mn_filmmarks_save film_id="' . get_the_ID() . '"]') ?>
+        <?= do_shortcode('[wpct_bm_bookmark post_id="' . get_the_ID() . '"]') ?>
       </div>
     </div>
   </div>
