@@ -48,9 +48,24 @@
 #wpct-bm-modal {
   color: $primary_color;
 
+  h4 {
+    margin: 0;
+  }
+
   .wpct-bm-list {
     &:hover {
       background-color: $primary_color !important;
     }
   }
+}
+
+.mn-new-list-form {
+  width: 60rem;
+  max-width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+
+.wpct-bm-msg {
+  font-size: 2rem;
+  font-weight: bold;
 }
