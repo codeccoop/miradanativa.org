@@ -124,8 +124,26 @@
   margin-top: 0;
 }
 
-.page-template-profile-member .mn-profile-section .mn-filmmarks__list-title {
-  padding: 0 20px;
+.page-template-profile-member .mn-profile-section .mn-profile-section__title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4.5rem 20px 2.5rem;
+}
+
+.page-template-profile-member
+  .mn-profile-section
+  .mn-profile-section__title
+  h4 {
+  margin: 0;
+}
+
+.page-template-profile-member
+  .mn-profile-section
+  .mn-profile-section__title
+  button.is-style-icon {
+  padding: 0.4em 0.8em;
+  background: transparent;
 }
 
 .page-template-profile-member .mn-profile-section .yasr-log-div-child {

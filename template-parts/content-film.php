@@ -1,5 +1,5 @@
 <article>
-  <?= do_shortcode('[mn_filmmarks_save film_id="' . get_the_ID() . '"]'); ?>
+  <?= do_shortcode('[wpct_bm_bookmark post_id="' . get_the_ID() . '"]'); ?>
   <a href="<?php the_permalink() ?>">
     <img src="<?php the_field('thumbnail'); ?>" title="<?php the_title(); ?>">
 

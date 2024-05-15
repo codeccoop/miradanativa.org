@@ -182,22 +182,6 @@ add_action('init', function () {
     }
 });
 
-add_filter('waf_template_film', 'mn_film_template_part');
-function mn_film_template_part()
-{
-    ob_start();
-    ?>
-  <article <?php post_class(); ?>>
-    <div class="post-inner thin">
-      <div class="entry-content">
-        <?php get_template_part('template-parts/content', 'film'); ?>
-      </div>
-    </div>
-  </article>
-<?php
-      return ob_get_clean();
-}
-
 add_action('wp_head', 'mn_wp_head');
 function mn_wp_head()
 {
@@ -278,19 +262,60 @@ function mn_load_textdomain()
     load_child_theme_textdomain('miradanativa', get_stylesheet_directory() . '/languages');
 }
 
-add_filter('mn_filmmarks_film', function ($html, $film) {
+// Bookmarks
+add_filter('wpct_bm_bookmark_template', function ($html, $bookmark) {
+    global $post;
+    $global_post = $post;
+
+    $film = $bookmark->get_post();
+    $post = $film;
+    setup_postdata($film);
+
     ob_start(); ?>
-  <article <?php post_class(); ?>>
-    <div class="post-inner thin">
-      <div class="entry-content">
-        <?php get_template_part('template-parts/content', 'film'); ?>
-      </div>
-    </div>
-  </article>
-<?php
+    <article <?php post_class(); ?>>
+        <div class="post-inner thin">
+            <div class="entry-content">
+                <?php get_template_part('template-parts/content', 'film'); ?>
+            </div>
+        </div>
+    </article>
+    <?php
+    wp_reset_postdata();
+    $post = $global_post;
     return ob_get_clean();
 }, 50, 2);
 
+add_filter('wpct_bm_list_template', function ($html, $list) {
+    $img_src = get_stylesheet_directory_uri() . '/assets/images/bookmark.jpg';
+    $bookmarks = $list->get_bookmarks();
+    ob_start(); ?> 
+    <article class="mn-profile-list film type-film">
+        <div class="post-inner thin">
+            <div class="entry-content">
+                <article>
+                    <a href="#list-<?= $list->id ?>">
+                        <img src="<?= $img_src ?>" />
+                        <div class="indi_film_details">
+                            <h7><span id="indi_film_title"><?= __($list->name, 'miradanaiva') ?></span></h7>
+                          <span class="indi_film_details_value"><?= count($bookmarks) . ' ' . pll__('titles', 'miradanativa') ?></span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </article>
+    <?php
+    return ob_get_clean();
+}, 50, 2);
+
+add_action('template_redirect', function () {
+    if (is_page('search') || is_page('cercador')) {
+        wp_enqueue_script('wpct-bookmarks');
+        wp_enqueue_style('wpct-bookmarks');
+    }
+}, 50);
+
+// Area personal
 add_action('pre_get_posts', function ($query) {
     if ($query->get('page_id') == 294 && get_query_var('lang') === 'ca') {
         $trans_id = pll_get_post(294, 'ca');
@@ -309,6 +334,23 @@ add_filter('rewrite_rules_array', function ($rules) {
 
     return $newrules;
 });
+
+// WAF Filters
+add_filter('waf_template_film', 'mn_film_template_part');
+function mn_film_template_part()
+{
+    ob_start();
+    ?>
+  <article <?php post_class(); ?>>
+    <div class="post-inner thin">
+      <div class="entry-content">
+        <?php get_template_part('template-parts/content', 'film'); ?>
+      </div>
+    </div>
+  </article>
+<?php
+      return ob_get_clean();
+}
 
 add_filter('waf_search_meta_fields', function ($args, $pattern, $post_type) {
     if ($post_type !== 'film') {

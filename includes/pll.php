@@ -61,4 +61,8 @@ function mn_register_pll_strings()
     pll_register_string($ns, 'Favorites', $ns);
     pll_register_string($ns, 'Lists', $ns);
     pll_register_string($ns, 'Ratings', $ns);
+    pll_register_string($ns, 'My lists', $ns);
+    pll_register_string($ns, 'New list', $ns);
+    pll_register_string($ns, 'favourites', $ns);
+    pll_register_string($ns, 'titles', $ns);
 }
