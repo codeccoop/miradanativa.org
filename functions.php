@@ -25,6 +25,9 @@ require_once 'includes/shortcodes/festival.php';
 require_once 'includes/shortcodes/indi_separator.php';
 require_once 'includes/shortcodes/carousels.php';
 require_once 'includes/shortcodes/blog.php';
+/* custom endpoints */
+require_once 'includes/endpoints/catalog.php';
+
 
 // require_once 'migration.php';
 
