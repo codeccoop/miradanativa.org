@@ -60,11 +60,17 @@
   .waf-nav-pager {
     display: flex;
     justify-content: center;
-    color: #7ccd90;
+    align-items: center;
+    color: $primary_color;
 
     .waf-arrow {
       cursor: pointer;
       margin: 0 0.5em;
+      stroke: $primary_color;
+
+      > svg {
+        height: .8em;
+      }
 
       &.disabled {
         opacity: 0.6;
