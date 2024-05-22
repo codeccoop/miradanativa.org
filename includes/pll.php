@@ -8,6 +8,7 @@ function mn_register_pll_strings()
     }
 
     $ns = 'miradanativa';
+
     /* film */
     pll_register_string($ns, 'Película no disponible actualmente', $ns);
     pll_register_string($ns, 'Aportar', $ns);
@@ -56,6 +57,7 @@ function mn_register_pll_strings()
 
     /* archive */
     pll_register_string($ns, 'No se ha encontrado contenido relacionado', $ns);
+    pll_register_string($ns, 'Movie title', $ns);
 
     /* profile */
     pll_register_string($ns, 'Favorites', $ns);

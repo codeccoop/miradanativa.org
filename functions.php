@@ -359,3 +359,11 @@ add_filter('waf_search_meta_fields', function ($args, $pattern, $post_type) {
 
     return ['description', 'long_description'];
 }, 10, 3);
+
+add_filter('gettext', function ($trans, $text, $domain) {
+    if ($domain === 'waf' && $text === 'What are you looking for?') {
+        return pll__('Movie title');
+    }
+
+    return $trans;
+}, 90, 3);
