@@ -370,3 +370,20 @@ add_filter('gettext', function ($trans, $text, $domain) {
 
     return $trans;
 }, 90, 3);
+
+
+//Automatically update posts
+
+// function my_update_posts() {
+//     $args = array(
+//         'post_type' => 'film',
+//         'numberposts' => -1
+//     );
+//     $films = get_posts($args);
+
+//     foreach ($films as $film){
+//         wp_insert_post( $film );
+//         update_post_meta($film->ID, 'age', 'tp');
+//     };
+// }
+// add_action( 'init', 'my_update_posts' );

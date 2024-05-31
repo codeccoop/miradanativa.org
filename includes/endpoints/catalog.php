@@ -73,6 +73,8 @@ function get_catalog( $data ) {
           
   }
   $filmmaking = implode(', ',$filmmaking);
+
+  //error_log(print_r($custom_fields));
  
   };
     $data[] = array(
@@ -82,11 +84,14 @@ function get_catalog( $data ) {
         'slug' => $film->post_name,
         'vimeo_id'=> $custom_fields['vimeo_id'][0],
         'excerpt'=> $custom_fields['description'][0],
+        'featured_media' => isset($custom_fields['poster'][0]) ?  wp_get_attachment_image_url($custom_fields['poster'][0]) : null,
+        'featured_cover' => isset($custom_fields['cover'][0]) ?  wp_get_attachment_image_url($custom_fields['cover'][0]) : null,
         'sinopsis' => $custom_fields['long_description'][0],
         'language' => $custom_fields['language'][0],
         'subtitles' => $custom_fields['subtitles'][0],
         'year' => $custom_fields['year'][0],
         'duration' => $custom_fields['duration'][0],
+        'age' => $custom_fields['age'][0],
         'geographic_area' => $zona_geografica[0]->name,
         'indigenous_group' => $pueblo_indigena[0]->name,
         'keywords' => $keywords,
