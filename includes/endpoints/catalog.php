@@ -89,11 +89,13 @@ function mn_get_catalog($data)
             }
         };
 
-        $data[] = array(
+        $data[] = [
             'id' => $film->ID,
             'url' => get_the_permalink($film),
             'title' => $film->post_title,
             'slug' => $film->post_name,
+            'creation_date' => $film->post_date,
+            'modified_date' => $film->post_modified,
             'vimeo_id' => $custom_fields['vimeo_id'][0],
             'excerpt' => mn_filter_rich_text($custom_fields['description'][0]),
             'featured_media' => isset($custom_fields['poster'][0]) ? wp_get_attachment_image_url($custom_fields['poster'][0]) : null,
@@ -111,7 +113,7 @@ function mn_get_catalog($data)
             'film_type' => $metraje[0]->name,
             'producer' => $produccion[0]->name,
             'filmmaking' => $filmmaking,
-        );
+        ];
     }
 
     return rest_ensure_response($data);
