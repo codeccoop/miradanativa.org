@@ -383,7 +383,7 @@ add_filter('gettext', function ($trans, $text, $domain) {
 
 //     foreach ($films as $film){
 //         wp_insert_post( $film );
-//         update_post_meta($film->ID, 'age', 'tp');
+//         update_post_meta($film->ID, 'export', 'yes');
 //     };
 // }
 // add_action( 'init', 'my_update_posts' );

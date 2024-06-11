@@ -312,6 +312,32 @@ add_action('acf/include_fields', function () {
                 'media_upload' => 1,
                 'delay' => 0,
             ),
+            array(
+                'key' => 'field_6572e05bb68cxcds',
+                'label' => 'Exportar película',
+                'name' => 'export',
+                'aria-label' => '',
+                'type' => 'select',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'choices' => array(
+                    'yes'   => 'Si',
+                    'no' => 'No'
+                ),
+                'default_value' => 'yes',
+                'min' => '',
+                'max' => '',
+                'placeholder' => '',
+                'step' => '',
+                'prepend' => '',
+                'append' => '',
+            )
         ),
         'location' => array(
             array(

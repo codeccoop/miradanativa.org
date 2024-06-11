@@ -3,13 +3,17 @@
 function mn_parse_duration($duration) 
 {
     if (empty($duration)) return null;
-        
     preg_match('/(?:(\d+) *h[^\d]*)?(\d+) *m[^\d]*(?:(\d+) *s)?/', $duration, $matches);
   if (empty($matches)) return -1;
         
    $houres = (int) $matches[1];
    $minutes = (int) $matches[2];
-   $seconds = (int) $matches[3];
+   if (!isset($matches[3])) { 
+         $seconds = 0;
+   } else{
+    $seconds = (int) $matches[3]; 
+   } 
+    
 
     return $houres * 3600 + $minutes * 60 + $seconds;
 }
@@ -44,8 +48,22 @@ function mn_get_catalog($data)
                 'key' => 'vimeo_id',
                 'compare' => '!=',
                 'value' => 0,
-              ]
-        ]
+            ],
+            [
+                'key' => 'export',
+                'compare' => '=',
+                'value' => 'yes',
+            ],
+        
+        ],
+        'tax_query' => array(
+        array (
+            'taxonomy' => 'mn_metraje',
+            'field' => 'slug',
+            'terms' => array ('serie', 'serie-ca'),
+            'operator' => 'NOT IN',
+        )
+    ),
     ];
 
     if(!empty($params['lang'])) {
@@ -67,12 +85,12 @@ function mn_get_catalog($data)
         $custom_fields = get_post_meta($film->ID);
         $zona_geografica = get_the_terms($film, 'mn_zona_geografica');
         $pueblo_indigena = get_the_terms($film, 'mn_pueblo_indigena');
-        $etiquetas = get_the_terms($film, 'mn_etiqueta');
+        $tematicas = get_the_terms($film, 'mn_tematica');
 
-        if (!empty($etiquetas)) {
-            foreach ($etiquetas as $etiqueta) {
-                $name_etiqueta = $etiqueta->name;
-                array_push($keywords, $name_etiqueta);
+        if (!empty($tematicas)) {
+            foreach ($tematicas as $tematica) {
+                $name_tematica = $tematica->name;
+                array_push($keywords, $name_tematica);
 
             }
         };
