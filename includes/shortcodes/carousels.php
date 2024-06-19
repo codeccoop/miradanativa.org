@@ -98,7 +98,10 @@ function mn_more_like_this_carousel($post_id, $template, $lang)
 
 function mn_taxonomy_carousel($taxonomy, $term, $post_type, $lang)
 {
+
     $term = get_term_by('slug', $term, $taxonomy);
+
+
     $posts = get_posts([
         'post_type' => $post_type,
         'posts_per_page' => 40,
@@ -125,7 +128,7 @@ function mn_taxonomy_carousel($taxonomy, $term, $post_type, $lang)
             'taxonomy' => $taxonomy,
             'field' => 'slug',
             'terms' => [$term->slug],
-            'operator' => 'IN'
+             'operator' => 'IN'
         ]],
     ]);
 
@@ -185,6 +188,11 @@ add_shortcode('carousel_more_like_this', function ($atts) {
 add_shortcode('carrousel_for_tematica', function ($atts) {
     if (!isset($atts['lang'])) $atts['lang'] = pll_current_language();
     return mn_taxonomy_carousel('mn_tematica', $atts['slug'], 'film', $atts['lang']);
+});
+
+add_shortcode('carrousel_for_tag', function ($atts) {
+    if (!isset($atts['lang'])) $atts['lang'] = pll_current_language();
+    return mn_taxonomy_carousel('mn_etiqueta', $atts['slug'], 'film', $atts['lang']);
 });
 
 add_shortcode('carrousel_for_genero', function ($atts) {
