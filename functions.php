@@ -387,3 +387,36 @@ add_filter('gettext', function ($trans, $text, $domain) {
 //     };
 // }
 // add_action( 'init', 'my_update_posts' );
+
+
+//Automatically translate taxonomies
+
+// function mn_translate_taxonomies_terms($taxonomy) {
+//     $terms = get_terms([
+//         'suppress_filters' => false,
+//         'taxonomy' => $taxonomy,
+//         'hide_empty' => false,
+//         'lang' => 'es'
+//     ]);
+//     foreach ($terms as $term){
+//        $translations = pll_get_term_translations($term->term_id);
+//        if($translations['en']) {
+//         return $translations;
+//     } else {
+//         $term_en = wp_insert_term ($term->name, $taxonomy, array(
+//             "slug" => $term->slug . '_en',
+//             "description" => $term->description
+//         ));
+//         pll_set_term_language ($term_en['term_id'], 'en');
+//         $translations ['en'] = $term_en['term_id'];
+//         pll_save_term_translations($translations);
+//     }
+       
+//     }  
+// }  
+   
+// add_action( 'wp_loaded', function ()  {
+//     mn_translate_taxonomies_terms("mn_produccion");
+//     mn_translate_taxonomies_terms("mn_realizacion");
+//     mn_translate_taxonomies_terms("mn_pueblo_indigena");
+// } );
