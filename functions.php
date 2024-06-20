@@ -372,7 +372,9 @@ add_filter('gettext', function ($trans, $text, $domain) {
 }, 90, 3);
 
 
-//Automatically update posts
+//SCRIPT TO AUTOMATICALLY UPDATE POST
+
+/******** ~~~~~~~~~~~~~~~~~UNCOMMENT ONLY WHEN NECESSARY~~~~~~~~~~~~~~~~~~~~~~~~~ ++++++++++++++++++++ */
 
 // function my_update_posts() {
 //     $args = array(
@@ -390,6 +392,8 @@ add_filter('gettext', function ($trans, $text, $domain) {
 
 
 //Automatically translate taxonomies
+
+/******** ~~~~~~~~~~~~~~~~~UNCOMMENT ONLY WHEN NECESSARY~~~~~~~~~~~~~~~~~~~~~~~~~ ++++++++++++++++++++ */
 
 // function mn_translate_taxonomies_terms($taxonomy) {
 //     $terms = get_terms([

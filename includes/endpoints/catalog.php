@@ -25,6 +25,152 @@ function mn_filter_rich_text($text)
     return preg_replace('/(\n|\r|&nbsp;)+/', ' ', strip_tags($text));
 }
 
+function mn_encode_languages($languages){
+    $split_langs =  preg_split("/\,/", $languages);
+    foreach ($split_langs as $key => $split_lang){
+        $split_langs[$key] = trim($split_lang);
+        switch ($split_langs[$key]){
+            case "Castellano":
+            case "Español":
+            case "castellano":
+            case "Castellà":
+            case "castellà":
+            case "Espanyol":
+                $split_langs[$key] = "spa";
+                break;
+            case "Shipibo":
+                $split_langs[$key] = "shp";
+                break;
+            case "Nasa":
+            case "Nasa yuwe":
+                $split_langs[$key] = "pbb";
+                break;
+            case "Guna":
+            case "Dulegaya":
+            case "kuna":
+                $split_langs[$key] = "cuk";
+                break;
+            case "wayuunaiki":
+                $split_langs[$key] = "guc";
+                break;
+            case "Taushiro":
+                $split_langs[$key] = "trr";
+                break;
+            case "Bora":
+                $split_langs[$key] = "boa";
+                break;
+            case "Zoque":
+                $split_langs[$key] = "zos";
+                break;
+            case "Tseltal":
+            case "tseltal": 
+                $split_langs[$key] = "tzh";
+                break;
+            case "chol": 
+                $split_langs[$key] = "ctu";
+                break;
+            case "nahua": 
+                $split_langs[$key] = "nlv";
+                break;
+            case "otomí": 
+                $split_langs[$key] = "otm";
+                break;
+            case "Quechua":
+            case "Kichwa":
+            case "Quítxua":
+                $split_langs[$key] = "qvc";
+                break;
+            case "Kichwa amazónico":
+            case "Kichwa-amazónico":
+            case "Kichwa amazònic":
+            case "Kichwa-amazònic":
+                $split_langs[$key] = "qvo";
+                break;
+            case "mixteco":
+            case "Mixteco":
+                $split_langs[$key] = "mig";
+                break;
+            case "neerlandés":
+            case "neerlandès":
+                $split_langs[$key] = "ndl";
+                break;
+            case "aimara":
+            case "Aymara":
+                $split_langs[$key] = "aym";
+                break;
+            case "Woun Meu":
+                $split_langs[$key] = "noa";
+                break;
+            case "Javanés":
+            case "Javanès":
+                $split_langs[$key] = "jav";
+                break;
+            case "purépecha":
+                $split_langs[$key] = "tsz";
+                break;
+            case "yagankuta":
+                $split_langs[$key] = "yag";
+                break;
+            case "qom":
+            case "Qom":
+                $split_langs[$key] = "tob";
+                break;
+            case "Mapuzugun":
+            case "Mapudungun":
+            case "Mapuzugún":
+            case "Mapuzungún":
+                $split_langs[$key] = "arn";
+                break;
+            case "Sikuani":
+            case "Sikuani":
+                $split_langs[$key] = "guh";
+                break;
+            case "Inglés":
+            case "inglés":
+            case "Anglès":
+            case "anglès":
+                $split_langs[$key] = "eng";
+                break;
+            case "Inuktitut":
+                $split_langs[$key] = "iku";
+                break;
+
+            case "Emberá":
+            case "Emberà":
+            case "emberà":
+            case "emberá":
+                $split_langs[$key] = "emp";
+                break;
+
+            case "Innu-aimun":
+                $split_langs[$key] = "moe";
+                break;
+
+            case "francés":
+            case "francès":
+                $split_langs[$key] = "fra";
+                break;
+            case "Xavante":
+                $split_langs[$key] = "xav";
+                break;
+            case "Wichi":
+                $split_langs[$key] = "mtp";
+                break;
+            case "Tikuna":
+                $split_langs[$key] = "tca";
+                break;
+            case "portugués":
+            case "portuguès":
+                $split_langs[$key] = "por";
+                break;
+            default:
+                $split_langs[$key] = "none";
+        }
+    }
+
+    return $split_langs;
+}
+
 function mn_get_catalog($data)
 {
 
@@ -106,7 +252,8 @@ function mn_get_catalog($data)
                 array_push($filmmaking, $name);
             }
         };
-
+        $encoded_langs = mn_encode_languages($custom_fields['language'][0]);
+        $encoded_subs = mn_encode_languages($custom_fields['subtitles'][0]);
         $data[] = [
             'id' => $film->ID,
             'url' => get_the_permalink($film),
@@ -119,8 +266,8 @@ function mn_get_catalog($data)
             'featured_media' => isset($custom_fields['poster'][0]) ? wp_get_attachment_image_url($custom_fields['poster'][0]) : null,
             'featured_cover' => isset($custom_fields['cover'][0]) ? wp_get_attachment_image_url($custom_fields['cover'][0]) : null,
             'sinopsis' => mn_filter_rich_text($custom_fields['long_description'][0]),
-            'language' => $custom_fields['language'][0],
-            'subtitles' => $custom_fields['subtitles'][0],
+            'language' => $encoded_langs,
+            'subtitles' => $encoded_subs,
             'year' => (int) $custom_fields['year'][0],
             'duration' => mn_parse_duration($custom_fields['duration'][0]),
             'age' => $custom_fields['age'][0],
@@ -133,6 +280,7 @@ function mn_get_catalog($data)
             'filmmaking' => $filmmaking,
         ];
     }
+    //return $languages;
 
     return rest_ensure_response($data);
 }
