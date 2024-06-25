@@ -38,6 +38,17 @@ function mn_encode_languages($languages){
             case "Espanyol":
                 $split_langs[$key] = "spa";
                 break;
+            case "català":
+            case "catalán":
+                $split_langs[$key] = "cat";
+                break;
+            case "italià":
+            case "italiano":
+                $split_langs[$key] = "ita";
+                break;
+            case "polonès":
+            case "polaco":
+                break;
             case "Shipibo":
                 $split_langs[$key] = "shp";
                 break;
@@ -96,6 +107,7 @@ function mn_encode_languages($languages){
                 break;
             case "aimara":
             case "Aymara":
+            case "aymara":
                 $split_langs[$key] = "aym";
                 break;
             case "Woun Meu":
@@ -116,9 +128,14 @@ function mn_encode_languages($languages){
                 $split_langs[$key] = "tob";
                 break;
             case "Mapuzugun":
+            case "Mapuzungun":
             case "Mapudungun":
+            case "Mapundungun":
             case "Mapuzugún":
+            case "Mapuzugun":
             case "Mapuzungún":
+            case "Lafkenmapu Ñi Dungun":
+            case "mapudungun":
                 $split_langs[$key] = "arn";
                 break;
             case "Sikuani":
@@ -129,6 +146,8 @@ function mn_encode_languages($languages){
             case "inglés":
             case "Anglès":
             case "anglès":
+            case "anlgès":
+                
                 $split_langs[$key] = "eng";
                 break;
             case "Inuktitut":
@@ -160,14 +179,58 @@ function mn_encode_languages($languages){
                 $split_langs[$key] = "tca";
                 break;
             case "portugués":
+            case "Portugués":
             case "portuguès":
+            case "Português":
+            case "Portuguès":
+                
                 $split_langs[$key] = "por";
+                break;
+            case "Shuar":
+                $split_langs[$key] = "jiv";
+                break;
+            case "Maya Q’eqchi‘":
+                $split_langs[$key] = "kek";
+                break;
+            case "Guarani":
+            case "guaraní":  
+                $split_langs[$key] = "grn";
+                break;
+            case "ayoreo":  
+                $split_langs[$key] = "ayo";
+                break;
+            case "kawesqar":  
+                $split_langs[$key] = "alc";
+                break;
+            case "Yuqui":  
+                $split_langs[$key] = "yuq";
+                break;
+            case "Movima":  
+                $split_langs[$key] = "mzp";
+                break;
+            case "Guarayo":  
+                $split_langs[$key] = "gyr";
+                break;
+            case "Me'phaa":  
+                $split_langs[$key] = "tcf";
+                break;
+            case "maya":  
+                $split_langs[$key] = "quc";
+                break;
+            case "Tnu'usavi":  
+                $split_langs[$key] = "mvg";
+                break;
+            case "Ese Eja":  
+                $split_langs[$key] = "ese";
+                break;
+            case "Ese Eja":  
+                $split_langs[$key] = "yag";
                 break;
             default:
                 $split_langs[$key] = "none";
         }
     }
-
+    // error_log(print_r($split_langs));
     return $split_langs;
 }
 
@@ -252,6 +315,8 @@ function mn_get_catalog($data)
                 array_push($filmmaking, $name);
             }
         };
+
+        
         $encoded_langs = mn_encode_languages($custom_fields['language'][0]);
         $encoded_subs = mn_encode_languages($custom_fields['subtitles'][0]);
         $data[] = [
@@ -280,8 +345,6 @@ function mn_get_catalog($data)
             'filmmaking' => $filmmaking,
         ];
     }
-    //return $languages;
-
     return rest_ensure_response($data);
 }
 

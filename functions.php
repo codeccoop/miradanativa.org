@@ -372,7 +372,7 @@ add_filter('gettext', function ($trans, $text, $domain) {
 }, 90, 3);
 
 
-//SCRIPT TO AUTOMATICALLY UPDATE POST
+// ****** SCRIPT TO AUTOMATICALLY UPDATE POST
 
 /******** ~~~~~~~~~~~~~~~~~UNCOMMENT ONLY WHEN NECESSARY~~~~~~~~~~~~~~~~~~~~~~~~~ ++++++++++++++++++++ */
 
