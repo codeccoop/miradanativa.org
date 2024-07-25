@@ -42,10 +42,10 @@ msgid "Etiqueta"
 msgstr "Tag"
 
 msgid "Pueblos indígenas"
-msgstr "Indigenous communities"
+msgstr "Indigenous peoples"
 
 msgid "Pueblo indígena"
-msgstr "Indigenous community"
+msgstr "Indigenous people"
 
 msgid "Géneros"
 msgstr "Genres"
@@ -66,10 +66,10 @@ msgid "Temática"
 msgstr "Subject"
 
 msgid "Zonas Geográficas"
-msgstr "Geographical areas"
+msgstr "Geographic areas"
 
 msgid "Zona Geográfica"
-msgstr "Geographical area"
+msgstr "Geographic area"
 
 msgid "Producciones"
 msgstr "Productions"
@@ -78,10 +78,10 @@ msgid "Producción"
 msgstr "Production"
 
 msgid "Realizaciones"
-msgstr "Filmmakers"
+msgstr "Directions"
 
 msgid "Realización"
-msgstr "Filmmaker"
+msgstr "Direction"
 
 msgid "Catálogos"
 msgstr "Catalog"

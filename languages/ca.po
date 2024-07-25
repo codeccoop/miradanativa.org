@@ -110,3 +110,9 @@ msgid "Ratings"
 msgstr "Valoracions"
 
 msgid "Favourites"
+msgstr "Favorites"
+
+# UM
+
+msgid "Comprovación de correo"
+msgstr "Moltes gràcies per registrar-te. Abans que puguis iniciar sessió, necessitem que activis el teu compte fent clic en l'enllaç d'activació del correu electrònic que acabem d'enviar-te."
