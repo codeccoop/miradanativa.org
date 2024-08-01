@@ -104,6 +104,14 @@ function mn_enqueue_styles()
         true,
     );
 
+    wp_enqueue_script(
+        'checkmail-message',
+        get_stylesheet_directory_uri() . '/assets/js/checkmail-message.js',
+        ['jquery'],
+        $theme->get('Version'),
+        true,
+    );
+
     if (is_archive() && get_post_type() === 'blog') {
         wp_enqueue_script(
             'mn-blog-filter',
@@ -324,6 +332,10 @@ add_action('pre_get_posts', function ($query) {
         $trans_id = pll_get_post(294, 'ca');
         $query->set('page_id', $trans_id);
     }
+    if ($query->get('page_id') == 294 && get_query_var('lang') === 'en') {
+        $trans_id = pll_get_post(294, 'en');
+        $query->set('page_id', $trans_id);
+    }
 });
 
 add_filter('rewrite_rules_array', function ($rules) {
@@ -331,7 +343,11 @@ add_filter('rewrite_rules_array', function ($rules) {
     foreach ($rules as $key => $rule) {
         if (preg_match('#^profile/#', $key)) {
             $newrules['ca/' . $key] = $rule . '&lang=ca';
-        }
+        } 
+        if (preg_match('#^profile/#', $key)){
+             $newrules['en/' . $key] = $rule . '&lang=en';
+
+         }
         $newrules[$key] = $rule;
     }
 
@@ -367,9 +383,27 @@ add_filter('gettext', function ($trans, $text, $domain) {
     if ($domain === 'waf' && $text === 'What are you looking for?') {
         return pll__('Movie title');
     }
+    if ($domain === 'miradanativa' && $text === 'Language of communication') {
+        return pll__('Language of communication');
+    }
 
     return $trans;
 }, 90, 3);
+
+//intercept UM registry form secondary button url
+add_filter( 'um_login_form_button_two_url', 'my_register_form_button_two_url', 10, 2 );
+function my_register_form_button_two_url( $secondary_btn_url, $args ) {
+    if($args['form_id'] === 2259){
+        $secondary_btn_url = "/ca/registre";
+    } if ($args['form_id'] === 8875){
+        $secondary_btn_url = "/en/register";
+    }
+return $secondary_btn_url;
+}
+
+
+
+
 
 
 // ****** SCRIPT TO AUTOMATICALLY UPDATE POST
@@ -424,3 +458,50 @@ add_filter('gettext', function ($trans, $text, $domain) {
 //     mn_translate_taxonomies_terms("mn_realizacion");
 //     mn_translate_taxonomies_terms("mn_pueblo_indigena");
 // } );
+
+
+
+
+add_action('um_after_account_general', 'after_account_general_custom_fields', 100);
+function after_account_general_custom_fields()
+{
+$custom_fields = [
+'lang_communication' => [
+'title' => 'Language',
+'label' => __('Language', 'miradanativa'),
+'metakey' => 'lang_communication',
+'type' => 'select',
+'options' => [
+    'catala' => __('catalan', 'miradanativa'),
+    'español' => __('spanish', 'miradanativa'),
+    'english' => __('english', 'miradanativa')
+],
+'required' => 0,
+'public' => 1,
+'editable' => 1,
+],
+];
+
+$fields = apply_filters('um_account_secure_fields', $custom_fields, um_user('ID'));
+
+UM()->builtin()->saved_fields = $fields;
+UM()->builtin()->set_custom_fields();
+
+$output = '';
+foreach ($fields as $key => $data) {
+    $output .= UM()->fields()->edit_field($key, $data);
+}
+echo $output;
+
+}
+
+
+add_action('um_account_pre_update_profile', 'getUMFormData', 10, 2);
+
+function getUMFormData($changes, $user_id){
+// $id = um_user('ID');
+$names = array('lang_communication');
+
+foreach( $names as $name )
+update_user_meta( $user_id, $name, $_POST[$name] );
+}

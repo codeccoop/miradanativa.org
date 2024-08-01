@@ -101,3 +101,17 @@ msgstr ""
 
 msgid "Película"
 msgstr ""
+
+# UM
+
+msgid "Language"
+msgstr ""
+
+msgid "catalan"
+msgstr ""
+
+msgid "spanish"
+msgstr ""
+
+msgid "english"
+msgstr ""

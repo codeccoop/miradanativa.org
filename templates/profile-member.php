@@ -15,6 +15,11 @@ if (empty($profile_user)) {
         wp_redirect($site_url . '/ca/profile?lang=ca');
         exit;
     }
+    if($lang === 'en'){
+        $site_url = site_url();
+        wp_redirect($site_url . '/en/profile?lang=en');
+        exit;
+    }
     require_once get_404_template();
     exit;
 }

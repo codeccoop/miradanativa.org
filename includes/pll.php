@@ -30,6 +30,7 @@ function mn_register_pll_strings()
     pll_register_string($ns, 'Enlaces de interés', $ns);
     pll_register_string($ns, 'Catálogo', $ns);
     pll_register_string($ns, 'No Disponible', $ns);
+    pll_register_string($ns, 'Películas relacionadas', $ns);
 
     /* festival */
     pll_register_string($ns, 'Películas', $ns);
@@ -69,4 +70,11 @@ function mn_register_pll_strings()
     pll_register_string($ns, 'Submit', $ns);
     pll_register_string($ns, 'favourites', $ns);
     pll_register_string($ns, 'titles', $ns);
-}
+
+    /* UM */
+    pll_register_string($ns, 'Language of commmunication', $ns);
+    pll_register_string($ns, 'catalan', $ns);
+    pll_register_string($ns, 'spanish', $ns);
+    pll_register_string($ns, 'english', $ns);
+
+}  
