@@ -36,14 +36,17 @@ function mn_encode_languages($languages){
             case "Castellà":
             case "castellà":
             case "Espanyol":
+            case "Spanish":
                 $split_langs[$key] = "spa";
                 break;
             case "català":
             case "catalán":
+            case "Catalan":
                 $split_langs[$key] = "cat";
                 break;
             case "italià":
             case "italiano":
+            case "Italian":
                 $split_langs[$key] = "ita";
                 break;
             case "polonès":
@@ -62,6 +65,7 @@ function mn_encode_languages($languages){
                 $split_langs[$key] = "cuk";
                 break;
             case "wayuunaiki":
+            case "Wayuunaiki":    
                 $split_langs[$key] = "guc";
                 break;
             case "Taushiro":
@@ -147,7 +151,7 @@ function mn_encode_languages($languages){
             case "Anglès":
             case "anglès":
             case "anlgès":
-                
+            case "English":
                 $split_langs[$key] = "eng";
                 break;
             case "Inuktitut":
@@ -158,6 +162,8 @@ function mn_encode_languages($languages){
             case "Emberà":
             case "emberà":
             case "emberá":
+            case "Embera":
+            case "Embere":
                 $split_langs[$key] = "emp";
                 break;
 
@@ -167,6 +173,7 @@ function mn_encode_languages($languages){
 
             case "francés":
             case "francès":
+            case "French":
                 $split_langs[$key] = "fra";
                 break;
             case "Xavante":
@@ -183,6 +190,7 @@ function mn_encode_languages($languages){
             case "portuguès":
             case "Português":
             case "Portuguès":
+            case "Portuguese":
                 
                 $split_langs[$key] = "por";
                 break;
@@ -194,6 +202,7 @@ function mn_encode_languages($languages){
                 break;
             case "Guarani":
             case "guaraní":  
+            case "Guaraní":
                 $split_langs[$key] = "grn";
                 break;
             case "ayoreo":  
@@ -230,7 +239,7 @@ function mn_encode_languages($languages){
                 $split_langs[$key] = "none";
         }
     }
-    // error_log(print_r($split_langs));
+ 
     return $split_langs;
 }
 
@@ -497,6 +506,7 @@ function mn_get_catalog($data)
             'producer' => $produccion[0]->name,
             'filmmaking' => $filmmaking,
         ];
+       
     }
     return rest_ensure_response($data);
 }
