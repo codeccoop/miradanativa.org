@@ -280,6 +280,7 @@ function mn_encode_geographic_area($zona_geografica){
             break;
         case "España":
         case "Espanya":
+        case "Spain": 
             $zona_geografica = array(
                 'ES' => $zona_geografica[0]->name
             );
@@ -293,6 +294,7 @@ function mn_encode_geographic_area($zona_geografica){
             break;
         case "Filipinas":
         case "Filipines":
+        case "Philippines":
             $zona_geografica = array(
                 'PH' => $zona_geografica[0]->name
             );
@@ -316,12 +318,14 @@ function mn_encode_geographic_area($zona_geografica){
             break;
         case "Malasia":
         case "Malàisia":
+        case "Malaysia":
             $zona_geografica = array(
                 'MY' => $zona_geografica[0]->name
             );
             break;
         case "Marruecos":
         case "Marroc":
+        case "Morocco":
             $zona_geografica = array(
                 'MA' => $zona_geografica[0]->name
             );
@@ -347,6 +351,7 @@ function mn_encode_geographic_area($zona_geografica){
             );
             break;
         case "Perú":
+        case "Peru":
             $zona_geografica = array(
                 'PE' => $zona_geografica[0]->name
             );
@@ -358,6 +363,7 @@ function mn_encode_geographic_area($zona_geografica){
             break;
         case "Sahara Occidental":
         case "Sàhara Occidental":
+        case "Western Sahara":
             $zona_geografica = array(
                 'EH' => $zona_geografica[0]->name
             );
