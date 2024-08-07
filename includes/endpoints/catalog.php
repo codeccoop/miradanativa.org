@@ -234,6 +234,153 @@ function mn_encode_languages($languages){
     return $split_langs;
 }
 
+function mn_encode_geographic_area($zona_geografica){
+    switch ($zona_geografica[0]->name){
+        case "Argentina":
+            $zona_geografica = array(
+                'AR' => $zona_geografica[0]->name
+            );
+            break;
+        case "Bolivia":
+        case "Bolívia":
+            $zona_geografica = array(
+                'BO' => $zona_geografica[0]->name
+            );
+            break;
+        case "Brasil":
+        case "Brazil":
+            $zona_geografica = array(
+                'BR' => $zona_geografica[0]->name
+            );
+            break;
+        case "Canadá":
+        case "Canadà":
+        case "Canada":
+            $zona_geografica = array(
+                'CA' => $zona_geografica[0]->name
+            );
+            break;
+        case "Chile":
+        case "Xile":
+            $zona_geografica = array(
+                'CL' => $zona_geografica[0]->name
+            );
+            break;
+        case "Colombia":
+        case "Colòmbia":
+            $zona_geografica = array(
+                'CO' => $zona_geografica[0]->name
+            );
+            break;
+        case "Equador":
+        case "Ecuador":
+            $zona_geografica = array(
+                'EC' => $zona_geografica[0]->name
+            );
+            break;
+        case "España":
+        case "Espanya":
+            $zona_geografica = array(
+                'ES' => $zona_geografica[0]->name
+            );
+            break;
+        case "Estados Unidos de América":
+        case "Estats Units d'Amèrica":
+        case "United States of America":
+            $zona_geografica = array(
+                'US' => $zona_geografica[0]->name
+            );
+            break;
+        case "Filipinas":
+        case "Filipines":
+            $zona_geografica = array(
+                'PH' => $zona_geografica[0]->name
+            );
+            break;
+        case "Guatemala":
+            $zona_geografica = array(
+                'GT' => $zona_geografica[0]->name
+            );
+            break;
+        case "Honduras":
+        case "Hondures":
+            $zona_geografica = array(
+                'HN' => $zona_geografica[0]->name
+            );
+            break;
+        case "Indonesia":
+        case "Indonèsia":
+            $zona_geografica = array(
+                'ID' => $zona_geografica[0]->name
+            );
+            break;
+        case "Malasia":
+        case "Malàisia":
+            $zona_geografica = array(
+                'MY' => $zona_geografica[0]->name
+            );
+            break;
+        case "Marruecos":
+        case "Marroc":
+            $zona_geografica = array(
+                'MA' => $zona_geografica[0]->name
+            );
+            break;
+        case "México":
+        case "Mèxic":
+        case  "Mexico":
+            $zona_geografica = array(
+                'MX' => $zona_geografica[0]->name
+            );
+            break;
+        case "Panamá":
+        case "Panamà":
+        case "Panama":
+            $zona_geografica = array(
+                'PA' => $zona_geografica[0]->name
+            );
+            break;
+        case "Paraguay":
+        case "Paraguai":
+            $zona_geografica = array(
+                'PY' => $zona_geografica[0]->name
+            );
+            break;
+        case "Perú":
+            $zona_geografica = array(
+                'PE' => $zona_geografica[0]->name
+            );
+            break;
+        case "Portugal":
+            $zona_geografica = array(
+                'PT' => $zona_geografica[0]->name
+            );
+            break;
+        case "Sahara Occidental":
+        case "Sàhara Occidental":
+            $zona_geografica = array(
+                'EH' => $zona_geografica[0]->name
+            );
+            break;
+        case "Venezuela":
+        case "Veneçuela":
+            $zona_geografica = array(
+                'VE' => $zona_geografica[0]->name
+            );
+            break;
+        case "Wallmapu":
+            $zona_geografica = array(
+                'Wallmapu' => $zona_geografica[0]->name
+            );
+            break;
+        default:
+        $zona_geografica = array(
+            'none' => 'none'
+        );
+    }
+return $zona_geografica;
+}
+
 function mn_get_catalog($data)
 {
 
@@ -292,7 +439,7 @@ function mn_get_catalog($data)
         $filmmaking = [];
 
         $custom_fields = get_post_meta($film->ID);
-        $zona_geografica = get_the_terms($film, 'mn_zona_geografica');
+        $zona_geografica = mn_encode_geographic_area(get_the_terms($film, 'mn_zona_geografica'));
         $pueblo_indigena = get_the_terms($film, 'mn_pueblo_indigena');
         $tematicas = get_the_terms($film, 'mn_tematica');
 
@@ -336,7 +483,7 @@ function mn_get_catalog($data)
             'year' => (int) $custom_fields['year'][0],
             'duration' => mn_parse_duration($custom_fields['duration'][0]),
             'age' => $custom_fields['age'][0],
-            'geographic_area' => $zona_geografica[0]->name,
+            'geographic_area' => $zona_geografica,
             'indigenous_group' => $pueblo_indigena[0]->name,
             'keywords' => $keywords,
             'genre' => $genero[0]->name,
