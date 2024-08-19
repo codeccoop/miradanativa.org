@@ -22,8 +22,8 @@ function mn_register_film_cpt()
             'menu_icon' => 'dashicons-format-video',
             'menu_position' => 27,
             'show_in_rest' => true,
-            'supports' => ['title'],
-            'taxonomies' => ['post_tag'],
+            'supports' => ['title', 'author'],
+            'taxonomies' => ['category','post_tag'],
         ]
     );
 }

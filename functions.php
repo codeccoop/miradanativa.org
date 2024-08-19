@@ -28,6 +28,9 @@ require_once 'includes/shortcodes/blog.php';
 /* custom endpoints */
 require_once 'includes/endpoints/catalog.php';
 
+/** Require export_wp action */
+require_once( ABSPATH . 'wp-admin/includes/export.php' );
+
 
 // require_once 'migration.php';
 
@@ -504,4 +507,52 @@ $names = array('lang_communication');
 
 foreach( $names as $name )
 update_user_meta( $user_id, $name, $_POST[$name] );
+}
+
+
+add_action('export_filters', function(){
+    echo '<a href="/?mn_export_indifilms=true" target="_blank"><div class="button"> Exporta les pel·lícules per a indifest </div></a>';
+});
+
+add_action('init', 'mn_export_indifest_films');
+
+function mn_filter_export_query($query) {
+    if(!strstr($query, 'SELECT ID FROM mn_posts')){
+        return $query;
+    }
+    remove_filter('query', 'mn_filter_export_query', 90);
+    $query="SELECT ID 
+    FROM mn_posts p
+    INNER JOIN mn_term_relationships rel ON rel.object_id = p.ID
+    INNER JOIN mn_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
+    INNER JOIN mn_terms t ON t.term_id = tax.term_id
+    WHERE post_status != 'auto-draft'
+    AND post_type = 'film'
+    AND t.slug = 'exportable'
+    AND tax.taxonomy = 'category'";
+    
+    return $query;
+}
+
+function mn_export_indifest_films(){
+
+    if (!isset($_GET['mn_export_indifilms'])){
+        return;
+    }
+    if($_SERVER['REQUEST_METHOD'] !== 'GET'){
+        return;
+    }
+    
+
+    if(ob_get_contents()){
+        ob_clean();
+    }
+
+    add_filter('query', 'mn_filter_export_query', 90);
+    export_wp(array(
+        'content' => 'post',
+        'category' => 'exportable'
+    ));
+    
+    die();
 }
