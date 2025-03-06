@@ -25,5 +25,5 @@ function mn_register_cataleg_taxonomy()
     ];
 
     register_taxonomy('cataleg', 'pelicula', $args);
-    register_taxonomy('mn_cataleg', 'film', $args);
+    register_taxonomy('mn_cataleg', array('film', 'serie'), $args);
 }

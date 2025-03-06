@@ -10,14 +10,19 @@ require_once 'includes/taxonomies/zona.php';
 require_once 'includes/taxonomies/produccion.php';
 require_once 'includes/taxonomies/realizacion.php';
 require_once 'includes/taxonomies/cataleg.php';
+require_once 'includes/taxonomies/season.php';
 /* post type */
 require_once 'includes/models/film.php';
 require_once 'includes/models/fest.php';
 require_once 'includes/models/blog.php';
+require_once 'includes/models/serie.php';
+require_once 'includes/models/episode.php';
 /* acf */
 require_once 'includes/acf/film.php';
 require_once 'includes/acf/fest.php';
 require_once 'includes/acf/blog.php';
+require_once 'includes/acf/serie.php';
+require_once 'includes/acf/episode.php';
 /* pll */
 require_once 'includes/pll.php';
 /* custom shortcodes */
@@ -29,7 +34,7 @@ require_once 'includes/shortcodes/blog.php';
 require_once 'includes/endpoints/catalog.php';
 
 /** Require export_wp action */
-require_once( ABSPATH . 'wp-admin/includes/export.php' );
+require_once(ABSPATH . 'wp-admin/includes/export.php');
 
 
 // require_once 'migration.php';
@@ -199,62 +204,62 @@ add_action('init', function () {
 add_action('wp_head', 'mn_wp_head');
 function mn_wp_head()
 {
-    ?>
-  <!-- Google Tag Manager -->
-  <script>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-M85DF3R');
-  </script>
-  <!-- End Google Tag Manager -->
+?>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M85DF3R');
+    </script>
+    <!-- End Google Tag Manager -->
 
-  <script>
-    function togglePlayer(vimeo_id) {
-      var $target = jQuery('.player_iframe');
-      if ($target.length > 0) {
+    <script>
+        function togglePlayer(vimeo_id) {
+            var $target = jQuery('.player_iframe');
+            if ($target.length > 0) {
 
-        if ($target.attr('src')) {
-          $target.attr('src', "");
-        } else {
-          $target.attr('src', $target.attr('_src'));
-          $target.css('width', '100%');
-        }
-      }
+                if ($target.attr('src')) {
+                    $target.attr('src', "");
+                } else {
+                    $target.attr('src', $target.attr('_src'));
+                    $target.css('width', '100%');
+                }
+            }
 
-      jQuery('.player_placeholder').toggle();
-      jQuery('.player_container').toggle();
-      jQuery('.player_div').toggle();
+            jQuery('.player_placeholder').toggle();
+            jQuery('.player_container').toggle();
+            jQuery('.player_div').toggle();
 
-      if (window.matchMedia('(min-width: 600px)').matches) {
-        if ($target.attr('src')) {
-          jQuery('.player_div').focus();
-          jQuery('html, body').animate({
-            scrollTop: jQuery(".player_div").offset().top
-          }, 2000);
-        }
-      }
+            if (window.matchMedia('(min-width: 600px)').matches) {
+                if ($target.attr('src')) {
+                    jQuery('.player_div').focus();
+                    jQuery('html, body').animate({
+                        scrollTop: jQuery(".player_div").offset().top
+                    }, 2000);
+                }
+            }
 
-    };
+        };
 
-    jQuery(document).ready(function() {
-      jQuery('.jcarousel').jcarousel({});
-    });
-  </script>
+        jQuery(document).ready(function() {
+            jQuery('.jcarousel').jcarousel({});
+        });
+    </script>
 
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M85DF3R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M85DF3R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 <?php
 }
 
@@ -293,7 +298,7 @@ add_filter('wpct_bm_bookmark_template', function ($html, $bookmark) {
             </div>
         </div>
     </article>
-    <?php
+<?php
     wp_reset_postdata();
     $post = $global_post;
     return ob_get_clean();
@@ -302,7 +307,7 @@ add_filter('wpct_bm_bookmark_template', function ($html, $bookmark) {
 add_filter('wpct_bm_list_template', function ($html, $list) {
     $img_src = get_stylesheet_directory_uri() . '/assets/images/bookmark.jpg';
     $bookmarks = $list->get_bookmarks();
-    ob_start(); ?> 
+    ob_start(); ?>
     <article class="mn-profile-list film type-film">
         <div class="post-inner thin">
             <div class="entry-content">
@@ -311,14 +316,14 @@ add_filter('wpct_bm_list_template', function ($html, $list) {
                         <img src="<?= $img_src ?>" />
                         <div class="indi_film_details">
                             <h7><span id="indi_film_title"><?= __($list->title, 'miradanaiva') ?></span></h7>
-                          <span class="indi_film_details_value"><?= count($bookmarks) . ' ' . pll__('titles', 'miradanativa') ?></span>
+                            <span class="indi_film_details_value"><?= count($bookmarks) . ' ' . pll__('titles', 'miradanativa') ?></span>
                         </div>
                     </a>
                 </article>
             </div>
         </div>
     </article>
-    <?php
+<?php
     return ob_get_clean();
 }, 50, 2);
 
@@ -346,11 +351,10 @@ add_filter('rewrite_rules_array', function ($rules) {
     foreach ($rules as $key => $rule) {
         if (preg_match('#^profile/#', $key)) {
             $newrules['ca/' . $key] = $rule . '&lang=ca';
-        } 
-        if (preg_match('#^profile/#', $key)){
-             $newrules['en/' . $key] = $rule . '&lang=en';
-
-         }
+        }
+        if (preg_match('#^profile/#', $key)) {
+            $newrules['en/' . $key] = $rule . '&lang=en';
+        }
         $newrules[$key] = $rule;
     }
 
@@ -362,16 +366,16 @@ add_filter('waf_template_film', 'mn_film_template_part');
 function mn_film_template_part()
 {
     ob_start();
-    ?>
-  <article <?php post_class(); ?>>
-    <div class="post-inner thin">
-      <div class="entry-content">
-        <?php get_template_part('template-parts/content', 'film'); ?>
-      </div>
-    </div>
-  </article>
+?>
+    <article <?php post_class(); ?>>
+        <div class="post-inner thin">
+            <div class="entry-content">
+                <?php get_template_part('template-parts/content', 'film'); ?>
+            </div>
+        </div>
+    </article>
 <?php
-      return ob_get_clean();
+    return ob_get_clean();
 }
 
 add_filter('waf_search_meta_fields', function ($args, $pattern, $post_type) {
@@ -394,14 +398,16 @@ add_filter('gettext', function ($trans, $text, $domain) {
 }, 90, 3);
 
 //intercept UM registry form secondary button url
-add_filter( 'um_login_form_button_two_url', 'my_register_form_button_two_url', 10, 2 );
-function my_register_form_button_two_url( $secondary_btn_url, $args ) {
-    if($args['form_id'] === 2259){
+add_filter('um_login_form_button_two_url', 'my_register_form_button_two_url', 10, 2);
+function my_register_form_button_two_url($secondary_btn_url, $args)
+{
+    if ($args['form_id'] === 2259) {
         $secondary_btn_url = "/ca/registre";
-    } if ($args['form_id'] === 8875){
+    }
+    if ($args['form_id'] === 8875) {
         $secondary_btn_url = "/en/register";
     }
-return $secondary_btn_url;
+    return $secondary_btn_url;
 }
 
 
@@ -452,10 +458,10 @@ return $secondary_btn_url;
 //         $translations ['en'] = $term_en['term_id'];
 //         pll_save_term_translations($translations);
 //     }
-       
+
 //     }  
 // }  
-   
+
 // add_action( 'wp_loaded', function ()  {
 //     mn_translate_taxonomies_terms("mn_produccion");
 //     mn_translate_taxonomies_terms("mn_realizacion");
@@ -468,91 +474,92 @@ return $secondary_btn_url;
 add_action('um_after_account_general', 'after_account_general_custom_fields', 100);
 function after_account_general_custom_fields()
 {
-$custom_fields = [
-'lang_communication' => [
-'title' => 'Language',
-'label' => __('Language', 'miradanativa'),
-'metakey' => 'lang_communication',
-'type' => 'select',
-'options' => [
-    'catala' => __('catalan', 'miradanativa'),
-    'español' => __('spanish', 'miradanativa'),
-    'english' => __('english', 'miradanativa')
-],
-'required' => 0,
-'public' => 1,
-'editable' => 1,
-],
-];
+    $custom_fields = [
+        'lang_communication' => [
+            'title' => 'Language',
+            'label' => __('Language', 'miradanativa'),
+            'metakey' => 'lang_communication',
+            'type' => 'select',
+            'options' => [
+                'catala' => __('catalan', 'miradanativa'),
+                'español' => __('spanish', 'miradanativa'),
+                'english' => __('english', 'miradanativa')
+            ],
+            'required' => 0,
+            'public' => 1,
+            'editable' => 1,
+        ],
+    ];
 
-$fields = apply_filters('um_account_secure_fields', $custom_fields, um_user('ID'));
+    $fields = apply_filters('um_account_secure_fields', $custom_fields, um_user('ID'));
 
-UM()->builtin()->saved_fields = $fields;
-UM()->builtin()->set_custom_fields();
+    UM()->builtin()->saved_fields = $fields;
+    UM()->builtin()->set_custom_fields();
 
-$output = '';
-foreach ($fields as $key => $data) {
-    $output .= UM()->fields()->edit_field($key, $data);
-}
-echo $output;
-
+    $output = '';
+    foreach ($fields as $key => $data) {
+        $output .= UM()->fields()->edit_field($key, $data);
+    }
+    echo $output;
 }
 
 
 add_action('um_account_pre_update_profile', 'getUMFormData', 10, 2);
 
-function getUMFormData($changes, $user_id){
-// $id = um_user('ID');
-$names = array('lang_communication');
+function getUMFormData($changes, $user_id)
+{
+    // $id = um_user('ID');
+    $names = array('lang_communication');
 
-foreach( $names as $name )
-update_user_meta( $user_id, $name, $_POST[$name] );
+    foreach ($names as $name)
+        update_user_meta($user_id, $name, $_POST[$name]);
 }
 
 
-add_action('export_filters', function(){
+add_action('export_filters', function () {
     echo '<a href="/?mn_export_indifilms=true" target="_blank"><div class="button"> Exporta les pel·lícules per a indifest </div></a>';
 });
 
 add_action('init', 'mn_export_indifest_films');
 
-function mn_filter_export_query($query) {
-    if(!strstr($query, 'SELECT ID FROM mn_posts')){
-        return $query;
-    }
+function mn_filter_export_query($query)
+{
+    // if(!strstr($query, 'SELECT ID FROM mn_posts')){
+    //     return $query;
+    // }
     remove_filter('query', 'mn_filter_export_query', 90);
-    $query="SELECT ID 
+    $query = "SELECT ID,  
     FROM mn_posts p
-    INNER JOIN mn_term_relationships rel ON rel.object_id = p.ID
+    INNER JOIN mn_term_relationships rel ON  p.ID = rel.object_id
     INNER JOIN mn_term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
     INNER JOIN mn_terms t ON t.term_id = tax.term_id
     WHERE post_status != 'auto-draft'
     AND post_type = 'film'
-    AND t.slug = 'exportable'
+    AND t.name = 'exportable'
     AND tax.taxonomy = 'category'";
-    
+
     return $query;
 }
 
-function mn_export_indifest_films(){
+function mn_export_indifest_films()
+{
 
-    if (!isset($_GET['mn_export_indifilms'])){
+    if (!isset($_GET['mn_export_indifilms'])) {
         return;
     }
-    if($_SERVER['REQUEST_METHOD'] !== 'GET'){
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         return;
     }
-    
 
-    if(ob_get_contents()){
+
+    if (ob_get_contents()) {
         ob_clean();
     }
 
     add_filter('query', 'mn_filter_export_query', 90);
     export_wp(array(
-        'content' => 'post',
-        'category' => 'exportable'
+        'content' => 'all'
     ));
-    
+
     die();
 }

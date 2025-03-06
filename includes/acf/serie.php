@@ -6,29 +6,9 @@ add_action('acf/include_fields', function () {
     }
 
     acf_add_local_field_group(array(
-        'key' => 'group_6572df3021c40',
-        'title' => 'Pelicula',
+        'key' => 'group_6572df3021c0000',
+        'title' => 'Serie',
         'fields' => array(
-            array(
-                'key' => 'field_6572df61b68bf',
-                'label' => 'Vimeo ID',
-                'name' => 'vimeo_id',
-                'aria-label' => '',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'maxlength' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-            ),
             array(
                 'key' => 'field_6572df8cb68c0',
                 'label' => 'Imagen carousel',
@@ -55,7 +35,7 @@ add_action('acf/include_fields', function () {
                 'preview_size' => 'medium',
             ),
             array(
-                'key' => 'field_6572dfa5b68c1',
+                'key' => 'field_6572dfa5b68c10000',
                 'label' => 'Cartel',
                 'name' => 'poster',
                 'aria-label' => '',
@@ -80,7 +60,7 @@ add_action('acf/include_fields', function () {
                 'preview_size' => 'medium',
             ),
             array(
-                'key' => 'field_6572dfa5b68zzz',
+                'key' => 'field_6572dfa5b680000',
                 'label' => 'Imagen de la portada',
                 'name' => 'cover',
                 'aria-label' => '',
@@ -105,7 +85,7 @@ add_action('acf/include_fields', function () {
                 'preview_size' => 'medium',
             ),
             array(
-                'key' => 'field_6572dfe1b68c2',
+                'key' => 'field_6572dfe1b680000',
                 'label' => 'Sinopsis',
                 'name' => 'description',
                 'aria-label' => '',
@@ -125,7 +105,7 @@ add_action('acf/include_fields', function () {
                 'delay' => 0,
             ),
             array(
-                'key' => 'field_6572e008b68c3',
+                'key' => 'field_6572e008b68c00000',
                 'label' => 'Sinopsis larga',
                 'name' => 'long_description',
                 'aria-label' => '',
@@ -145,27 +125,7 @@ add_action('acf/include_fields', function () {
                 'delay' => 0,
             ),
             array(
-                'key' => 'field_6572e032b68c4',
-                'label' => 'Duracion',
-                'name' => 'duration',
-                'aria-label' => '',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'maxlength' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-            ),
-            array(
-                'key' => 'field_6572e05bb68c5',
+                'key' => 'field_6572e05bb68c00000',
                 'label' => 'Año producción',
                 'name' => 'year',
                 'aria-label' => '',
@@ -187,7 +147,7 @@ add_action('acf/include_fields', function () {
                 'append' => '',
             ),
             array(
-                'key' => 'field_6572e05bb68cwvz',
+                'key' => 'field_6572e05bb6800000',
                 'label' => 'Edad recomendada',
                 'name' => 'age',
                 'aria-label' => '',
@@ -213,7 +173,7 @@ add_action('acf/include_fields', function () {
                 'append' => '',
             ),
             array(
-                'key' => 'field_6572e07eb68c6',
+                'key' => 'field_6572e07eb68c00000',
                 'label' => 'Idioma',
                 'name' => 'language',
                 'aria-label' => '',
@@ -233,27 +193,7 @@ add_action('acf/include_fields', function () {
                 'append' => '',
             ),
             array(
-                'key' => 'field_6572e093b68c7',
-                'label' => 'Subtítulos',
-                'name' => 'subtitles',
-                'aria-label' => '',
-                'type' => 'text',
-                'instructions' => 'Subtitulos del video',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'maxlength' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-            ),
-            array(
-                'key' => 'field_6572e0cfb68c8',
+                'key' => 'field_6572e0cfb68c00000',
                 'label' => 'Reparto',
                 'name' => 'casting',
                 'aria-label' => '',
@@ -273,7 +213,7 @@ add_action('acf/include_fields', function () {
                 'append' => '',
             ),
             array(
-                'key' => 'field_6572e0e2b68c9',
+                'key' => 'field_6572e0e2b68c00000',
                 'label' => 'Premios',
                 'name' => 'awards',
                 'aria-label' => '',
@@ -293,7 +233,7 @@ add_action('acf/include_fields', function () {
                 'append' => '',
             ),
             array(
-                'key' => 'field_6572e0feb68ca',
+                'key' => 'field_6572e0feb68ca00000',
                 'label' => 'Enlaces de interés',
                 'name' => 'related_links',
                 'aria-label' => '',
@@ -313,8 +253,8 @@ add_action('acf/include_fields', function () {
                 'delay' => 0,
             ),
             array(
-                'key' => 'field_6572e05bb68cxcds',
-                'label' => 'Exportar película',
+                'key' => 'field_6572e05bb68cxcd00000',
+                'label' => 'Exportar serie',
                 'name' => 'export',
                 'aria-label' => '',
                 'type' => 'select',
@@ -337,15 +277,29 @@ add_action('acf/include_fields', function () {
                 'step' => '',
                 'prepend' => '',
                 'append' => '',
-            )
+            ),
+            array(
+                'key' => 'group_6572df0000',
+                'label' => 'Capítols relacionats',
+                'name' => 'related_episodes',
+                'aria-label' => '',
+                'type' => 'post_object',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => 'episode',
+                'multiple' => 1,
+                'allow_null' => 0,
+                'return_format' => 'object',
+            ),
         ),
         'location' => array(
             array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'film',
-                ),
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
